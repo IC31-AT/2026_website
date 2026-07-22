@@ -69,7 +69,7 @@ export default function IntroOverlay({ frequency = 'session' }: { frequency?: 's
         [{ transform: `translateX(${shift}px)` }, { transform: 'translateX(0px)' }],
         { duration: 480, delay: 600, easing: EO, fill: 'both' }));
       push(word.animate(
-        [{ clipPath: 'inset(-0.35em 100% -0.35em 0)' }, { clipPath: 'inset(-0.35em 0% -0.35em 0)' }],
+        [{ clipPath: 'inset(-2% 100% -2% 0)' }, { clipPath: 'inset(-2% 0% -2% 0)' }],
         { duration: 500, delay: 640, easing: EO, fill: 'both' }));
       push(word.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, delay: 640, easing: 'ease-out', fill: 'both' }));
 
