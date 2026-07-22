@@ -9,12 +9,12 @@ import { ROUTES } from '@/lib/routes';
    wrapper pins a full-viewport stage; scroll progress swaps the headline phrase
    and floats case-study cards up. Ported from the ReviewToTrainingReveal prototype. */
 const CARDS = [
-  { left: 6, top: 50, w: 230, h: 300, rot: -4 },
-  { left: 24, top: 47, w: 250, h: 230, rot: 3 },
-  { left: 43, top: 52, w: 210, h: 270, rot: -3 },
-  { left: 61, top: 46, w: 260, h: 210, rot: 5 },
-  { left: 78, top: 53, w: 220, h: 290, rot: -5 },
-  { left: 93, top: 48, w: 200, h: 260, rot: 4 },
+  { left: 4, top: 66, w: 299, h: 390, rot: -4 },
+  { left: 23, top: 61, w: 325, h: 299, rot: 3 },
+  { left: 42, top: 69, w: 273, h: 351, rot: -3 },
+  { left: 60, top: 60, w: 338, h: 273, rot: 5 },
+  { left: 79, top: 68, w: 286, h: 377, rot: -5 },
+  { left: 97, top: 62, w: 260, h: 338, rot: 4 },
 ];
 const GROUP_STARTS = [0.0, 0.2, 0.5];
 
@@ -87,7 +87,7 @@ export default function ReviewToTrainingReveal() {
           </div>
         ))}
 
-        <div style={{ position: 'absolute', left: '50%', top: '22%', transform: 'translate(-50%,-50%)', textAlign: 'center', zIndex: 2, width: 'min(720px,86vw)', pointerEvents: 'none' }}>
+        <div style={{ position: 'absolute', left: '50%', top: '26%', transform: 'translate(-50%,-50%)', textAlign: 'center', zIndex: 2, width: 'min(720px,86vw)', pointerEvents: 'none' }}>
           <div style={{ position: 'relative' }}>
             <div style={{ ...phrase, opacity: reviewOpacity, color: '#FFFFFF' }}>From review</div>
             <div style={{ ...phrase, position: 'absolute', inset: 0, opacity: implementationOpacity, color: 'var(--at-turquoise-light)' }}>to implementation</div>

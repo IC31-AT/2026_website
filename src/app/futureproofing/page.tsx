@@ -6,7 +6,15 @@ import SiteFooter from '@/components/SiteFooter';
 import CaseStudyCard from '@/components/CaseStudyCard';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import { dataUri } from '@/lib/blobscene';
 import { ROUTES } from '@/lib/routes';
+
+/* Brand blob scenes — single corner-anchored nested-contour compositions
+   (per AT Design System · Background Blob Scenes: Cyprus base, layers 3–5,
+   jitter < 0.03, waviness ≤ 6, brand palettes only). One continuous graphic
+   per section rather than cropped two-corner fragments. */
+const teamBlob = dataUri({ width: 1600, height: 900, corner: 'br', layers: 4, points: 6, jitter: 0.02, palette: 'brandTeal', seed: 7 });
+const ctaBlob = dataUri({ width: 1600, height: 640, corner: 'tr', layers: 4, points: 6, jitter: 0.02, palette: 'turquoisePop', seed: 8 });
 
 export const metadata: Metadata = {
   title: 'Futureproofing Program',
@@ -128,7 +136,7 @@ export default function FutureproofingPage() {
       {/* 3. TEAM REVEAL */}
       <section style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.42, pointerEvents: 'none' }} />
+        <img src={teamBlob} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'bottom right', opacity: 0.5, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1080, margin: '0 auto', padding: '118px 32px 124px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 18, marginBottom: 24 }}>
             <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>Why This Is Actually Deliverable</span>
@@ -248,7 +256,7 @@ export default function FutureproofingPage() {
         <div style={{ maxWidth: 1120, margin: '0 auto', padding: '60px 32px 112px' }}>
           <div data-reveal style={{ position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius-md)', background: 'var(--at-cyprus)' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/blob-scene-2.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, pointerEvents: 'none' }} />
+            <img src={ctaBlob} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top right', opacity: 0.55, pointerEvents: 'none' }} />
             <div style={{ position: 'relative', padding: '84px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
               <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: '#fff', maxWidth: 620, textWrap: 'balance' }}>Find Out Exactly Where You Stand</h2>
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.75)', maxWidth: 480, textWrap: 'pretty' }}>The Review is a complete purchase on its own — no obligation into anything else. In writing, in five weeks.</p>
