@@ -87,7 +87,7 @@ export default function ReviewToTrainingReveal() {
           </div>
         ))}
 
-        <div style={{ position: 'absolute', left: '50%', top: '46%', transform: 'translate(-50%,-50%)', textAlign: 'center', zIndex: 2, width: 'min(720px,86vw)', pointerEvents: 'none' }}>
+        <div style={{ position: 'absolute', left: '50%', top: '22%', transform: 'translate(-50%,-50%)', textAlign: 'center', zIndex: 2, width: 'min(720px,86vw)', pointerEvents: 'none' }}>
           <div style={{ position: 'relative' }}>
             <div style={{ ...phrase, opacity: reviewOpacity, color: '#FFFFFF' }}>From review</div>
             <div style={{ ...phrase, position: 'absolute', inset: 0, opacity: implementationOpacity, color: 'var(--at-turquoise-light)' }}>to implementation</div>
