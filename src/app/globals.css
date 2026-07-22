@@ -69,3 +69,31 @@ img, video { max-width: 100%; }
 @media (max-width: 600px) {
   .at-audit-bar { font-size: 12px !important; }
 }
+
+/* Home hero — bespoke mobile layout: the whole stack (text + buttons +
+   media + floating badges) fits within ONE screen. The section is a
+   100svh flex column; text/buttons take their natural height and the
+   media block flex-grows to fill the remaining space to the fold. */
+@media (max-width: 768px) {
+  .at-hero-grid {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100svh;
+    padding-top: 130px !important;   /* clear the fixed nav + audit bar */
+    padding-bottom: 18px !important;
+    gap: 16px !important;
+  }
+  /* Text block: tighten internal spacing so the media has room. */
+  .at-hero-grid > div:first-child { flex: 0 0 auto; gap: 14px !important; }
+  .at-hero-cta { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; margin-top: 2px !important; }
+  .at-hero-cta > a { width: 100% !important; height: 48px !important; }
+  /* Media fills whatever height is left in the screen. Use flex stretch
+     (not height:100%) so the parallax wrapper + ImageSlot fill it too. */
+  .at-hero-media { flex: 1 1 auto !important; min-height: 150px !important; height: auto !important; display: flex !important; }
+  .at-hero-media > [data-parallax] { flex: 1 1 auto !important; height: auto !important; display: flex !important; }
+  .at-hero-media > [data-parallax] > * { flex: 1 1 auto !important; height: auto !important; }
+  /* Pull the floating stat badges back inside the image bounds. */
+  .at-hero-badge-l { left: 12px !important; bottom: 12px !important; min-width: 0 !important; }
+  .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
+}

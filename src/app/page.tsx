@@ -97,28 +97,28 @@ export default function HomePage() {
 
       {/* 1. HERO */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '168px 32px 96px', display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 72, alignItems: 'stretch' }}>
+        <div className="at-hero-grid" style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(128px, 22vw, 168px) clamp(20px, 5vw, 32px) clamp(56px, 10vw, 96px)', display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 72, alignItems: 'stretch' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             <span className={eyebrow}>The Strategic Tech Partner for Creative Agencies</span>
-            <h1 style={{ margin: 0, fontSize: 58, lineHeight: 1.06, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Running Today. Ready for Tomorrow.</h1>
-            <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 480, textWrap: 'pretty' }}>We manage the IT that shouldn&apos;t be a distraction — and prepare your agency for the AI-driven shift that&apos;s already underway.</p>
-            <div style={{ display: 'flex', gap: 14, marginTop: 6 }}>
+            <h1 style={{ margin: 0, fontSize: 'clamp(34px, 8.6vw, 58px)', lineHeight: 1.06, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Running Today. Ready for Tomorrow.</h1>
+            <p style={{ margin: 0, fontSize: 'clamp(16px, 4.4vw, 18px)', lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 480, textWrap: 'pretty' }}>We manage the IT that shouldn&apos;t be a distraction — and prepare your agency for the AI-driven shift that&apos;s already underway.</p>
+            <div className="at-hero-cta" style={{ display: 'flex', gap: 14, marginTop: 6 }}>
               <Link href={dcHref('IT Services.dc.html')} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore IT Services</Link>
               <Link href={dcHref('Futureproofing.dc.html')} data-hover="background: var(--at-cyprus-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'var(--at-cyprus)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore Futureproofing</Link>
             </div>
           </div>
-          <div style={{ position: 'relative', height: '100%', minHeight: 460 }}>
+          <div className="at-hero-media" style={{ position: 'relative', height: '100%', minHeight: 460 }}>
             <div data-parallax="0.12" style={{ willChange: 'transform', height: '100%' }}>
               <ImageSlot placeholder="Team photo — real people, real office" radius={6} style={{ width: '100%', height: '100%', display: 'block' }} />
             </div>
-            <div style={{ position: 'absolute', left: -36, bottom: 44, animation: 'at-float 5s ease-in-out infinite', background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, minWidth: 210 }}>
+            <div className="at-hero-badge at-hero-badge-l" style={{ position: 'absolute', left: -36, bottom: 44, animation: 'at-float 5s ease-in-out infinite', background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, minWidth: 210 }}>
               <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.16)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="shield-check" size={18} /></span>
               <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <span style={{ fontSize: 12.5, fontWeight: 700, color: '#fff' }}>Systems secure</span>
                 <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>All 48 devices protected</span>
               </span>
             </div>
-            <div style={{ position: 'absolute', right: -28, top: 38, animation: 'at-float 6s ease-in-out 1.2s infinite', background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, minWidth: 200 }}>
+            <div className="at-hero-badge at-hero-badge-r" style={{ position: 'absolute', right: -28, top: 38, animation: 'at-float 6s ease-in-out 1.2s infinite', background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, minWidth: 200 }}>
               <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.16)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="activity" size={18} /></span>
               <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <span style={{ fontSize: 12.5, fontWeight: 700, color: '#fff' }}>Network monitoring</span>

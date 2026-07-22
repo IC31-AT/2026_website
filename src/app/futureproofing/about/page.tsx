@@ -5,7 +5,14 @@ import SiteFooter from '@/components/SiteFooter';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import ReviewToTrainingReveal from '@/components/ReviewToTrainingReveal';
+import { dataUri } from '@/lib/blobscene';
 import { dcHref } from '@/lib/routes';
+
+/* One continuous background graphic for the whole page — a single brand blob
+   scene (Cyprus base, nested corner contours flowing down the right edge),
+   sized tall so it spans the full page. Replaces the four separate cropped
+   scenes that previously left visible seams between sections. */
+const pageBlob = dataUri({ width: 1400, height: 4200, corner: 'tr', layers: 5, points: 6, jitter: 0.02, palette: 'brandTeal', seed: 11 });
 
 export const metadata: Metadata = {
   title: 'About the Futureproofing Program',
@@ -105,13 +112,17 @@ const eyebrow = 'at-eyebrow';
 
 export default function FutureproofingAboutPage() {
   return (
-    <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-on-dark)', background: 'var(--at-cyprus)' }}>
+    <div style={{ position: 'relative', fontFamily: 'var(--font-sans)', color: 'var(--text-on-dark)', background: 'var(--at-cyprus)' }}>
+      {/* Single, page-spanning background graphic (see pageBlob above). Sits
+          behind all content; transparent sections let it show through as one
+          continuous scene, opaque sections (reveal, white CTA, footer) cover it. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={pageBlob} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top right', opacity: 0.5, pointerEvents: 'none', zIndex: 0 }} />
+
       <SiteNav active="fp" theme="dark" />
 
       {/* HERO */}
-      <section style={{ background: 'linear-gradient(180deg, var(--at-cyprus-light) 0%, var(--at-cyprus) 100%)', position: 'relative', overflow: 'hidden' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35, pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto', padding: '176px 32px 84px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>About the Program</span>
           <h1 style={{ margin: 0, fontSize: 54, lineHeight: 1.06, letterSpacing: '-0.025em', fontWeight: 800, color: '#fff', textWrap: 'balance' }}>A Clear Read on Where You Stand — and a Path to Where You’re Going</h1>
@@ -120,9 +131,7 @@ export default function FutureproofingAboutPage() {
       </section>
 
       {/* CLIENT PHOTO + QUOTE */}
-      <section style={{ background: 'var(--at-cyprus-light)', position: 'relative', overflow: 'hidden' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-3.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 1100, margin: '0 auto', padding: '88px 32px 96px' }}>
           <div data-reveal style={{ display: 'grid', gridTemplateColumns: '0.82fr 1.18fr', gap: 0, borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: 'var(--at-cyprus)', minHeight: 420 }}>
             <ImageSlot placeholder="Photo — Mark, Point Zero Group" style={{ width: '100%', height: '100%', minHeight: 320, display: 'block' }} />
@@ -139,14 +148,12 @@ export default function FutureproofingAboutPage() {
       </section>
 
       {/* HOW THE PROGRAM WORKS — review > implementation > training animation */}
-      <section>
+      <section style={{ position: 'relative', zIndex: 1 }}>
         <ReviewToTrainingReveal />
       </section>
 
       {/* WHAT GETS ASSESSED */}
-      <section style={{ background: 'var(--at-cyprus)', position: 'relative', overflow: 'hidden' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-2.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4, pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 900, margin: '0 auto', padding: '104px 32px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>What Gets Assessed</span>
@@ -166,9 +173,7 @@ export default function FutureproofingAboutPage() {
       </section>
 
       {/* TIER LADDER — full depth */}
-      <section style={{ background: 'var(--at-cyprus)', position: 'relative', overflow: 'hidden' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640, marginBottom: 56 }}>
             <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>The Four Tiers</span>

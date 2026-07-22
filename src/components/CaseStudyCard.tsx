@@ -13,6 +13,7 @@ export default function CaseStudyCard({
   title = '',
   summary = '',
   href = '#',
+  featured = false,
 }: {
   tag?: string;
   metric?: string;
@@ -22,6 +23,7 @@ export default function CaseStudyCard({
   title?: string;
   summary?: string;
   href?: string;
+  featured?: boolean;
 }) {
   return (
     <Link
@@ -40,7 +42,13 @@ export default function CaseStudyCard({
         transition: 'box-shadow 250ms ease, transform 250ms ease',
       }}
     >
-      <span style={{ background: 'var(--at-cyprus)', padding: '34px 30px 30px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <span style={{ position: 'relative', background: 'var(--at-cyprus)', padding: '34px 30px 30px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+        {featured && (
+          <span style={{ position: 'absolute', top: 14, right: 16, display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-cyprus)', background: 'var(--at-turquoise-light)', padding: '4px 9px', borderRadius: 'var(--radius-pill)' }}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 7.1-1.01L12 2Z" /></svg>
+            Featured
+          </span>
+        )}
         <span style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
           <span style={{ fontSize: 60, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.04em', color: 'var(--at-turquoise-light)' }}>{metric}</span>
           <span style={{ fontSize: 26, lineHeight: 1, fontWeight: 700, color: 'var(--at-turquoise-light)' }}>{metricSuffix}</span>

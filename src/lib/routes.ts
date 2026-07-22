@@ -4,18 +4,20 @@
 export const ROUTES = {
   home: '/',
   itServices: '/it-services',
-  itCaseStudies: '/it-services/case-studies',
   phishing: '/phishing-simulations',
   itad: '/itad',
   futureproofing: '/futureproofing',
   futureproofingAbout: '/futureproofing/about',
-  futureproofingCaseStudies: '/futureproofing/case-studies',
   theReview: '/the-review',
   ongoingWork: '/ongoing-work',
   automations: '/automations',
   bookTheReview: '/book-the-review',
   aiReadinessAudit: '/ai-readiness-audit',
+  // Case studies now live on one filterable page; the category query pre-selects
+  // a filter without splitting them across separate URLs.
   caseStudies: '/case-studies',
+  itCaseStudies: '/case-studies?category=it',
+  futureproofingCaseStudies: '/case-studies?category=futureproofing',
   caseStudyPointZeroGroup: '/case-studies/pointzerogroup',
   caseStudySquareEye: '/case-studies/squareeye',
 } as const;
