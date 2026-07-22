@@ -35,6 +35,8 @@ const fpServiceLinks = [
 export default function SiteNav({ active = '', theme = 'light' }: { active?: Active; theme?: 'light' | 'dark' }) {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<null | 'it' | 'fp'>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [acc, setAcc] = useState<null | 'it' | 'fp'>(null);
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
@@ -43,6 +45,13 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Lock body scroll while the mobile panel is open.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    if (mobileOpen) document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [mobileOpen]);
 
   const dark = theme === 'dark' && !scrolled;
   const base = dark ? 'rgba(255,255,255,0.88)' : 'var(--text-heading)';
@@ -56,6 +65,14 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
     textDecoration: 'none', color, transition: 'color 200ms ease',
   } as const);
 
+  const closeMobile = () => { setMobileOpen(false); setAcc(null); };
+
+  // ---- Mobile panel styles (dark green card, white text) ----
+  const mLink = { display: 'block', padding: '13px 0', fontSize: 17, fontWeight: 600, color: '#fff', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.12)' } as const;
+  const mAccBtn = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', padding: '13px 0', fontSize: 17, fontWeight: 600, color: '#fff', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.12)', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' } as const;
+  const mSubLink = { display: 'block', padding: '9px 0', fontSize: 14.5, color: 'rgba(255,255,255,0.82)', textDecoration: 'none' } as const;
+  const mSubHead = { fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)', margin: '10px 0 4px' } as const;
+
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
@@ -65,12 +82,12 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
       WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
       transition: 'background 350ms ease, box-shadow 350ms ease', fontFamily: 'var(--font-sans)',
     }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', height: 76, display: 'flex', alignItems: 'center', gap: 40 }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(18px, 5vw, 32px)', height: 76, display: 'flex', alignItems: 'center', gap: 40 }}>
         <Link href={ROUTES.home} data-cursor style={{ display: 'flex', alignItems: 'center', flex: 'none' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={dark ? '/assets/logo_linear_dark.png' : '/assets/logo_linear_light.png'} alt="AgencyTech" style={{ height: 24, display: 'block' }} />
         </Link>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
+        <nav className="at-nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, justifyContent: 'flex-end' }}>
           <Link href={ROUTES.home} data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('home'))}>Home</Link>
 
           <div style={{ position: 'relative' }} onMouseEnter={() => open('it')} onMouseLeave={closeMenus}>
@@ -147,13 +164,104 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
           <a href="#" data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('about'))}>About</a>
           <a href="#" data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('news'))}>News</a>
         </nav>
-        <a href="#contact" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 22px', height: 44, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call</a>
+        <a href="#contact" className="at-nav-desktop" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 22px', height: 44, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call</a>
+
+        {/* Burger — hidden on desktop, shown ≤900px via globals.css */}
+        <button
+          type="button"
+          className="at-nav-burger"
+          aria-label="Open menu"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(true)}
+          style={{ display: 'none', flex: 'none', marginLeft: 'auto', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, background: 'none', border: 'none', cursor: 'pointer', color: base, padding: 0 }}
+        >
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
       </div>
-      <Link href={ROUTES.aiReadinessAudit} data-cursor data-hover="opacity: 0.92" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, height: 40, background: 'linear-gradient(90deg, var(--at-cyprus) 0%, var(--at-turquoise) 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', transition: 'opacity 150ms ease' }}>
+
+      <Link href={ROUTES.aiReadinessAudit} data-cursor data-hover="opacity: 0.92" className="at-audit-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, minHeight: 40, padding: '8px 16px', background: 'linear-gradient(90deg, var(--at-cyprus) 0%, var(--at-turquoise) 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', textAlign: 'center', lineHeight: 1.3, transition: 'opacity 150ms ease' }}>
         <Icon name="sparkles" size={14} />
         Free AI Readiness Mini-Audit — see exactly where you stand, in 5 minutes
         <Icon name="arrow-right" size={14} />
       </Link>
+
+      {/* ---- Mobile slide-in panel ---- */}
+      <div
+        onClick={closeMobile}
+        aria-hidden={!mobileOpen}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 1100, background: 'rgba(0,20,20,0.5)',
+          opacity: mobileOpen ? 1 : 0, pointerEvents: mobileOpen ? 'auto' : 'none',
+          transition: 'opacity 260ms ease', backdropFilter: mobileOpen ? 'blur(2px)' : 'none',
+        }}
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          style={{
+            position: 'absolute', top: 0, right: 0, height: '100%', width: 'min(66vw, 340px)', minWidth: 268,
+            background: 'var(--at-cyprus)', color: '#fff', boxShadow: '-16px 0 40px rgba(0,20,20,0.4)',
+            transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)', transition: 'transform 300ms cubic-bezier(0.22,1,0.36,1)',
+            display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-sans)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid rgba(255,255,255,0.12)', flex: 'none' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/logo_linear_dark.png" alt="AgencyTech" style={{ height: 22, display: 'block' }} />
+            <button type="button" aria-label="Close menu" onClick={closeMobile} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, marginRight: -8, background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 0 }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
+
+          <div style={{ flex: 1, overflowY: 'auto', padding: '8px 22px 22px' }}>
+            <Link href={ROUTES.home} onClick={closeMobile} style={mLink}>Home</Link>
+
+            <button type="button" style={mAccBtn} aria-expanded={acc === 'it'} onClick={() => setAcc(acc === 'it' ? null : 'it')}>
+              IT Services
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: acc === 'it' ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            {acc === 'it' && (
+              <div style={{ padding: '4px 0 12px' }}>
+                <div style={mSubHead}>Services</div>
+                {itServiceLinks.map((l) => (
+                  <Link key={l.label} href={l.href} onClick={closeMobile} style={mSubLink}>{l.label}</Link>
+                ))}
+                <div style={mSubHead}>What we cover</div>
+                {itAnchorLinks.map((l) => (
+                  <Link key={l.label} href={l.href} onClick={closeMobile} style={mSubLink}>{l.label}</Link>
+                ))}
+                <Link href={ROUTES.itServices} onClick={closeMobile} style={{ ...mSubLink, color: 'var(--at-turquoise-light)', fontWeight: 700 }}>All IT services →</Link>
+              </div>
+            )}
+
+            <button type="button" style={mAccBtn} aria-expanded={acc === 'fp'} onClick={() => setAcc(acc === 'fp' ? null : 'fp')}>
+              Futureproofing
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: acc === 'fp' ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}><path d="m6 9 6 6 6-6" /></svg>
+            </button>
+            {acc === 'fp' && (
+              <div style={{ padding: '4px 0 12px' }}>
+                <div style={mSubHead}>The Program</div>
+                {fpAboutLinks.map((l) => (
+                  <Link key={l.label} href={l.href} onClick={closeMobile} style={mSubLink}>{l.label}</Link>
+                ))}
+                <div style={mSubHead}>Services</div>
+                {fpServiceLinks.map((l) => (
+                  <Link key={l.label} href={l.href} onClick={closeMobile} style={mSubLink}>{l.label}</Link>
+                ))}
+              </div>
+            )}
+
+            <Link href={ROUTES.caseStudies} onClick={closeMobile} style={mLink}>Case Studies</Link>
+            <a href="#" onClick={closeMobile} style={mLink}>About</a>
+            <a href="#" onClick={closeMobile} style={{ ...mLink, borderBottom: 'none' }}>News</a>
+          </div>
+
+          <div style={{ flex: 'none', padding: '16px 22px', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
+            <a href="#contact" onClick={closeMobile} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 48, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>Book a Call</a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

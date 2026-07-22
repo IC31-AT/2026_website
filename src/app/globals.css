@@ -30,3 +30,42 @@ body { margin: 0; background: var(--at-white); }
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
+
+/* ============================================================
+   Mobile responsive layer
+   The site is authored with fixed-width inline styles, so these
+   rules use targeted !important overrides + class hooks to make
+   the desktop layout reflow on small screens. Nav swaps to a
+   burger; multi-column inline grids collapse to a single column.
+   ============================================================ */
+
+/* Media never overflows its container. */
+img, video { max-width: 100%; }
+
+/* Burger nav: hidden on desktop, shown on tablet/mobile. */
+.at-nav-burger { display: none; }
+
+@media (max-width: 900px) {
+  /* Prevent residual sideways scroll from any fixed-width block.
+     'clip' (not 'hidden') keeps position: sticky working. */
+  html, body { overflow-x: clip; }
+
+  /* Swap the desktop nav row for the burger button. */
+  .at-nav-desktop { display: none !important; }
+  .at-nav-burger { display: inline-flex !important; }
+
+  /* Footer: 6 columns -> 2 columns. */
+  .at-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px 24px !important; }
+}
+
+@media (max-width: 640px) {
+  /* Collapse inline multi-column grids to a single column.
+     Opt a grid out with class "at-keep-grid". */
+  [style*="grid-template-columns"]:not(.at-footer-grid):not(.at-keep-grid) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .at-audit-bar { font-size: 12px !important; }
+}

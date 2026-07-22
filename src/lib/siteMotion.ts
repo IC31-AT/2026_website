@@ -26,7 +26,7 @@ export function initMotion(root: Document | HTMLElement = document): void {
   initStickyCategories(root, signal);
   initLoopCarousel(root, signal);
   initHoverDelegation(signal);
-  initCursor(); // once per session
+  // Custom branded cursor removed — using the native cursor site-wide.
 }
 
 export function teardown(): void {
@@ -302,7 +302,9 @@ function initHoverDelegation(signal: AbortSignal) {
   }, { signal });
 }
 
-/* Branded custom cursor — a filled "blob". Installed once per session. */
+/* Branded custom cursor — a filled "blob". Installed once per session.
+   Currently disabled (see initMotion) but kept for reference / easy re-enable. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function initCursor() {
   const w = window as unknown as { __atCursor?: boolean };
   if (w.__atCursor) return;

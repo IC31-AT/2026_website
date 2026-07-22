@@ -16,8 +16,8 @@ function Col({ title, children }: { title: string; children: React.ReactNode }) 
 export default function SiteFooter() {
   return (
     <footer style={{ background: 'var(--at-cyprus)', color: 'var(--text-on-dark)', fontFamily: 'var(--font-sans)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 32px 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1.1fr 1fr 0.8fr 0.8fr 0.8fr', gap: 40, paddingBottom: 56 }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px clamp(20px, 5vw, 32px) 0' }}>
+        <div className="at-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1.1fr 1fr 0.8fr 0.8fr 0.8fr', gap: 40, paddingBottom: 56 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, paddingRight: 24 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/logo_linear_dark.png" alt="AgencyTech" style={{ height: 40, width: 'auto', alignSelf: 'flex-start' }} />
@@ -71,7 +71,7 @@ export default function SiteFooter() {
           </Col>
         </div>
 
-        <div style={{ borderTop: '1px solid var(--border-on-dark)', padding: '22px 0 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
+        <div style={{ borderTop: '1px solid var(--border-on-dark)', padding: '22px 0 28px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.55)' }}>© 2026 AgencyTech. Registered in England &amp; Wales.</span>
           <a href="mailto:hello@agencytech.co.uk" data-hover={hover} style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--at-turquoise-light)', textDecoration: 'none' }}>hello@agencytech.co.uk</a>
         </div>
