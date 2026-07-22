@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./image-slot.js"></script>
+  <style> body { margin: 0; background: #fff; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="case-studies" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 168px 32px 64px; display: flex; flex-direction: column; gap: 22px;">
+    <span class="at-eyebrow">Case Studies</span>
+    <h1 style="margin: 0; font-size: 52px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; color: var(--text-heading); max-width: 680px; text-wrap: balance;">Real Work, Real Outcomes</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 540px; text-wrap: pretty;">Every engagement starts with an honest look at what wasn't working. Here's what happened next — across IT Services and the Futureproofing Program.</p>
+    <div style="display: flex; gap: 10px; margin-top: 14px;">
+      <span style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); background: var(--at-cyprus); font-size: 13.5px; font-weight: 700; color: #fff;">All</span>
+      <a href="IT Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">IT Services</a>
+      <a href="Futureproofing Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">Futureproofing</a>
+    </div>
+  </div>
+</section>
+
+<!-- GRID — all case studies -->
+<section data-screen-label="All Case Studies" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 72px 32px 104px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="10">
+        <div data-reveal data-reveal-delay="{{ c.delay }}">
+          <dc-import name="Case Study Card" tag="{{ c.tag }}" metric="{{ c.metric }}" metric-suffix="{{ c.suffix }}" metric-label="{{ c.label }}" client="{{ c.client }}" title="{{ c.title }}" summary="{{ c.summary }}" hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+        </div>
+      </sc-for>
+      <div data-reveal style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 40px 32px; text-align: center; min-height: 380px;">
+        <i data-lucide="file-plus-2" style="width: 28px; height: 28px; color: var(--at-faint);"></i>
+        <span style="font-size: 15px; font-weight: 700; color: var(--text-heading);">Your Project Here?</span>
+        <span style="font-size: 13.5px; line-height: 1.6; color: var(--text-muted); max-width: 240px;">More case studies are being written up — and the next one could be yours.</span>
+        <a href="#contact" style="font-size: 13.5px; font-weight: 700; color: var(--at-turquoise); text-decoration: none;">Start a conversation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE CLIENT QUOTES -->
+<section data-screen-label="More Client Quotes" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 104px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 560px; margin-bottom: 48px;">
+      <span class="at-eyebrow">More From Our Clients</span>
+      <h2 style="margin: 0; font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Trusted Across Agencies, Charities and Universities</h2>
+    </div>
+    <div data-loop-carousel style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; margin: 0 -32px; padding-left: 32px; padding-right: 32px;">
+      <sc-for list="{{ moreQuotesLoop }}" as="mq" hint-placeholder-count="6">
+        <div style="flex: none; width: calc((100% - 60px) / 4); display: flex; flex-direction: column; gap: 16px; background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 28px 26px;">
+          <span style="align-self: flex-start; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--at-turquoise); background: rgba(6,154,152,0.08); border-radius: var(--radius-pill); padding: 5px 12px;">{{ mq.tag }}</span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-body); text-wrap: pretty; flex: 1;">"{{ mq.quote }}"</p>
+          <sc-if value="{{ mq.hasLogo }}" hint-placeholder-val="{{ false }}">
+            <image-slot id="{{ mq.slotId }}" shape="rect" fit="contain" placeholder="{{ mq.logoPlaceholder }}" style="width: 100%; height: 32px; display: block;"></image-slot>
+          </sc-if>
+          <div style="display: flex; flex-direction: column; gap: 1px; padding-top: 4px; border-top: 1px solid var(--border-default);">
+            <span style="font-size: 13.5px; font-weight: 700; color: var(--text-heading); margin-top: 10px;">{{ mq.name }}</span>
+            <span style="font-size: 12.5px; color: var(--text-muted);">{{ mq.role }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" data-screen-label="Final CTA" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Want Results Like These?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">Every one of these started with a short call and an honest look at what wasn't working.</p>
+      <a href="mailto:hello@agencytech.co.uk" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book a Call <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    const cases = [
+      { tag: 'Futureproofing', metric: '2.5', suffix: 'wks', label: 'kickoff to a board-ready 12-month roadmap', client: 'PointZeroGroup · employer comms group', title: 'Understanding What Held PointZeroGroup Back', summary: 'A Phase 1 Futureproofing Audit across three merged agencies — benchmarked on the UWE framework — delivered a sequenced 12-month roadmap in two and a half weeks.' },
+      { tag: 'IT Services', metric: '7', suffix: 'min', label: 'average ticket response time', client: 'Creative agency · 50 people, Bristol', title: 'A Phased Cybersecurity Overhaul', summary: 'Enforced 2FA, phishing simulations, company-wide device protection and a central password manager — plus training that made it stick.' },
+      { tag: 'Futureproofing', metric: '86', suffix: '%', label: 'of the team already using AI, actively', client: 'SquareEye · legal-sector web agency', title: 'Cutting Through the Noise, Getting Aligned', summary: 'Already ahead on AI but uncoordinated. A four-week audit joined it up — one managed platform, a clear information architecture, and a shared roadmap.' },
+      { tag: 'IT Services', metric: '56', suffix: '%', label: 'Microsoft Secure Score improvement', client: 'Charity · safeguarding data', title: 'A Microsoft 365 Tenant, Secured Properly', summary: 'MFA enforced across every account, dormant and improperly offboarded users cleaned out, and licensing right-sized for non-profit compliance.' },
+      { tag: 'Futureproofing', metric: '4', suffix: 'hrs/wk', label: 'reclaimed per person, company-wide', client: 'Design & marketing agency · 60+ staff', title: 'AI, From Experimentation to Capability', summary: 'A governed, company-wide ChatGPT rollout — training, custom GPTs and AI-ready file structure — turning random individual use into a repeatable team capability.' },
+      { tag: 'IT Services', metric: '0', suffix: '', label: 'components sent to landfill', client: 'Six Agency · B-Corp, creative', title: 'An ITAD Clear-Out Aligned to B-Corp Values', summary: 'On-site audit, certified data wipes and a resale rebate — retired Apple kit turned back into capital and studio space, with nothing sent to landfill.' },
+      { tag: 'Futureproofing', metric: '16', suffix: 'hrs/wk', label: 'of manual data entry removed', client: 'Content agency · 60+ staff', title: 'A Live Database That Maintains Itself', summary: 'Custom automation scraping 1,400+ listings across 32 sources into one accurate, always-current database the whole team relies on.' },
+      { tag: 'Futureproofing', metric: '34', suffix: '%', label: 'increase in average monthly leads', client: 'Device repair company', title: 'A Technical Overhaul Built to Scale', summary: 'A new website, an AI-driven leads funnel with automated booking, and an internal knowledge base — with 2.5 hours reclaimed per person each week.' },
+      { tag: 'IT Services', metric: 'Top 50', suffix: '', label: 'UK university — new student service', client: 'Major UK university', title: 'A Hardship Device Scheme, Built End-to-End', summary: 'Launched and validated a service they couldn\u2019t resource in-house — a co-designed framework now being embedded in a new manufacturer tender.' },
+      { tag: 'Futureproofing', metric: '£48k', suffix: '+', label: 'labour cost saved per year', client: 'Shopify sports-jersey reseller', title: '267 Hours a Month, Automated Away', summary: 'A human-in-the-loop pipeline that ingests, tags, renames, writes copy and drafts listings — scaling output without scaling headcount.' },
+    ];
+    const moreQuotes = [
+        { tag: 'IT Support', delay: 0, hasLogo: true, slotId: 'cs-mq-synergy', logoPlaceholder: 'Logo — Synergy Group',
+          quote: "We've used AgencyTech for upgrades and ongoing support with our IT fleet. Their service was quick, well priced and very convenient, offering us a full range of options and their key recommendations, for issues that could have caused great expense. The team was professional, communicative and attentive. We're looking forward to working with them in the future.",
+          name: 'Adam Nor', role: 'IT Manager \u00b7 Synergy Group' },
+        { tag: 'IT Support & FPP', delay: 90, hasLogo: false, slotId: '',
+          quote: 'Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems, and the integrated approach to technology and AI has helped us strengthen our operations, bring structure to how we use our tools, automate admin, and start using AI confidently across the team.',
+          name: 'Charlotte Laing', role: 'CEO \u00b7 The Content Emporium' },
+        { tag: 'IT Support', delay: 180, hasLogo: true, slotId: 'cs-mq-uwe', logoPlaceholder: 'Logo — UWE Bristol',
+          quote: 'Casey and the AgencyTech team have been great to work with and have filled a gap in our service, providing support to personally owned devices of our staff and students. We look forward to continue working with them in the future.',
+          name: 'Joanna Dainton', role: 'Head of Circular Economy \u00b7 UWE Bristol' },
+        { tag: 'IT Support', delay: 0, hasLogo: true, slotId: 'cs-mq-bristol', logoPlaceholder: 'Logo — University of Bristol',
+          quote: 'AgencyTech delivers fantastic customer service for students and staff. Servicing electrical devices reduces costs for students who don\u2019t have to buy new, as well as contributing to UoB\u2019s circular economy goals.',
+          name: 'Richard Abraham', role: 'IT Engagement Manager \u00b7 University of Bristol' },
+        { tag: 'IT Support', delay: 90, hasLogo: false, slotId: '',
+          quote: 'This tech agency provides five-star service. I wholeheartedly endorse their excellent service.',
+          name: 'Cllr Asher Craig', role: 'Ex Deputy Mayor \u00b7 CEO, Pathway Fund' },
+        { tag: 'IT Support', delay: 180, hasLogo: false, slotId: '',
+          quote: 'AgencyTech have been a reliable and professional partner throughout our work together. We\u2019ve found them responsive, flexible, and able to handle complex needs at scale, and we\u2019d confidently recommend them to other institutions or businesses.',
+          name: 'Van Pham', role: 'IT Technician \u00b7 University of Southampton' },
+    ];
+    return {
+      cases: cases.map((c, i) => Object.assign({}, c, { delay: (i % 3) * 90 })),
+      moreQuotesLoop: moreQuotes.concat(moreQuotes),
+    };
+  }
+}
+</script>
+</body>
+</html>

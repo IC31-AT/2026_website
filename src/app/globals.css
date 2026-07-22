@@ -1,0 +1,30 @@
+/* AgencyTech 2026 — global stylesheet.
+   Fonts + design-system tokens first, then site-wide helpers and keyframes. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap');
+@import '../styles/tokens/colors.css';
+@import '../styles/tokens/typography.css';
+@import '../styles/tokens/spacing.css';
+@import '../styles/tokens/base.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--at-white); }
+
+/* Shared keyframes referenced by inline animations across pages. */
+@keyframes at-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes at-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.82); } }
+@keyframes at-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Loop carousel — horizontal scroll track with hidden scrollbar. */
+[data-loop-carousel] { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+[data-loop-carousel]::-webkit-scrollbar { display: none; }
+
+/* Sticky-category visuals start hidden; motion reveals the active one. */
+[data-cat-visual] { opacity: 0; }
+[data-cat-visual]:first-child { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}

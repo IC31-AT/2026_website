@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style> body { margin: 0; background: var(--at-cyprus); } #about-client-photo { width: 100% !important; height: 100% !important; display: block !important; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-on-dark); background: var(--at-cyprus);">
+<dc-import name="Site Nav" active="fp" theme="dark" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-cyprus-light) 0%, var(--at-cyprus) 100%); position: relative; overflow: hidden;">
+  <img src="assets/blob-scene-1.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; pointer-events: none;">
+  <div style="position: relative; max-width: 860px; margin: 0 auto; padding: 176px 32px 84px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <span class="at-eyebrow" style="color: var(--at-turquoise-light);">About the Program</span>
+    <h1 style="margin: 0; font-size: 54px; line-height: 1.06; letter-spacing: -0.025em; font-weight: 800; color: #fff; text-wrap: balance;">A Clear Read on Where You Stand — and a Path to Where You're Going</h1>
+    <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--text-on-dark-muted); max-width: 560px; text-wrap: pretty;">The Futureproofing Program starts with a fixed-price audit — The Review — that scores where your agency stands today and hands you a prioritised 12-month roadmap. From there, act on it yourselves or bring us in to build it with you.</p>
+  </div>
+</section>
+
+<!-- CLIENT PHOTO + QUOTE -->
+<section data-screen-label="Client Story" style="background: var(--at-cyprus-light); position: relative; overflow: hidden;">
+  <img src="assets/blob-scene-3.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; pointer-events: none;">
+  <div style="position: relative; max-width: 1100px; margin: 0 auto; padding: 88px 32px 96px;">
+    <div data-reveal style="display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg); background: var(--at-cyprus); min-height: 420px;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-client-photo" shape="rect" placeholder="Photo — Mark, Point Zero Group" style="width: 100%; height: 100%; min-height: 320px; display: block;" hint-size="100%,320px"></x-import>
+      <div style="padding: 56px 56px; display: flex; flex-direction: column; gap: 22px; justify-content: center; background: #fff;">
+        <i data-lucide="quote" style="width: 36px; height: 36px; color: var(--at-turquoise); opacity: 0.8;"></i>
+        <blockquote style="margin: 0; font-size: 26px; line-height: 1.45; font-weight: 600; color: var(--at-cyprus); letter-spacing: -0.01em; text-wrap: pretty;">“Within two and a half weeks they’d spoken to the whole team, mapped every tool we used, and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.”</blockquote>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 15.5px; font-weight: 700; color: var(--at-cyprus);">Mark Beavan</span>
+          <span style="font-size: 13.5px; color: var(--at-turquoise);">Managing Director · PointZeroGroup</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW THE PROGRAM WORKS — review > implementation > training animation -->
+<section data-screen-label="How It Works">
+  <dc-import name="ReviewToTrainingReveal" hint-size="100%,600px"></dc-import>
+</section>
+
+<!-- WHAT GETS ASSESSED -->
+<section data-screen-label="What Gets Assessed" style="background: var(--at-cyprus); position: relative; overflow: hidden;">
+  <img src="assets/blob-scene-2.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; pointer-events: none;">
+  <div style="position: relative; max-width: 900px; margin: 0 auto; padding: 104px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 18px;">
+      <span class="at-eyebrow" style="color: var(--at-turquoise-light);">What Gets Assessed</span>
+      <h2 style="margin: 0; font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: #fff; max-width: 640px; text-wrap: balance;">We Look at What Actually Determines Whether AI Sticks</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.78); max-width: 640px; text-wrap: pretty;">We look at the areas that actually determine whether AI adoption sticks or stalls — things like how decisions get made, whether your data can be trusted, how your team actually works day to day, and whether the right guardrails exist before anything gets automated.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
+        <sc-for list="{{ assessed }}" as="a" hint-placeholder-count="4">
+          <span style="display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; border: 1px solid var(--border-on-dark); border-radius: var(--radius-pill); background: var(--at-cyprus-light); font-size: 14px; font-weight: 600; color: #fff;"><i data-lucide="{{ a.icon }}" style="width: 15px; height: 15px; color: var(--at-turquoise-light);"></i>{{ a.label }}</span>
+        </sc-for>
+      </div>
+      <p style="margin: 10px 0 0; font-size: 13.5px; color: rgba(255,255,255,0.55); text-wrap: pretty;">Each area is scored 1–10 against a fixed set of descriptors — based on what we observe on the ground, not what's self-reported.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIER LADDER — full depth -->
+<section data-screen-label="Tier Ladder" style="background: var(--at-cyprus); position: relative; overflow: hidden;">
+  <img src="assets/blob-scene-1.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; pointer-events: none;">
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 32px 104px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 56px;">
+      <span class="at-eyebrow" style="color: var(--at-turquoise-light);">The Four Tiers</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: #fff;">The Results Compound as You Climb</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: var(--text-on-dark-muted); text-wrap: pretty;">The Review places you in one of four tiers — set by your weakest dimension, not an average, so one critical gap is what holds you back. Every tier up is a step up in margin, capacity or revenue; each unlocks a bigger result than the one before.</p>
+    </div>
+    <div style="position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: end; padding-bottom: 8px;">
+      <svg viewBox="{{ tierArrow.viewBox }}" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0;">
+        <path d="{{ tierArrow.d }}" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.6"></path>
+        <g transform="{{ tierArrow.headTransform }}"><path d="M-13,-10 L18,0 L-13,10 Z" fill="#fff" opacity="0.6"></path></g>
+      </svg>
+      <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="4">
+        <div data-reveal data-reveal-delay="{{ t.delay }}" style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: center; gap: 8px; height: 30px;">
+            <span style="width: 44px; height: 44px; flex: none; border-radius: 50%; background: {{ t.badgeBg }}; color: {{ t.badgeColor }}; display: inline-flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800;">{{ t.num }}</span>
+          </div>
+          <div style="height: {{ t.cardHeight }}px; background: {{ t.cardBg }}; border: 1px solid {{ t.cardBorder }}; border-radius: var(--radius-md); padding: {{ t.pad }}; display: flex; flex-direction: column; gap: 16px; box-shadow: {{ t.shadow }};">
+            <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: {{ t.labelColor }};">Tier {{ t.num }} · {{ t.name }} · {{ t.band }}</span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: {{ t.possibleKicker }};">The result</span>
+              <span style="font-size: {{ t.resultSize }}px; line-height: 1.2; font-weight: 800; color: {{ t.possibleColor }}; text-wrap: pretty;">{{ t.possible }}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: auto; padding-top: 10px; border-top: 1px solid {{ t.divider }};">
+              <span style="font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: {{ t.whereLabelColor }};">Starting point</span>
+              <span style="font-size: 13px; line-height: 1.5; color: {{ t.whereColor }}; text-wrap: pretty;">{{ t.where }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" data-screen-label="Final CTA" style="background: #fff; border-top: 1px solid var(--border-default);">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--at-cyprus); text-wrap: balance;">See Where You Land</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--at-muted); max-width: 460px; text-wrap: pretty;">The Review is where the model meets your business — a clear, honest picture of exactly which stage you're at.</p>
+      <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    const defs = [
+      { num: '1', name: 'Experimenting', band: '0–4.9', where: 'Using free tools, no structure or governance yet.', possible: 'A clear, costed picture of what AI is worth to you.' },
+      { num: '2', name: 'Consolidating', band: '5–6.9', where: 'Clear processes, structured data, early automation.', possible: '10+ hrs/week back per team, redeployed to billable work.' },
+      { num: '3', name: 'Accelerating', band: '7–8.9', where: 'Custom systems built around how you actually work.', possible: 'Fatter margins on every project — capacity for new revenue lines.' },
+      { num: '4', name: 'Ascending', band: '9–10', where: 'Creating new AI-powered services to sell.', possible: 'New, sellable IP — revenue competitors can\u2019t copy.', peak: true },
+    ];
+    const minH = 170, maxH = 400, expK = 1.6, cols = 4;
+    const frac = (t) => (Math.exp(expK * t) - 1) / (Math.exp(expK) - 1);
+    const heights = Array.from({ length: cols }, (_, i) => Math.round(minH + (maxH - minH) * frac(i / (cols - 1))));
+    const resultSizes = [19, 21, 23, 26];
+    const tiers = defs.map((t, i) => {
+      const peak = !!t.peak;
+      return Object.assign({}, t, {
+        delay: i * 90,
+        cardHeight: heights[i],
+        resultSize: resultSizes[i],
+        pad: i === 0 ? '20px 20px' : i === 1 ? '22px 22px' : i === 2 ? '24px 24px' : '28px 26px',
+        shadow: peak ? 'var(--shadow-lg)' : i === 2 ? 'var(--shadow-sm)' : 'none',
+        badgeBg: peak ? 'var(--at-turquoise)' : 'var(--at-cyprus)',
+        badgeColor: '#fff',
+        cardBg: '#fff',
+        cardBorder: peak ? 'var(--at-turquoise)' : 'var(--border-default)',
+        nameColor: 'var(--at-cyprus)',
+        labelColor: peak ? 'var(--at-turquoise)' : 'var(--at-faint)',
+        whereLabelColor: 'var(--at-faint)',
+        whereColor: 'var(--at-muted)',
+        divider: 'var(--border-default)',
+        possibleKicker: 'var(--at-turquoise)',
+        possibleColor: 'var(--at-cyprus)',
+      });
+    });
+    return {
+      tiers: tiers,
+      tierArrow: (() => {
+        const rowH = 48 + maxH;
+        const gap = 16, canvasW = 1136;
+        const colW = (canvasW - gap * (cols - 1)) / cols;
+        const xSpan = (cols - 1) * (colW + gap);
+        const x0 = colW / 2;
+        const pt = (t) => ({ x: x0 + xSpan * t, y: (maxH - minH) * (1 - frac(t)) + 15 });
+        const tEnd = 1.15;
+        const steps = 40;
+        let d = '';
+        for (let i = 0; i <= steps; i++) {
+          const t = (tEnd * i) / steps;
+          const p = pt(t);
+          d += (i === 0 ? 'M' : ' L') + p.x.toFixed(1) + ',' + p.y.toFixed(1);
+        }
+        const end = pt(tEnd);
+        const justBefore = pt(tEnd - 0.01);
+        const angle = Math.atan2(end.y - justBefore.y, end.x - justBefore.x) * 180 / Math.PI;
+        return {
+          viewBox: `0 0 ${canvasW} ${rowH}`,
+          d,
+          headTransform: `translate(${end.x.toFixed(1)},${end.y.toFixed(1)}) rotate(${angle.toFixed(1)})`,
+        };
+      })(),
+      assessed: [
+        { icon: 'git-fork', label: 'How decisions get made' },
+        { icon: 'database', label: 'Whether your data can be trusted' },
+        { icon: 'users', label: 'How your team works day to day' },
+        { icon: 'shield-check', label: 'Whether the right guardrails exist' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

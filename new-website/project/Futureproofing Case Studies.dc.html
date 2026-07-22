@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style> body { margin: 0; background: #fff; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%);">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 168px 32px 40px; display: flex; flex-direction: column; gap: 20px;">
+    <span style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: var(--text-muted);"><a href="Futureproofing.dc.html" style="color: var(--at-turquoise); text-decoration: none;">Futureproofing</a> <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i> Case Studies</span>
+    <h1 style="margin: 0; font-size: 52px; line-height: 1.06; letter-spacing: -0.025em; font-weight: 800; color: var(--text-heading); max-width: 720px; text-wrap: balance;">Case Studies</h1>
+    <div style="display: flex; gap: 10px; margin-top: 14px;">
+      <a href="Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">All</a>
+      <a href="IT Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">IT Services</a>
+      <span style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); background: var(--at-cyprus); font-size: 13.5px; font-weight: 700; color: #fff;">Futureproofing</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED — stacked audit cards -->
+<section data-screen-label="Featured Audits" style="background: #fff;">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 36px 32px 40px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px;">
+      <span class="at-eyebrow">The Review, In Full</span>
+      <h2 style="margin: 0; font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Two Futureproofing Audits, Start to Finish</h2>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <sc-for list="{{ featured }}" as="f" hint-placeholder-count="2">
+        <div data-reveal style="border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md);">
+          <div style="position: relative; overflow: hidden; background: var(--at-cyprus); padding: 42px 44px 40px;">
+            <img src="assets/blob-scene-1.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; pointer-events: none;">
+            <div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+              <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px;">
+                <span style="display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;"><span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise-light); background: rgba(43,188,186,0.16); padding: 4px 11px; border-radius: var(--radius-pill);">Futureproofing · The Review</span><span style="font-size: 13px; color: rgba(255,255,255,0.65);">{{ f.client }}</span></span>
+                <h3 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 700; color: #fff; text-wrap: balance;">{{ f.title }}</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; flex: none;">
+                <span style="display: flex; align-items: baseline; gap: 6px; white-space: nowrap;"><span style="font-size: 62px; line-height: 1; font-weight: 800; letter-spacing: -0.04em; color: var(--at-turquoise-light);">{{ f.metric }}</span><span style="font-size: 23px; font-weight: 700; color: var(--at-turquoise-light);">{{ f.suffix }}</span></span>
+                <span style="font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); max-width: 230px;">{{ f.metricLabel }}</span>
+              </div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: #fff;">
+            <sc-for list="{{ f.phases }}" as="p" hint-placeholder-count="3">
+              <div style="padding: 32px 30px; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; gap: 12px;">
+                <span style="display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--at-turquoise);"><i data-lucide="{{ p.icon }}" style="width: 15px; height: 15px;"></i>{{ p.label }}</span>
+                <p style="margin: 0; font-size: 14px; line-height: 1.65; color: var(--text-body); text-wrap: pretty;">{{ p.body }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding: 30px 40px; background: var(--surface-subtle); border-top: 1px solid var(--border-default); display: flex; gap: 26px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <div style="display: flex; gap: 18px; align-items: flex-start; flex: 1; min-width: 340px;">
+              <i data-lucide="quote" style="width: 24px; height: 24px; color: var(--at-turquoise); opacity: 0.5; flex: none; margin-top: 3px;"></i>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <blockquote style="margin: 0; font-size: 16.5px; line-height: 1.5; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: pretty;">{{ f.quote }}</blockquote>
+                <span style="font-size: 13px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">{{ f.author }}</strong> · {{ f.authorRole }}</span>
+              </div>
+            </div>
+            <a href="{{ f.href }}" style="flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: 48px; padding: 0 24px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Read the full case study <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- GRID — more FP engagements -->
+<section data-screen-label="More Engagements" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 100px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 12px; max-width: 620px; margin-bottom: 44px;">
+      <span class="at-eyebrow">More Engagements</span>
+      <h2 style="margin: 0; font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Rollouts and Automations</h2>
+      <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">The work that follows a Review — the builds, rollouts and automations that turn a roadmap into returns.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <sc-for list="{{ fpCases }}" as="c" hint-placeholder-count="4">
+        <div data-reveal data-reveal-delay="{{ c.delay }}">
+          <dc-import name="Case Study Card" tag="Futureproofing" metric="{{ c.metric }}" metric-suffix="{{ c.suffix }}" metric-label="{{ c.label }}" client="{{ c.client }}" title="{{ c.title }}" summary="{{ c.summary }}" hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+        </div>
+      </sc-for>
+      <div data-reveal data-reveal-delay="90" style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 40px 32px; text-align: center; min-height: 380px; background: #fff;">
+        <i data-lucide="file-plus-2" style="width: 28px; height: 28px; color: var(--at-faint);"></i>
+        <span style="font-size: 15px; font-weight: 700; color: var(--text-heading);">Your Agency Here?</span>
+        <span style="font-size: 13.5px; line-height: 1.6; color: var(--text-muted); max-width: 240px;">Every one of these started with The Review — an honest picture of where things stood.</span>
+        <a href="Book The Review.dc.html" style="font-size: 13.5px; font-weight: 700; color: var(--at-turquoise); text-decoration: none;">Book The Review →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" data-screen-label="Final CTA" style="background: #fff;">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Want Results Like These?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">It starts the same way every time — with The Review, and an honest picture of where you stand.</p>
+      <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      featured: [
+        {
+          client: 'PointZeroGroup · employer comms group, ~35 staff',
+          title: 'Understanding Exactly What Was Holding PointZeroGroup Back',
+          metric: '2.5', suffix: 'wks', metricLabel: 'kickoff to a board-ready 12-month roadmap',
+          href: 'Case Study PointZeroGroup.dc.html',
+          quote: '\u201cWithin two and a half weeks they\u2019d spoken to the whole team, mapped every tool we used, and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.\u201d',
+          author: 'Mark Beavan', authorRole: 'Managing Director, PointZeroGroup',
+          phases: [
+            { icon: 'circle-alert', label: 'The Problem', body: 'Three agencies merged into one group, but the operational foundations never caught up \u2014 three sets of tools loosely combined, undocumented workflows, and no clear picture of what was holding the business back.' },
+            { icon: 'search', label: 'What We Did', body: 'A structured Phase 1 Futureproofing Audit across all three agencies \u2014 a whole-team questionnaire, one-to-one interviews per function, and admin-level Microsoft 365 access \u2014 benchmarked against the UWE 7-Dimensional AI Readiness Framework.' },
+            { icon: 'trending-up', label: 'The Outcome', body: 'A prioritised opportunity map of eight initiatives and seven quick wins, an AI governance framework, and a sequenced 12-month roadmap the leadership team is aligned on \u2014 delivered in two and a half weeks to hit a board deadline.' },
+          ],
+        },
+        {
+          client: 'SquareEye · legal-sector web & dev agency',
+          title: 'Cutting Through the Noise, Getting SquareEye Aligned',
+          metric: '8', suffix: '', metricLabel: 'initiatives scoped and sequenced \u2014 plus a consolidation plan that cuts duplicated licence spend',
+          href: 'Case Study SquareEye.dc.html',
+          quote: '\u201cThe business we\u2019ve had in the past \u2014 nothing would break if we ignored it for six months. This is different. I feel if we ignore this, we could be out of business very quickly. Having a definite plan, and something to be accountable to, changes that.\u201d',
+          author: 'Trevor S', authorRole: 'Founder & CEO, SquareEye',
+          phases: [
+            { icon: 'circle-alert', label: 'The Problem', body: 'AI was being used actively \u2014 more than most agencies \u2014 but individually, across multiple platforms, with no shared context or governance. Processes worked because people knew their jobs, not because they were documented anywhere useful.' },
+            { icon: 'search', label: 'What We Did', body: 'A four-week Phase 1 Futureproofing Audit \u2014 a whole-team questionnaire, one-to-one interviews, and a technical investigation of the full tool environment \u2014 benchmarked against the UWE 7-Dimensional AI Readiness Framework.' },
+            { icon: 'trending-up', label: 'The Outcome', body: 'SquareEye scored above average, at the higher end of agencies assessed. The plan: a single managed AI platform, a clear information architecture, documented AI-assisted development, and a governance rhythm \u2014 joining up what was already there.' },
+          ],
+        },
+      ],
+      fpCases: [
+        { metric: '4', suffix: 'hrs/wk', label: 'reclaimed per person, company-wide', client: 'Design & marketing agency · 60+ staff', title: 'AI, From Experimentation to Capability', summary: 'A governed, company-wide ChatGPT rollout — training, custom GPTs and AI-ready file structure — turning random individual use into a repeatable team capability.', delay: 0 },
+        { metric: '16', suffix: 'hrs/wk', label: 'of manual data entry removed', client: 'Content agency · 60+ staff', title: 'A Live Database That Maintains Itself', summary: 'Custom automation scraping 1,400+ listings across 32 sources into one accurate, always-current database the whole team relies on.', delay: 90 },
+        { metric: '34', suffix: '%', label: 'increase in average monthly leads', client: 'Device repair company', title: 'A Technical Overhaul Built to Scale', summary: 'A new website, an AI-driven leads funnel with automated booking, and an internal knowledge base — with 2.5 hours reclaimed per person each week.', delay: 180 },
+        { metric: '£48k', suffix: '+', label: 'labour cost saved per year', client: 'Shopify sports-jersey reseller', title: '267 Hours a Month, Automated Away', summary: 'A human-in-the-loop pipeline that ingests, tags, renames, writes copy and drafts listings — scaling output without scaling headcount.', delay: 0 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

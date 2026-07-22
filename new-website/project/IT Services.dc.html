@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { margin: 0; background: #fff; }
+    @keyframes at-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes at-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    [data-cat-visual] { opacity: 0; }
+    [data-cat-visual]:first-child { opacity: 1; }
+    #it-hero-photo { width: 100% !important; height: 100% !important; display: block !important; }
+  </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="it" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- ================ 1. HERO ================ -->
+<section data-screen-label="Hero" style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 168px 32px 100px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: stretch;">
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <span class="at-eyebrow">IT Management for Agencies</span>
+      <h1 style="margin: 0; font-size: 54px; line-height: 1.08; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Stop Firefighting Your IT. Start Futureproofing It.</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--text-muted); max-width: 480px; text-wrap: pretty;">We deliver proactive, reliable and secure IT management, so your team can stay focused and productive.</p>
+      <div style="display: flex; gap: 14px; margin-top: 4px;">
+        <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book an Intro Call</a>
+        <a href="#services" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: transparent; color: var(--text-heading); border: 2px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--surface-subtle); transform: scale(1.02)">See What's Included</a>
+      </div>
+    </div>
+    <div style="position: relative; height: 100%;">
+      <div data-parallax="0.12" style="will-change: transform; height: 100%;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="it-hero-photo" shape="rounded" radius="6" placeholder="Team collaborating in the office" style="width: 100%; height: 100%; min-height: 470px; display: block;" hint-size="100%,470px"></x-import>
+      </div>
+      <div style="position: absolute; left: -36px; top: 42px; animation: at-float 5s ease-in-out infinite; background: var(--at-cyprus); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 13px 17px; display: flex; align-items: center; gap: 12px; min-width: 200px;">
+        <span style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="shield-check" style="width: 17px; height: 17px;"></i></span>
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 12.5px; font-weight: 700; color: #fff;">Systems secure</span>
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6);">Endpoint protection active</span>
+        </span>
+      </div>
+      <div style="position: absolute; right: -28px; top: 180px; animation: at-float 6s ease-in-out 1.4s infinite; background: var(--at-cyprus); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 13px 17px; display: flex; align-items: center; gap: 12px; min-width: 210px;">
+        <span style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="activity" style="width: 17px; height: 17px;"></i></span>
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 12.5px; font-weight: 700; color: #fff;">Network monitoring</span>
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6);">Live · no issues found</span>
+        </span>
+      </div>
+      <div style="position: absolute; left: 24px; bottom: -22px; animation: at-float 5.5s ease-in-out 0.7s infinite; background: var(--at-cyprus); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 13px 17px; display: flex; align-items: center; gap: 12px; min-width: 210px;">
+        <span style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="cloud-upload" style="width: 17px; height: 17px;"></i></span>
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 12.5px; font-weight: 700; color: #fff;">Cloud backup status</span>
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6);">Last backup 14 min ago</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 2. SERVICES & SOFTWARE RANGE — sticky panels + marquees ================ -->
+<section id="services" data-screen-label="Services Range" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 104px 32px 8px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; gap: 14px; max-width: 620px;">
+      <span class="at-eyebrow">What We Do</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Everything Your Agency Runs On, Today and Tomorrow</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">One partner across the whole stack — from the helpdesk your team calls to the broadband your studio runs on. Five areas, each with everything included.</p>
+    </div>
+  </div>
+  <div data-sticky-cats="" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 72px;">
+    <!-- LEFT — sticky visual panels -->
+    <div style="position: relative;">
+      <div style="position: sticky; top: 108px; height: 520px;">
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="5">
+          <div data-cat-visual="" style="position: absolute; inset: 0; border-radius: var(--radius-md); overflow: hidden; background: var(--at-cyprus);">
+            <span style="position: absolute; right: -60px; bottom: -80px; font-size: 340px; line-height: 1; font-weight: 800; color: rgba(43,188,186,0.08);">{{ c.num }}</span>
+            <div style="position: relative; height: 100%; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+              <span style="width: 56px; height: 56px; border-radius: var(--radius-md); background: rgba(43,188,186,0.14); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="{{ c.icon }}" style="width: 30px; height: 30px;"></i></span>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise-light);">{{ c.kicker }}</span>
+                <span style="font-size: 26px; font-weight: 700; line-height: 1.15; color: #fff;">{{ c.title }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <!-- RIGHT — scrolling category blocks -->
+    <div style="display: flex; flex-direction: column; min-width: 0;">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="5">
+        <div data-cat-block="" id="{{ c.id }}" style="min-height: 46vh; display: flex; flex-direction: column; justify-content: center; gap: 20px; padding: 30px 0; scroll-margin-top: 100px; position: relative;">
+          <sc-for list="{{ c.anchors }}" as="a" hint-placeholder-count="0">
+            <span id="{{ a }}" style="position: absolute; top: 60px;"></span>
+          </sc-for>
+          <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--at-faint);">{{ c.num }}</span>
+          <h3 style="margin: 0; font-size: 30px; line-height: 1.2; letter-spacing: -0.01em; font-weight: 700; color: var(--text-heading);">{{ c.title }}</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">{{ c.desc }}</p>
+          <div style="overflow: hidden; position: relative; margin-top: 6px; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);">
+            <div style="display: flex; gap: 10px; width: max-content; animation: at-marquee {{ c.dur }} linear infinite;">
+              <sc-for list="{{ c.marquee }}" as="item" hint-placeholder-count="10">
+                <span style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); background: var(--surface-subtle); font-size: 13.5px; font-weight: 600; color: var(--text-heading); white-space: nowrap;">
+                  <span style="width: 6px; height: 6px; border-radius: 2px; background: var(--at-turquoise); transform: rotate(45deg);"></span>{{ item }}
+                </span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 3. TECHNOLOGY PARTNERS ================ -->
+<section data-screen-label="Technology Partners" style="margin-top: 64px; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); background: var(--surface-subtle); padding: 30px 0;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center;">
+    <span style="flex: none; font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted);">Technology Partners</span>
+    <sc-for list="{{ partnerLogos }}" as="logo" hint-placeholder-count="7">
+      <img src="{{ logo.src }}" alt="{{ logo.name }}" style="height: 24px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.5; transition: opacity 200ms ease, filter 200ms ease;" style-hover="opacity: 1; filter: grayscale(0)">
+    </sc-for>
+  </div>
+</section>
+
+<!-- ================ 4. SLA / RESPONSE TIME STAT ================ -->
+<section data-screen-label="Response Time Stat" style="background: #fff;">
+  <div style="max-width: 900px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <span class="at-eyebrow">When Something Breaks</span>
+      <div style="display: flex; align-items: baseline; gap: 4px; margin-top: 10px;">
+        <span style="font-size: 96px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: var(--at-turquoise);">&lt;</span>
+        <span data-countup="30" style="font-size: 176px; line-height: 1; font-weight: 800; letter-spacing: -0.05em; color: var(--at-turquoise);">30</span>
+        <span style="font-size: 40px; line-height: 1; font-weight: 700; color: var(--text-heading); margin-left: 10px;">minutes</span>
+      </div>
+      <p style="margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: var(--text-muted); max-width: 440px; text-wrap: balance;">Target response time for critical issues — a named account manager, not a ticket queue.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; width: 100%; max-width: 760px;">
+        <sc-for list="{{ slaTiers }}" as="t" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 20px 16px; background: var(--surface-subtle); border: 1px solid var(--border-default); border-radius: var(--radius-md); text-align: left;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--at-turquoise);">{{ t.label }}</span>
+            <span style="font-size: 20px; font-weight: 800; color: var(--text-heading);">{{ t.response }}</span>
+            <span style="font-size: 12.5px; line-height: 1.4; color: var(--text-muted);">{{ t.example }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin: 16px 0 0; font-size: 12.5px; color: var(--at-faint);">Target response times by priority — published per client in the SOW.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 5. AREAS COVERED ================ -->
+<section data-screen-label="Areas Covered" style="background: #fff; border-top: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 32px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+    <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-muted);"><i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--at-turquoise);"></i> On-site and remote across</span>
+    <span style="font-size: 14px; font-weight: 600; color: var(--text-heading);">Bristol</span>
+    <span style="width: 4px; height: 4px; border-radius: 50%; background: var(--at-faint);"></span>
+    <span style="font-size: 14px; font-weight: 600; color: var(--text-heading);">Bath</span>
+    <span style="width: 4px; height: 4px; border-radius: 50%; background: var(--at-faint);"></span>
+    <span style="font-size: 14px; font-weight: 600; color: var(--text-heading);">Somerset</span>
+    <span style="width: 4px; height: 4px; border-radius: 50%; background: var(--at-faint);"></span>
+    <span style="font-size: 14px; font-weight: 600; color: var(--text-heading);">Gloucester</span>
+    <span style="font-size: 12.5px; color: var(--at-faint);">+ surrounding areas</span>
+  </div>
+</section>
+
+<!-- ================ 6. WHY CHOOSE AGENCYTECH ================ -->
+<section data-screen-label="Why Choose" style="position: relative; background: var(--at-cyprus); overflow: hidden;">
+  <img src="assets/blob-scene-2.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; pointer-events: none;">
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 112px 32px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; gap: 14px; max-width: 560px; margin-bottom: 52px;">
+      <span class="at-eyebrow" style="color: var(--at-turquoise-light);">Why Choose AgencyTech</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: #fff;">Built Around How Agencies Actually Work</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+      <sc-for list="{{ whyPoints }}" as="p" hint-placeholder-count="5">
+        <div data-reveal="" data-reveal-delay="{{ p.delay }}" style="background: var(--at-cyprus-light); border: 1px solid var(--border-on-dark); border-radius: var(--radius-md); padding: 28px 26px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: rgba(43,188,186,0.14); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="{{ p.icon }}" style="width: 20px; height: 20px;"></i></span>
+          <h3 style="margin: 0; font-size: 17px; font-weight: 600; color: #fff;">{{ p.title }}</h3>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.7); text-wrap: pretty;">{{ p.desc }}</p>
+        </div>
+      </sc-for>
+      <div data-reveal="" data-reveal-delay="180" style="border: 1px dashed var(--border-on-dark); border-radius: var(--radius-md); padding: 28px 26px; display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; font-weight: 600; color: var(--at-turquoise-light); text-wrap: pretty;">And because we run the Futureproofing Program too, every IT decision is made knowing where your agency is headed.</p>
+        <a href="Futureproofing.dc.html" style="font-size: 13.5px; font-weight: 700; color: #fff; text-decoration: none;" style-hover="color: var(--at-turquoise-light)">About Futureproofing →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 7. LINK-OUT CARDS ================ -->
+<section data-screen-label="Go Deeper" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 104px 32px 96px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px;">
+      <span class="at-eyebrow">Go Deeper</span>
+      <h2 style="margin: 0; font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Three Places to Look Next</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <a data-reveal="" href="Phishing Simulations.dc.html" style="display: flex; flex-direction: column; gap: 14px; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; text-decoration: none; transition: box-shadow 250ms ease, transform 250ms ease;" style-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)">
+        <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="fish" style="width: 22px; height: 22px;"></i></span>
+        <span style="font-size: 19px; font-weight: 700; color: var(--text-heading);">Phishing Simulations</span>
+        <span style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">The service with our strongest case-study results. See how a simulated attack changes a team.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--at-turquoise);">Read more <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></span>
+      </a>
+      <a data-reveal="" data-reveal-delay="90" href="ITAD.dc.html" style="display: flex; flex-direction: column; gap: 14px; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; text-decoration: none; transition: box-shadow 250ms ease, transform 250ms ease;" style-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)">
+        <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="recycle" style="width: 22px; height: 22px;"></i></span>
+        <span style="font-size: 19px; font-weight: 700; color: var(--text-heading);">ITAD</span>
+        <span style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">IT asset disposal done properly — secure collection, certified data destruction, resale and recycling.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--at-turquoise);">Read more <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></span>
+      </a>
+      <a data-reveal="" data-reveal-delay="180" href="IT Case Studies.dc.html" style="display: flex; flex-direction: column; gap: 14px; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; text-decoration: none; transition: box-shadow 250ms ease, transform 250ms ease;" style-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)">
+        <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="file-text" style="width: 22px; height: 22px;"></i></span>
+        <span style="font-size: 19px; font-weight: 700; color: var(--text-heading);">IT Case Studies</span>
+        <span style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">Real problems, measured outcomes — what working with us actually looks like for agencies.</span>
+        <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--at-turquoise);">Read more <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 8. TESTIMONIALS (IT) ================ -->
+<section data-screen-label="Testimonials" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 900px; margin: 0 auto; padding: 92px 32px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;">
+      <span class="at-eyebrow">From IT Clients</span>
+      <div data-quotes="" style="position: relative; width: 100%; min-height: 200px; margin-top: 12px;">
+        <figure data-quote="" style="position: absolute; inset: 0; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 22px; opacity: 1;">
+          <blockquote style="margin: 0; font-size: 24px; line-height: 1.45; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: balance;">"Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems."</blockquote>
+          <figcaption style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Charlotte Laing</strong> · Founder & Director, The Content Emporium</figcaption>
+        </figure>
+        <figure data-quote="" style="position: absolute; inset: 0; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 22px; opacity: 0; pointer-events: none;">
+          <blockquote style="margin: 0; font-size: 24px; line-height: 1.45; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: balance;">"We passed Cyber Essentials first time. Our biggest client noticed before we'd even told them."</blockquote>
+          <figcaption style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Managing Director</strong> · PR agency, Bath <span style="opacity: 0.6;">(placeholder quote)</span></figcaption>
+        </figure>
+        <div style="position: absolute; left: 0; right: 0; bottom: -14px; display: flex; justify-content: center; gap: 8px;">
+          <button data-quote-dot="" aria-label="Quote 1" style="width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: var(--accent);"></button>
+          <button data-quote-dot="" aria-label="Quote 2" style="width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: rgba(0,64,64,0.18);"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 9. PRICING ================ -->
+<section data-screen-label="Pricing" style="background: #fff;">
+  <div style="max-width: 1040px; margin: 0 auto; padding: 104px 32px 96px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center;">
+    <div data-reveal="" style="display: flex; flex-direction: column; gap: 18px;">
+      <span class="at-eyebrow">Pricing</span>
+      <h2 style="margin: 0; font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">One Package. Everything Included.</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">No tiers, no per-ticket surprises, no "that's extra." One price per team member, covering everything an agency needs from its IT partner.</p>
+      <p style="margin: 0; font-size: 13px; color: var(--at-faint);">Billed monthly. No long lock-ins.</p>
+    </div>
+    <div data-reveal="" data-reveal-delay="100" style="background: var(--surface-subtle); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 40px 38px; display: flex; flex-direction: column; gap: 22px;">
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <span style="font-size: 56px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: var(--text-heading);">£60</span>
+        <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ team member / month</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px;">
+        <sc-for list="{{ pricingFeatures }}" as="f" hint-placeholder-count="8">
+          <span style="display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.45; color: var(--text-body);"><i data-lucide="check" style="width: 15px; height: 15px; color: var(--at-turquoise); flex: none; margin-top: 2px;"></i>{{ f }}</span>
+        </sc-for>
+      </div>
+      <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; height: 50px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book an Intro Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 10. FINAL CTA ================ -->
+<section id="contact" data-screen-label="Final CTA" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Ready to Stop Firefighting?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">A 30-minute call is enough to tell you whether we're the right fit — and you'll leave with something useful either way.</p>
+      <a href="mailto:hello@agencytech.co.uk" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book a Call <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function withStagger(list) {
+  return list.map((item, i) => Object.assign({}, item, { delay: (i % 3) * 90 }));
+}
+
+function cat(c) {
+  const items = c.items;
+  return Object.assign({}, c, { marquee: items.concat(items) });
+}
+
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      partnerLogos: [
+        { name: 'NinjaOne', src: 'assets/partner-logos/ninjaone.png' },
+        { name: 'Apple', src: 'assets/partner-logos/apple-business.png' },
+        { name: 'Microsoft', src: 'assets/partner-logos/microsoft.png' },
+        { name: 'Google', src: 'assets/partner-logos/google.png' },
+        { name: 'Bitdefender', src: 'assets/partner-logos/bitdefender.svg' },
+        { name: 'Huntress', src: 'assets/partner-logos/huntress.png' },
+        { name: 'Bitwarden', src: 'assets/partner-logos/bitwarden.png' },
+      ],
+      slaTiers: [
+        { label: 'P1 — Critical', response: '15–30 min', example: 'Full outage or security incident' },
+        { label: 'P2 — High', response: '1 hr', example: 'A user blocked from core work' },
+        { label: 'P3 — Medium', response: '4 business hrs', example: 'Non-blocking, workaround available' },
+        { label: 'P4 — Low', response: '1 business day', example: 'Cosmetic or feature request' },
+      ],
+      categories: [
+        cat({ id: 'managed-it', num: '01', icon: 'headset', kicker: 'Always-on support', title: 'Managed IT & Helpdesk', dur: '26s',
+          anchors: ['managed-it-anchor'],
+          desc: 'Unlimited support from people who already know your setup — a target response under 30 minutes on critical issues, proactive monitoring that heads off problems, and one named account manager rather than a ticket queue.',
+          items: ['IT Helpdesk', 'Proactive Monitoring', 'Maintenance', 'Device & User Management', 'Onboarding & Offboarding'] }),
+        cat({ id: 'cybersecurity', num: '02', icon: 'shield-check', kicker: 'Built in, not bolted on', title: 'Cybersecurity & Compliance', dur: '30s',
+          anchors: ['cyber-essentials'],
+          desc: 'Security and compliance are part of how everything is set up from day one — endpoint protection, password & credential management, phishing simulations to train your team, and Cyber Essentials certification kept current year on year.',
+          items: ['Endpoint Protection', 'Cyber Essentials', 'Phishing Simulations', 'Password Management', 'Backup & Recovery'] }),
+        cat({ id: 'cloud', num: '03', icon: 'cloud', kicker: 'The tools you work in', title: 'Cloud & Productivity', dur: '24s',
+          anchors: ['microsoft-365', 'google-workspace', 'operational-apps'],
+          desc: 'Full management of the platforms your agency lives in — Microsoft 365 or Google Workspace tenancies, plus the operational job-management apps like Synergist that keep projects and time moving.',
+          items: ['Microsoft 365', 'Google Workspace', 'Operational Apps', 'Synergist', 'SharePoint & Teams'] }),
+        cat({ id: 'connectivity', num: '04', icon: 'smartphone', kicker: 'BYOD, handled properly', title: 'Device & Identity Management', dur: '28s',
+          anchors: ['mdm', 'byod'],
+          desc: 'Enrolment and management for every device via NinjaOne and Apple Business Manager, with BYOD freelancers handled through Apple User Enrolment or conditional access — never a “trust the freelancer” policy.',
+          items: ['MDM Enrolment', 'Apple Business Manager', 'BYOD (User Enrolment)', 'Conditional Access', 'Identity Management'] }),
+        cat({ id: 'lifecycle', num: '05', icon: 'recycle', kicker: 'From first day to last', title: 'Lifecycle & Upskilling', dur: '25s',
+          anchors: [],
+          desc: 'The full life of your kit and your people — procurement and asset tracking, practical training that makes teams more capable, and secure IT recycling that disposes of retired hardware with a certificate to prove it.',
+          items: ['Training & Upskilling', 'IT Recycling', 'Asset Tracking', 'Procurement'] }),
+      ],
+      whyPoints: withStagger([
+        { icon: 'radar', title: 'Proactive, not just reactive', desc: 'Monitoring and maintenance that prevents issues rather than billing for them.' },
+        { icon: 'lock', title: 'Security & compliance built-in', desc: 'Not an add-on or an upsell — part of how everything is set up from day one.' },
+        { icon: 'trending-up', title: 'Scalable at every stage', desc: 'From five desks to fifty — the setup grows with the agency, not against it.' },
+        { icon: 'users', title: 'Empowered teams, not just managed devices', desc: 'Training and plain-language guidance so your people get more capable over time.' },
+        { icon: 'user-check', title: 'One point of contact', desc: 'A named account manager who knows your business — never a ticket queue lottery.' },
+      ]),
+      pricingFeatures: [
+        'Unlimited helpdesk support',
+        'Full Microsoft 365 / Google Workspace management',
+        'Endpoint protection & backup',
+        'Password & credential management',
+        'Unlimited onboarding & offboarding',
+        'MDM & BYOD management',
+        'Dedicated account manager',
+        'Quarterly business reviews',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

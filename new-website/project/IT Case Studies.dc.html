@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { margin: 0; background: #fff; }
+  </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="it" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- ================ HERO ================ -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 168px 32px 64px; display: flex; flex-direction: column; gap: 22px;">
+    <span style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: var(--text-muted);"><a href="IT Services.dc.html" style="color: var(--at-turquoise); text-decoration: none;">IT Services</a> <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i> Case Studies</span>
+    <h1 style="margin: 0; font-size: 50px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); max-width: 640px; text-wrap: balance;">Real Problems, Measured Outcomes</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 520px; text-wrap: pretty;">What working with AgencyTech actually looks like for creative agencies — filtered to IT Services.</p>
+    <div style="display: flex; gap: 10px; margin-top: 14px;">
+      <a href="Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">All</a>
+      <span style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); background: var(--at-cyprus); font-size: 13.5px; font-weight: 700; color: #fff;">IT Services</span>
+      <a href="Futureproofing Case Studies.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: #fff; font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">Futureproofing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================ CASE STUDY GRID ================ -->
+<section data-screen-label="Case Study Grid" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 72px 32px 104px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <div data-reveal>
+        <dc-import name="Case Study Card" tag="IT Services" metric="7" metric-suffix="min" metric-label="average ticket response time" client="Creative agency · 50 people, Bristol" title="A Phased Cybersecurity Overhaul" summary="Enforced 2FA, phishing simulations, company-wide device protection and a central password manager — plus in-person and digital training that made it stick." hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+      </div>
+      <div data-reveal data-reveal-delay="90">
+        <dc-import name="Case Study Card" tag="IT Services" metric="56" metric-suffix="%" metric-label="Microsoft Secure Score improvement" client="Charity · safeguarding data" title="A Microsoft 365 Tenant, Secured Properly" summary="MFA enforced across every account, dormant and improperly offboarded users cleaned out, and licensing right-sized for non-profit compliance." hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+      </div>
+      <div data-reveal data-reveal-delay="180">
+        <dc-import name="Case Study Card" tag="IT Services" metric="0" metric-suffix="" metric-label="components sent to landfill" client="Six Agency · B-Corp, creative" title="An ITAD Clear-Out Aligned to B-Corp Values" summary="On-site audit, certified data wipes and a resale rebate — retired Apple kit turned back into capital and studio space, with nothing sent to landfill." hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+      </div>
+      <div data-reveal>
+        <dc-import name="Case Study Card" tag="IT Services" metric="Top 50" metric-suffix="" metric-label="UK university — new student service" client="Major UK university" title="A Hardship Device Scheme, Built End-to-End" summary="Launched and validated a service they couldn't resource in-house — a co-designed framework now being embedded in a new manufacturer tender for long-term scale." hint-size="100%,460px" style="height: 100%; display: block;"></dc-import>
+      </div>
+      <div data-reveal data-reveal-delay="90" style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 40px 32px; text-align: center; min-height: 380px;">
+        <i data-lucide="file-plus-2" style="width: 28px; height: 28px; color: var(--at-faint);"></i>
+        <span style="font-size: 15px; font-weight: 700; color: var(--text-heading);">Your Project Here?</span>
+        <span style="font-size: 13.5px; line-height: 1.6; color: var(--text-muted); max-width: 240px;">More case studies are being written up — and the next one could be yours.</span>
+        <a href="#contact" style="font-size: 13.5px; font-weight: 700; color: var(--at-turquoise); text-decoration: none;">Start a conversation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ FINAL CTA ================ -->
+<section id="contact" data-screen-label="Final CTA" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Want Results Like These?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">Every one of these started with a short call and an honest look at what wasn't working.</p>
+      <a href="mailto:hello@agencytech.co.uk" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book a Call <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

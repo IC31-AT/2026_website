@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { margin: 0; background: #fff; }
+  </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="it" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- ================ HERO ================ -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 176px 32px 96px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <span style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: var(--text-muted);"><a href="IT Services.dc.html" style="color: var(--at-turquoise); text-decoration: none;">IT Services</a> <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i> ITAD</span>
+      <h1 style="margin: 0; font-size: 52px; line-height: 1.08; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Old Kit Is a Data Risk in a Cupboard</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--text-muted); max-width: 490px; text-wrap: pretty;">IT Asset Disposal, done properly: collection, certified data destruction, and responsible resale or recycling — with the paperwork to prove it.</p>
+      <div style="display: flex; gap: 14px; margin-top: 4px;">
+        <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Arrange a Collection</a>
+        <a href="#covers" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: transparent; color: var(--text-heading); border: 2px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--surface-subtle); transform: scale(1.02)">What's Covered</a>
+      </div>
+    </div>
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="itad-hero-photo" shape="rounded" radius="6" placeholder="Photo — collected devices / secure handling" style="width: 100%; height: 420px; display: block;" hint-size="100%,420px"></x-import>
+  </div>
+</section>
+
+<!-- ================ WHAT ITAD COVERS ================ -->
+<section id="covers" data-screen-label="What It Covers" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 104px 32px 96px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 560px; margin-bottom: 52px;">
+      <span class="at-eyebrow">What ITAD Covers</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">From Your Cupboard to a Certificate</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <sc-for list="{{ covers }}" as="c" hint-placeholder-count="3">
+        <div data-reveal data-reveal-delay="{{ c.delay }}" style="background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="{{ c.icon }}" style="width: 22px; height: 22px;"></i></span>
+          <h3 style="margin: 0; font-size: 19px; font-weight: 600; color: var(--text-heading);">{{ c.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">{{ c.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ TESTIMONIAL ================ -->
+<section data-screen-label="Testimonial" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 860px; margin: 0 auto; padding: 88px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+      <i data-lucide="quote" style="width: 34px; height: 34px; color: var(--at-turquoise); opacity: 0.7;"></i>
+      <p style="margin: 0; font-size: 24px; line-height: 1.45; font-weight: 600; color: var(--text-heading); text-wrap: pretty;">"AgencyTech's asset collection solution aligns with Six's sustainability and B Corp values, providing cyber-secure asset handling, reducing landfill, and supporting community reuse."</p>
+      <span style="font-size: 14px; color: var(--text-muted);">Dan Pritchard · Head of Production, Six Agency</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================ PROCESS ================ -->
+<section data-screen-label="Process" style="background: var(--at-cyprus); position: relative; overflow: hidden;">
+  <img src="assets/blob-scene-2.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; pointer-events: none;">
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 104px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 560px; margin-bottom: 52px;">
+      <span class="at-eyebrow" style="color: var(--at-turquoise-light);">The Process</span>
+      <h2 style="margin: 0; font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: #fff;">Four Steps, Fully Documented</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div data-reveal data-reveal-delay="{{ s.delay }}" style="background: var(--at-cyprus-light); border: 1px solid var(--border-on-dark); border-radius: var(--radius-md); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 13px; font-weight: 800; color: var(--at-turquoise-light); letter-spacing: 0.04em;">{{ s.n }}</span>
+          <h3 style="margin: 0; font-size: 16.5px; font-weight: 600; color: #fff;">{{ s.title }}</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.68); text-wrap: pretty;">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p data-reveal data-reveal-delay="200" style="margin: 44px 0 0; font-size: 13.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 10px;"><i data-lucide="file-check" style="width: 16px; height: 16px; color: var(--at-turquoise-light);"></i> Every disposal ends with a data destruction certificate and an updated asset register — placeholder compliance copy, standards (e.g. WEEE, GDPR) to be confirmed.</p>
+  </div>
+</section>
+
+<!-- ================ FINAL CTA ================ -->
+<section id="contact" data-screen-label="Final CTA" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 760px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Got a Drawer Full of Old Laptops?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">Tell us roughly what you've got and we'll arrange collection, destruction and the certificate — usually within the week.</p>
+      <a href="mailto:hello@agencytech.co.uk" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Arrange a Collection <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      covers: [
+        { icon: 'truck', title: 'Asset collection', desc: 'Scheduled, chain-of-custody collection from your studio — laptops, desktops, phones, servers and peripherals, logged item by item.', delay: 0 },
+        { icon: 'shield-x', title: 'Certified data destruction', desc: 'Drives wiped to recognised standards or physically destroyed, with a certificate of destruction for every asset — your compliance evidence.', delay: 90 },
+        { icon: 'recycle', title: 'Resale & recycling', desc: 'Kit with life left is refurbished and resold — offsetting your costs. The rest is responsibly recycled, never landfilled.', delay: 180 },
+      ],
+      steps: [
+        { n: '01', title: 'Audit & quote', desc: 'You tell us what you have; we confirm what it\u2019s worth and what disposal costs.', delay: 0 },
+        { n: '02', title: 'Secure collection', desc: 'Tracked collection with a signed chain-of-custody record.', delay: 90 },
+        { n: '03', title: 'Wipe or destroy', desc: 'Certified erasure or physical destruction, asset by asset.', delay: 180 },
+        { n: '04', title: 'Certificate & rebate', desc: 'Destruction certificates, updated asset register, and resale value returned.', delay: 270 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="image-slot.js"></script>
+  <style>
+    a.at-cta2 { display:inline-flex; align-items:center; gap:8px; background:var(--at-turquoise); color:#FFFFFF; text-decoration:none; font-weight:700; font-size:15px; padding:12px 22px; border-radius:0.25rem; transition:background 160ms ease-out; }
+    a.at-cta2:hover { background:var(--accent-hover); }
+  </style>
+</helmet>
+<div ref="{{ setWrapper }}" style="position:relative; height:420vh; font-family:'Manrope','Montserrat',system-ui,sans-serif;">
+  <div style="position:sticky; top:0; height:100vh; overflow:hidden; background:var(--at-cyprus);">
+
+    <div style="{{ card0 }}"><image-slot id="rtr-card-1" placeholder="Case study 1" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+    <div style="{{ card1 }}"><image-slot id="rtr-card-2" placeholder="Case study 2" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+    <div style="{{ card2 }}"><image-slot id="rtr-card-3" placeholder="Case study 3" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+    <div style="{{ card3 }}"><image-slot id="rtr-card-4" placeholder="Case study 4" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+    <div style="{{ card4 }}"><image-slot id="rtr-card-5" placeholder="Case study 5" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+    <div style="{{ card5 }}"><image-slot id="rtr-card-6" placeholder="Case study 6" shape="rounded" style="width:100%;height:100%;"></image-slot></div>
+
+    <div style="position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); text-align:center; z-index:2; width:min(720px,86vw); pointer-events:none;">
+      <div style="position:relative;">
+        <div style="{{ reviewStyle }} font-size:clamp(40px,7vw,88px); font-weight:800; color:#FFFFFF; line-height:1.02; letter-spacing:-0.02em;">From review</div>
+        <div style="{{ implementationStyle }} position:absolute; inset:0; font-size:clamp(40px,7vw,88px); font-weight:800; color:var(--at-turquoise-light); line-height:1.02; letter-spacing:-0.02em;">to implementation</div>
+        <div style="{{ trainingStyle }} position:absolute; inset:0; font-size:clamp(40px,7vw,88px); font-weight:800; color:var(--at-turquoise-light); line-height:1.02; letter-spacing:-0.02em;">and training</div>
+      </div>
+      <div style="{{ paragraphStyle }} margin-top:28px; pointer-events:auto; z-index:8; position:relative;">
+        <p style="font-size:18px; line-height:1.6; color:rgba(255,255,255,0.78); margin:0 0 24px;">From review to implementation, our team turns audit findings into a working plan &#8212; the systems, tools and support to see it through.</p>
+        <a class="at-cta2" href="The Review.dc.html">See our process &#8594;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static CARDS = [
+    { left: 6,  top: 50, w: 230, h: 300, rot: -4 },
+    { left: 24, top: 47, w: 250, h: 230, rot: 3 },
+    { left: 43, top: 52, w: 210, h: 270, rot: -3 },
+    { left: 61, top: 46, w: 260, h: 210, rot: 5 },
+    { left: 78, top: 53, w: 220, h: 290, rot: -5 },
+    { left: 93, top: 48, w: 200, h: 260, rot: 4 }
+  ];
+  static GROUP_STARTS = [0.00, 0.20, 0.50];
+
+  state = { progress: 0 };
+  setWrapper = (el) => { this.wrapperEl = el; };
+
+  componentDidMount() {
+    const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (reduce) { this.setState({ progress: 1 }); return; }
+    this._ticking = false;
+    this._onScroll = () => {
+      if (this._ticking) return;
+      this._ticking = true;
+      requestAnimationFrame(() => { this.updateProgress(); this._ticking = false; });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll);
+    this.updateProgress();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onScroll);
+  }
+
+  updateProgress() {
+    if (!this.wrapperEl) return;
+    const rect = this.wrapperEl.getBoundingClientRect();
+    const total = rect.height - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+    if (Math.abs(p - this.state.progress) > 0.002) this.setState({ progress: p });
+  }
+
+  ease(t) { return 1 - (1 - t) * (1 - t); }
+  winT(p, a, b) { if (b <= a) return p >= b ? 1 : 0; return Math.max(0, Math.min(1, (p - a) / (b - a))); }
+
+  cardStyle(i) {
+    const c = Component.CARDS[i];
+    const p = this.state.progress;
+    const group = Math.floor(i / 2), within = i % 2;
+    const start = Component.GROUP_STARTS[group] + within * 0.05;
+    const end = start + 0.16;
+    const tIn = this.ease(this.winT(p, start, end));
+    const tOut = this.ease(this.winT(p, 0.88, 0.98));
+    const opacity = tIn * (1 - tOut);
+    const ty = (1 - tIn) * 60; // vh — rises up from below the viewport, as a set, per phase
+    return 'position:absolute; left:' + c.left + '%; top:' + c.top + '%; width:' + c.w + 'px; height:' + c.h + 'px; ' +
+      'opacity:' + opacity + '; transform:translate(-50%,-50%) translateY(' + ty + 'vh) rotate(' + c.rot + 'deg); ' +
+      'border-radius:0.375rem; overflow:hidden; box-shadow:0 18px 40px rgba(0,20,20,0.35); pointer-events:none; z-index:6;';
+  }
+
+  renderVals() {
+    const p = this.state.progress;
+    const reviewOpacity = 1 - this.ease(this.winT(p, 0.22, 0.30));
+    const implIn = this.ease(this.winT(p, 0.30, 0.40));
+    const implOut = this.ease(this.winT(p, 0.54, 0.62));
+    const implementationOpacity = implIn * (1 - implOut);
+    const trainIn = this.ease(this.winT(p, 0.62, 0.72));
+    const trainOut = this.ease(this.winT(p, 0.88, 0.98));
+    const trainingOpacity = trainIn * (1 - trainOut);
+    const pIn = this.ease(this.winT(p, 0.90, 1.0));
+    return {
+      setWrapper: this.setWrapper,
+      card0: this.cardStyle(0), card1: this.cardStyle(1), card2: this.cardStyle(2),
+      card3: this.cardStyle(3), card4: this.cardStyle(4), card5: this.cardStyle(5),
+      reviewStyle: 'opacity:' + reviewOpacity + ';',
+      implementationStyle: 'opacity:' + implementationOpacity + ';',
+      trainingStyle: 'opacity:' + trainingOpacity + ';',
+      paragraphStyle: 'opacity:' + pIn + '; transform:translateY(' + (1 - pIn) * 20 + 'px);'
+    };
+  }
+}
+
+</script>
+</body>
+</html>

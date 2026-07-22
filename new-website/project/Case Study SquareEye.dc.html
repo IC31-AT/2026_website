@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style> body { margin: 0; background: #fff; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="position: relative; overflow: hidden; background: var(--at-cyprus);">
+  <img src="assets/blob-scene-3.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; pointer-events: none;">
+  <div style="position: relative; max-width: 900px; margin: 0 auto; padding: 152px 32px 72px; display: flex; flex-direction: column; gap: 22px;">
+    <span style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.6);"><a href="Futureproofing Case Studies.dc.html" style="color: var(--at-turquoise-light); text-decoration: none;">Case Studies</a> <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i> SquareEye</span>
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise-light); background: rgba(43,188,186,0.16); padding: 5px 12px; border-radius: var(--radius-pill);">Futureproofing · The Review</span>
+    <h1 style="margin: 0; font-size: 46px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; color: #fff; max-width: 760px; text-wrap: balance;">How AgencyTech Helped SquareEye Cut Through the Noise and Get Aligned</h1>
+    <p style="margin: 0; font-size: 17.5px; line-height: 1.6; color: rgba(255,255,255,0.78); max-width: 620px; text-wrap: pretty;">A creative web design and development agency specialising in the legal sector — already ahead on AI, and looking to join it all up before the window closed.</p>
+  </div>
+</section>
+
+<!-- METRIC STRIP -->
+<section data-screen-label="Metrics" style="background: var(--at-cyprus-light); border-bottom: 1px solid var(--border-on-dark);">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 32px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="padding: 34px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--border-on-dark);">
+          <span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: var(--at-turquoise-light);">{{ s.value }}</span>
+          <span style="font-size: 13px; line-height: 1.45; color: rgba(255,255,255,0.72);">{{ s.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD QUOTE -->
+<section data-screen-label="Lead Quote" style="background: #fff;">
+  <div style="max-width: 820px; margin: 0 auto; padding: 80px 32px 8px; display: flex; flex-direction: column; gap: 18px;">
+    <i data-lucide="quote" style="width: 34px; height: 34px; color: var(--at-turquoise); opacity: 0.5;"></i>
+    <blockquote style="margin: 0; font-size: 26px; line-height: 1.4; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: pretty;">“A lot of what we talked about today made sense — and we knew we should be doing these things. But we hadn't been joining it up, and we hadn't been thinking about a proper implementation plan. Having a definite roadmap, with some outside accountability, would be good.”</blockquote>
+    <span style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Trevor S</strong> · Founder & CEO, SquareEye</span>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section data-screen-label="Narrative" style="background: #fff;">
+  <div style="max-width: 820px; margin: 0 auto; padding: 64px 32px 40px; display: flex; flex-direction: column; gap: 52px;">
+    <sc-for list="{{ narrative }}" as="n" hint-placeholder-count="4">
+      <div data-reveal style="display: flex; flex-direction: column; gap: 14px;">
+        <span class="at-eyebrow">{{ n.eyebrow }}</span>
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.18; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">{{ n.heading }}</h2>
+        <sc-for list="{{ n.paras }}" as="para" hint-placeholder-count="2">
+          <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--text-body); text-wrap: pretty;">{{ para }}</p>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS — before / after -->
+<section data-screen-label="Recommendations" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 88px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 44px;">
+      <span class="at-eyebrow">What We Recommended</span>
+      <h2 style="margin: 0; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Not Starting From Scratch — Joining It Up</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">The tools and the appetite were already there. What was missing was the structure that lets them work together.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <sc-for list="{{ recommendations }}" as="r" hint-placeholder-count="8">
+        <div data-reveal style="background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden;">
+          <div style="padding: 18px 26px; background: var(--at-cyprus); display: flex; align-items: center; gap: 12px;">
+            <span style="width: 34px; height: 34px; flex: none; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="{{ r.icon }}" style="width: 17px; height: 17px;"></i></span>
+            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #fff;">{{ r.area }}</h3>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <div style="padding: 24px 26px; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-faint);">Before</span>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">{{ r.before }}</p>
+            </div>
+            <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise);">After</span>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-body); text-wrap: pretty;">{{ r.after }}</p>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section data-screen-label="Deliverables" style="background: #fff;">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 88px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 40px;">
+      <span class="at-eyebrow">What the Team Walked Away With</span>
+      <h2 style="margin: 0; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">A Plan, and Something to Be Accountable To</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+        <div data-reveal data-reveal-delay="{{ d.delay }}" style="background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 26px 24px; display: flex; flex-direction: column; gap: 11px;">
+          <span style="width: 42px; height: 42px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="{{ d.icon }}" style="width: 20px; height: 20px;"></i></span>
+          <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: var(--text-heading);">{{ d.title }}</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.55; color: var(--text-muted); text-wrap: pretty;">{{ d.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section data-screen-label="Closing Quote" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 820px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 18px;">
+    <i data-lucide="quote" style="width: 30px; height: 30px; color: var(--at-turquoise); opacity: 0.5;"></i>
+    <blockquote style="margin: 0; font-size: 23px; line-height: 1.45; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: pretty;">“The business we've had in the past — nothing would break if we ignored it for six months. This is different. I feel if we ignore this, we could be out of business very quickly. Having a definite plan, and something to be accountable to, changes that.”</blockquote>
+    <span style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Trevor S</strong> · Founder & CEO, SquareEye</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" data-screen-label="Final CTA" style="background: #fff;">
+  <div style="max-width: 760px; margin: 0 auto; padding: 92px 32px 104px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Ready to Join It Up?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">The Review is where the appetite you already have meets a plan the whole team can act on.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+        <a href="Futureproofing Case Studies.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 28px; background: transparent; color: var(--text-heading); border: 2px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease;" style-hover="background: var(--surface-subtle)">More case studies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      stats: [
+        { value: '86%', label: 'of the team already using AI tools actively' },
+        { value: '4 wks', label: 'from kickoff to a sequenced 12-month roadmap' },
+        { value: 'Above avg', label: 'UWE readiness score — top end of agencies assessed' },
+      ],
+      narrative: [
+        { eyebrow: 'The Client', heading: 'Technical Depth, and a Founder Watching Closely', paras: [
+          'SquareEye is a creative web design and development agency specialising in the legal sector, working with barristers\u2019 chambers and law firms across the UK. A tight-knit team with a reputation for technical depth, and a founder who has been watching AI reshape the industry closely.',
+          'They came to AgencyTech at an inflection point. Not because things were broken, but because the window to act was open — and they knew it wouldn\u2019t stay that way.' ] },
+        { eyebrow: 'The Situation', heading: 'The Appetite Was There. The Connective Tissue Wasn\u2019t.', paras: [
+          'The SquareEye team were already using AI tools actively — more so than most agencies at their stage. There was real appetite for change and a founder with clear ideas about where the business needed to go. What was missing was the connective tissue: a shared way of working, a clear information architecture, and a plan the whole team was building towards together.',
+          'AI was being used individually, across multiple platforms, with no shared context or governance. Processes worked because people knew their jobs well — not because they were documented anywhere useful. Data was scattered across a stack of disconnected tools with no clear ownership.' ] },
+        { eyebrow: 'How We Worked', heading: 'A Ground-Level View, Not a Self-Report', paras: [
+          'Every member of the SquareEye team completed a detailed questionnaire. Every team member had a dedicated one-to-one interview. And a technical investigation gave us a ground-level view of the full tool environment — not just a self-reported one.',
+          'The result was a complete, evidence-based picture of the business across technology, process, data, and AI readiness.' ] },
+        { eyebrow: 'What We Found', heading: 'Energetic, But Uncoordinated', paras: [
+          'SquareEye scored above average on the UWE 7-Dimensional AI Readiness Framework — sitting at the higher end of agencies we\u2019ve assessed, with 86% of the team already using AI tools in their work. The culture and appetite were clearly there.',
+          'The gap was in the foundations. AI adoption was energetic but uncoordinated. Information lived in too many places with no clear structure. Business strategy existed in the founder\u2019s head but hadn\u2019t been documented in a way the team could act on together. The opportunity wasn\u2019t to start from scratch — it was to join things up.' ] },
+      ],
+      recommendations: [
+        { icon: 'sparkles', area: 'AI platform', before: 'Team members running separate AI subscriptions across multiple platforms — no shared context, no institutional knowledge, no central oversight. Individual gains, but none of the compounding benefit.', after: 'A single, managed AI platform across the whole team — shared projects, a unified knowledge layer, built-in coding agents and design capabilities in one workspace. A coordinated capability that builds on itself.' },
+        { icon: 'folder', area: 'File storage', before: 'Files spread across a platform outside the rest of the team\u2019s working environment, with limited permission controls and no straightforward path to AI accessibility. Version chaos a regular friction point.', after: 'A unified cloud storage environment that integrates natively with the stack. Files accessible, correctly permissioned, and surfaceable by AI tools. One place to maintain, one source of truth.' },
+        { icon: 'book-open', area: 'Company knowledge', before: 'Operational knowledge scattered across disconnected systems — client info in one place, project docs in another, support history somewhere else. Finding anything meant knowing where to look; AI couldn\u2019t navigate it at all.', after: 'A clear information architecture with a single AI query layer across connected systems. Anyone can surface the right information instantly, permissions respected at every level. Years of knowledge made accessible.' },
+        { icon: 'workflow', area: 'Automation', before: 'Existing automations spread across multiple workflow platforms, with usage-based pricing stacking up and limited capacity for more advanced, AI-augmented processes.', after: 'A consolidated, self-hostable automation setup with the flexibility to build genuinely intelligent workflows — including a ticket triage agent that gives support requests the context needed to action them.' },
+        { icon: 'code', area: 'AI-assisted development', before: 'The founder had developed real expertise in AI-assisted website development through experimentation — but that knowledge lived with one person, applied inconsistently, hard to hand off.', after: 'A documented, repeatable build process any team member can follow and contribute to. Shared prompt libraries and standardised workflows make AI-assisted development a company capability, not an individual one.' },
+        { icon: 'shield-check', area: 'Governance and training', before: 'No formal AI usage policy in practice, despite good individual awareness. New tools introduced without a structured evaluation process. No regular forum to align on how things should be done.', after: 'A training and governance framework covering data handling, acceptable use and tool evaluation — with a regular rhythm for sharing new ideas and keeping the team aligned as the stack evolves.' },
+        { icon: 'database', area: 'Data management', before: 'Operational data spread across tools with unclear ownership, some duplication, and costs that hadn\u2019t been reviewed against actual need.', after: 'A clear picture of what data lives where, why, and whether it\u2019s in the right place — with recommendations to consolidate and reduce unnecessary licence spend.' },
+        { icon: 'users', area: 'CRM & commercial operations', before: 'A capable CRM platform being used at a fraction of its potential, with a significant gap between what was paid for and what was used.', after: 'A rationalised setup that activates the features already available — better visibility of pipeline, client relationships and commercial opportunities, without adding cost.' },
+      ],
+      deliverables: [
+        { icon: 'gauge', title: 'AI Readiness Report', desc: 'Benchmarked against the UWE 7-Dimensional Framework.', delay: 0 },
+        { icon: 'layers', title: 'Complete Tool Audit', desc: 'Retain, replace and remove recommendations across the entire stack.', delay: 90 },
+        { icon: 'map', title: 'Prioritised Opportunity Map', desc: 'Eight scoped initiatives, each rated by impact and effort.', delay: 180 },
+        { icon: 'scale', title: 'AI Governance & Policy Framework', desc: 'A bespoke framework covering data, acceptable use and evaluation.', delay: 0 },
+        { icon: 'route', title: '12-Month Roadmap', desc: 'Sequenced and editable, built for the whole team to act on.', delay: 90 },
+        { icon: 'projector', title: 'Executive Presentation', desc: 'Delivered to the full leadership team.', delay: 180 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

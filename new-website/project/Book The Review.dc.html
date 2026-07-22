@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { margin: 0; background: var(--at-grey); }
+    input::placeholder, textarea::placeholder { color: var(--at-faint); }
+  </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-grey); min-height: 100vh;">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<section data-screen-label="Book The Review" style="background: var(--at-grey);">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 148px 32px 100px; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 60px; align-items: start;">
+
+    <!-- LEFT — reassurance -->
+    <div style="display: flex; flex-direction: column; gap: 28px; position: sticky; top: 108px;">
+      <a href="Futureproofing.dc.html" style="display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700; color: var(--text-muted); text-decoration: none;" style-hover="color: var(--at-turquoise)"><i data-lucide="arrow-left" style="width: 15px; height: 15px;"></i>Back to Futureproofing</a>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span class="at-eyebrow">The Review</span>
+        <h1 style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Know Exactly Where You Stand. In Writing, in Five Weeks.</h1>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">Tell us a little about your business and we'll be in touch to book it in. No pitch deck, no obligation — just a straight conversation about where you are and what The Review would cover.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 26px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <span style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-faint);">What you walk away with</span>
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+          <span style="display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; line-height: 1.45; color: var(--text-body);"><i data-lucide="check" style="width: 16px; height: 16px; color: var(--at-turquoise); flex: none; margin-top: 2px;"></i>{{ d }}</span>
+        </sc-for>
+        <div style="height: 1px; background: var(--border-default); margin: 2px 0;"></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+          <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-heading);">From £2,500</span>
+          <span style="font-size: 14px; font-weight: 600; color: var(--text-muted);">+ VAT · typically 4–5 weeks</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — form / confirmation -->
+    <div style="background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-md); padding: 40px 40px 44px;">
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding: 24px 0;">
+          <span style="width: 56px; height: 56px; border-radius: 50%; background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="check" style="width: 28px; height: 28px;"></i></span>
+          <h2 style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 700; color: var(--text-heading);">Thanks{{ nameSuffix }} — that's with us.</h2>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted);">We'll reply within one working day to find a time. If it's urgent, email us directly at <a href="mailto:hello@agencytech.co.uk" style="color: var(--at-turquoise); font-weight: 600; text-decoration: none;">hello@agencytech.co.uk</a>.</p>
+          <a href="Futureproofing.dc.html" style="margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 700; color: var(--at-turquoise); text-decoration: none;">Back to Futureproofing <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Your name</span>
+              <input type="text" required value="{{ name }}" onInput="{{ onName }}" placeholder="Jane Smith" style="height: 46px; padding: 0 14px; font-family: var(--font-sans); font-size: 14.5px; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Work email</span>
+              <input type="email" required placeholder="jane@agency.co.uk" style="height: 46px; padding: 0 14px; font-family: var(--font-sans); font-size: 14.5px; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff">
+            </label>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Company</span>
+              <input type="text" placeholder="Agency name" style="height: 46px; padding: 0 14px; font-family: var(--font-sans); font-size: 14.5px; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 7px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Team size</span>
+              <select style="height: 46px; padding: 0 12px; font-family: var(--font-sans); font-size: 14.5px; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none; appearance: none; -webkit-appearance: none;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff">
+                <option>1–10</option>
+                <option>11–25</option>
+                <option>26–50</option>
+                <option>51–100</option>
+                <option>100+</option>
+              </select>
+            </label>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Where would you say you're starting from?</span>
+            <select style="height: 46px; padding: 0 12px; font-family: var(--font-sans); font-size: 14.5px; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none; appearance: none; -webkit-appearance: none;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff">
+              <option>Not sure yet — that's fine</option>
+              <option>Experimenting — free tools, no structure yet</option>
+              <option>Consolidating — processes and some automation</option>
+              <option>Accelerating — custom systems in place</option>
+              <option>Ascending — building AI-powered services to sell</option>
+            </select>
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 7px;">
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">What's prompting this? <span style="font-weight: 500; color: var(--at-faint);">(optional)</span></span>
+            <textarea rows="4" placeholder="A sentence or two on what's on your mind — no need for detail." style="padding: 12px 14px; font-family: var(--font-sans); font-size: 14.5px; line-height: 1.5; color: var(--text-heading); background: var(--at-grey); border: 1px solid var(--border-default); border-radius: var(--radius-sm); outline: none; resize: vertical;" style-focus="border-color: var(--at-turquoise); box-shadow: 0 0 0 3px rgba(6,154,152,0.16); background: #fff"></textarea>
+          </label>
+          <button type="submit" style="height: 52px; margin-top: 4px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-family: var(--font-sans); font-size: 15px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.01)">Request The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></button>
+          <p style="margin: 0; font-size: 12px; line-height: 1.5; color: var(--at-faint); text-align: center;">We'll only use these details to get back to you about The Review.</p>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false, name: '' };
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    const name = this.state.name.trim();
+    return {
+      submitted: this.state.submitted,
+      showForm: !this.state.submitted,
+      name: this.state.name,
+      nameSuffix: name ? ', ' + name.split(' ')[0] : '',
+      deliverables: [
+        'A prioritised 12-month roadmap',
+        'Full tools audit',
+        'AI readiness report',
+        'Opportunity map',
+        'Executive presentation',
+        'AI governance & policy framework',
+      ],
+      onName: (e) => this.setState({ name: e.target.value }),
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

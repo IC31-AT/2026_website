@@ -1,0 +1,91 @@
+/* AgencyTech — Colour tokens
+   Palette is built around two core colours: Cyprus (dark) and Turquoise (accent). */
+:root {
+  /* ---- Primary ---- */
+  --at-cyprus: #004040;         /* primary dark background */
+  --at-cyprus-light: #004B4B;   /* lighter Cyprus for layering on dark */
+  --at-turquoise: #069A98;      /* accent */
+  --at-turquoise-light: #2BBCBA;/* lighter Turquoise for use on top of Cyprus */
+  --at-grey: #F7FCFD;           /* near-white tinted surface */
+  --at-white: #FFFFFF;
+
+  /* ---- Border ---- */
+  --at-border: #E6E6E6;         /* general borders (== pure black @ 10%) */
+
+  /* ---- Secondary: Red ---- */
+  --at-red-tint: #FFD5D2;
+  --at-red: #F15B50;
+  --at-red-shade: #AE2E24;
+  /* ---- Secondary: Orange ---- */
+  --at-orange-tint: #FAB86B;
+  --at-orange: #F68909;
+  --at-orange-shade: #945205;
+  /* ---- Secondary: Yellow ---- */
+  --at-yellow-tint: #F5E989;
+  --at-yellow: #F2C127;
+  --at-yellow-shade: #917417;
+  /* ---- Secondary: Green ---- */
+  --at-green-tint: #BAF3DB;
+  --at-green: #2ABB7F;
+  --at-green-shade: #216E4E;
+  /* ---- Secondary: Purple ---- */
+  --at-purple-tint: #EED7FC;
+  --at-purple: #9F6ACA;
+  --at-purple-shade: #5E3A8C;
+
+  /* ---- Neutrals derived from Cyprus/ink ---- */
+  --at-ink: #002B2B;            /* deepest text on light */
+  --at-ink-2: #1a4747;          /* softened dark text */
+  --at-muted: #5b7373;          /* muted / secondary text on light */
+  --at-faint: #8fa5a5;          /* placeholder / disabled text */
+
+  /* ================= Semantic aliases ================= */
+  /* Surfaces */
+  --surface-page: var(--at-white);
+  --surface-subtle: var(--at-grey);
+  --surface-card: var(--at-white);
+  --surface-dark: var(--at-cyprus);
+  --surface-dark-raised: var(--at-cyprus-light);
+
+  /* Text */
+  --text-body: var(--at-ink-2);
+  --text-heading: var(--at-cyprus);
+  --text-muted: var(--at-muted);
+  --text-on-dark: var(--at-white);
+  --text-on-dark-muted: rgba(255,255,255,0.72);
+  --text-accent: var(--at-turquoise);
+  --text-accent-on-dark: var(--at-turquoise-light);
+
+  /* Interactive / accent */
+  --accent: var(--at-turquoise);
+  --accent-hover: #058886;      /* Turquoise darkened for hover on light */
+  --accent-press: #047270;
+  --accent-on-dark: var(--at-turquoise-light);
+
+  /* Borders & lines */
+  --border-default: var(--at-border);
+  --border-strong: #cfd8d8;
+  --border-on-dark: rgba(255,255,255,0.16);
+
+  /* Status */
+  --status-danger: var(--at-red);
+  --status-danger-strong: var(--at-red-shade);
+  --status-danger-bg: var(--at-red-tint);
+  --status-warning: var(--at-orange);
+  --status-warning-strong: var(--at-orange-shade);
+  --status-warning-bg: var(--at-orange-tint);
+  --status-success: var(--at-green);
+  --status-success-strong: var(--at-green-shade);
+  --status-success-bg: var(--at-green-tint);
+  --status-info: var(--at-turquoise);
+  --status-info-bg: #d5f0ef;
+
+  /* Soft status surfaces — pale, low-saturation fills for callout bodies etc. */
+  --status-danger-soft: #FBE7E4;
+  --status-warning-soft: #FBF0DD;
+  --status-success-soft: #E6F6EE;
+  --status-info-soft: #E1F3F2;
+
+  /* Focus ring */
+  --focus-ring: rgba(6,154,152,0.45);
+}

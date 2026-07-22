@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style> body { margin: 0; background: #fff; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="position: relative; overflow: hidden; background: var(--at-cyprus);">
+  <img src="assets/blob-scene-1.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; pointer-events: none;">
+  <div style="position: relative; max-width: 900px; margin: 0 auto; padding: 152px 32px 72px; display: flex; flex-direction: column; gap: 22px;">
+    <span style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.6);"><a href="Futureproofing Case Studies.dc.html" style="color: var(--at-turquoise-light); text-decoration: none;">Case Studies</a> <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i> PointZeroGroup</span>
+    <span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise-light); background: rgba(43,188,186,0.16); padding: 5px 12px; border-radius: var(--radius-pill);">Futureproofing · The Review</span>
+    <h1 style="margin: 0; font-size: 46px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; color: #fff; max-width: 760px; text-wrap: balance;">How AgencyTech Helped PointZeroGroup Understand Exactly What Was Holding Them Back</h1>
+    <p style="margin: 0; font-size: 17.5px; line-height: 1.6; color: rgba(255,255,255,0.78); max-width: 620px; text-wrap: pretty;">A specialist employer communications group of three agencies, ~35 staff — and a clear vision the operational foundations hadn't yet caught up with.</p>
+  </div>
+</section>
+
+<!-- METRIC STRIP -->
+<section data-screen-label="Metrics" style="background: var(--at-cyprus-light); border-bottom: 1px solid var(--border-on-dark);">
+  <div style="max-width: 900px; margin: 0 auto; padding: 0 32px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="padding: 34px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--border-on-dark);">
+          <span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: var(--at-turquoise-light);">{{ s.value }}</span>
+          <span style="font-size: 13px; line-height: 1.45; color: rgba(255,255,255,0.72);">{{ s.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD QUOTE -->
+<section data-screen-label="Lead Quote" style="background: #fff;">
+  <div style="max-width: 820px; margin: 0 auto; padding: 80px 32px 8px; display: flex; flex-direction: column; gap: 18px;">
+    <i data-lucide="quote" style="width: 34px; height: 34px; color: var(--at-turquoise); opacity: 0.5;"></i>
+    <blockquote style="margin: 0; font-size: 26px; line-height: 1.4; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: pretty;">“We knew things weren't working as well as they should — what we didn't have was a clear picture of exactly where, or why. AgencyTech gave us that. For the first time, we have real clarity on where the business is and what needs to happen next to use AI to supercharge the agency.”</blockquote>
+    <span style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Mark Beavan</strong> · Managing Director, PointZeroGroup</span>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section data-screen-label="Narrative" style="background: #fff;">
+  <div style="max-width: 820px; margin: 0 auto; padding: 64px 32px 40px; display: flex; flex-direction: column; gap: 52px;">
+    <sc-for list="{{ narrative }}" as="n" hint-placeholder-count="4">
+      <div data-reveal style="display: flex; flex-direction: column; gap: 14px;">
+        <span class="at-eyebrow">{{ n.eyebrow }}</span>
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.18; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">{{ n.heading }}</h2>
+        <sc-for list="{{ n.paras }}" as="para" hint-placeholder-count="2">
+          <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--text-body); text-wrap: pretty;">{{ para }}</p>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS — before / after -->
+<section data-screen-label="Recommendations" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 88px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 44px;">
+      <span class="at-eyebrow">What We Recommended</span>
+      <h2 style="margin: 0; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Get the Infrastructure Right, and Everything Becomes Possible</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">Each initiative was sequenced deliberately — every one unlocks the next. Here's the before and after, area by area.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <sc-for list="{{ recommendations }}" as="r" hint-placeholder-count="7">
+        <div data-reveal style="background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden;">
+          <div style="padding: 18px 26px; background: var(--at-cyprus); display: flex; align-items: center; gap: 12px;">
+            <span style="width: 34px; height: 34px; flex: none; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="{{ r.icon }}" style="width: 17px; height: 17px;"></i></span>
+            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #fff;">{{ r.area }}</h3>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <div style="padding: 24px 26px; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-faint);">Before</span>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">{{ r.before }}</p>
+            </div>
+            <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise);">After</span>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-body); text-wrap: pretty;">{{ r.after }}</p>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section data-screen-label="Deliverables" style="background: #fff;">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 88px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 40px;">
+      <span class="at-eyebrow">What the Leadership Team Walked Away With</span>
+      <h2 style="margin: 0; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Six Written Outputs, One Aligned Plan</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="6">
+        <div data-reveal data-reveal-delay="{{ d.delay }}" style="background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 26px 24px; display: flex; flex-direction: column; gap: 11px;">
+          <span style="width: 42px; height: 42px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="{{ d.icon }}" style="width: 20px; height: 20px;"></i></span>
+          <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: var(--text-heading);">{{ d.title }}</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.55; color: var(--text-muted); text-wrap: pretty;">{{ d.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section data-screen-label="Closing Quote" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default);">
+  <div style="max-width: 820px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 18px;">
+    <i data-lucide="quote" style="width: 30px; height: 30px; color: var(--at-turquoise); opacity: 0.5;"></i>
+    <blockquote style="margin: 0; font-size: 23px; line-height: 1.45; font-weight: 600; color: var(--text-heading); letter-spacing: -0.01em; text-wrap: pretty;">“One of the things that struck me most was how quickly they got to the real issues. They didn't just surface what we already suspected — they gave us the data and the context to understand it properly, and a clear path forward. We now have a plan the whole leadership team is aligned on. That's a significant shift for us.”</blockquote>
+    <span style="font-size: 14px; color: var(--text-muted);"><strong style="color: var(--text-heading); font-weight: 700;">Mark Beavan</strong> · Managing Director, PointZeroGroup</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" data-screen-label="Final CTA" style="background: #fff;">
+  <div style="max-width: 760px; margin: 0 auto; padding: 92px 32px 104px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Want the Same Clarity?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-muted); max-width: 460px; text-wrap: pretty;">It starts with The Review — the same structured audit that gave PointZeroGroup their picture and their plan.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+        <a href="Futureproofing Case Studies.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 28px; background: transparent; color: var(--text-heading); border: 2px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease;" style-hover="background: var(--surface-subtle)">More case studies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      stats: [
+        { value: '2.5 wks', label: 'from kickoff to a board-ready 12-month roadmap' },
+        { value: '3 → 1', label: 'agencies assessed as one unified group' },
+        { value: '8 + 7', label: 'scoped initiatives and identified quick wins' },
+      ],
+      narrative: [
+        { eyebrow: 'The Client', heading: 'Busy, Experienced, Well-Regarded — and Held Back', paras: [
+          'PointZeroGroup is a specialist employer communications group made up of three agencies: home, Brand.0, and Reward Point Zero. They work with leading enterprise organisations on employer brand, internal communications, EVP, and careers — around 35 staff, with ambitious leadership and a clear long-term vision to become an AI-informed employer communications agency.',
+          'They came to AgencyTech with a familiar problem: the business was busy, experienced, and well-regarded. Something was holding them back — they just didn\u2019t have a clear picture of what.' ] },
+        { eyebrow: 'The Situation', heading: 'Three Agencies, Loosely Combined', paras: [
+          'In the years since the agencies merged into a single group, the operational foundations hadn\u2019t kept pace. Three sets of tools, processes, and working habits had been loosely combined rather than properly unified. Leadership had a strong sense of where they wanted to take the business; what they lacked was a clear picture of what was actually happening, and what needed to change first.',
+          'AgencyTech was engaged to run a Phase 1 Futureproofing Audit: a structured diagnostic covering the group\u2019s technology stack, workflows, AI readiness, and operational foundations across all three agencies — delivered in an expedited two and a half weeks to meet an internal board deadline.' ] },
+        { eyebrow: 'How We Worked', heading: 'Evidence, Not Self-Report', paras: [
+          'Every member of the team completed a detailed questionnaire, every function had a dedicated one-to-one interview, and admin-level access to Microsoft 365 gave us a ground-level view of the actual tool environment rather than a self-reported one.',
+          'Most operational problems in agencies aren\u2019t visible from the top. They live in the workarounds people have quietly built around systems that don\u2019t work, and in the distance between how leadership thinks the business operates and how it actually does.' ] },
+        { eyebrow: 'What We Found', heading: 'Interconnected Problems, Not One Obvious Failure', paras: [
+          'Using the UWE 7-Dimensional AI Readiness Framework, PointZeroGroup scored low-medium, with a notable gap between how the team assessed themselves and what the evidence showed. The business was optimistic about its operational state, but the audit revealed real work was needed on the technical foundations to make its ambition a reality.',
+          'The lowest-scoring areas were data management and process documentation — both prerequisites for almost everything the group wanted to do next. Culture and team appetite for change scored significantly higher. What was missing was the structure, infrastructure, and governance to act on it.' ] },
+      ],
+      recommendations: [
+        { icon: 'folder', area: 'File storage', before: 'Files scattered across a local RAID server, personal OneDrives, Slack threads and local machines. No reliable backup, no remote access without a VPN, and roughly half a day per week per person lost just searching.', after: 'A unified cloud architecture with a tailored solution for the creative studio\u2019s large active assets. Files accessible anywhere, backed up, searchable by content — and the data foundation in place for Copilot and Claude to work across the business.' },
+        { icon: 'users', area: 'CRM', before: 'HubSpot at significant annual cost, the majority of contacts unowned, pipeline health invisible, and every won deal triggering hours of duplicated manual admin.', after: 'A right-sized CRM with a clean, enriched database, live pipeline visibility, and automated contact management that surfaces dormant relationships before they go cold. BD time spent on relationships, not data entry.' },
+        { icon: 'briefcase', area: 'Project management', before: 'Synergist misconfigured since the merger, billing and hours data unreliable, finance running a parallel spreadsheet, and studio time going unbilled every week.', after: 'A single trustworthy system for job profitability, resource utilisation and margin. Leadership pricing and resourcing on what\u2019s actually happening. Unbilled time visible and recoverable; the parallel spreadsheet retired.' },
+        { icon: 'book-open', area: 'Knowledge and process', before: 'Institutional knowledge living in individuals\u2019 heads, inconsistently documented. New starters onboarded informally, proposals built from scratch every time.', after: 'A centralised, searchable knowledge base of SOPs, onboarding and process guides, integrated with AI tools. Proposals draw from a shared library of case studies and costing history, with AI able to draft from it directly.' },
+        { icon: 'shield-check', area: 'AI and governance', before: 'A mix of personal AI accounts, no shared policy, inconsistent capability, and no leadership visibility of what was being used. IP and data implications not understood; existing licences going to waste.', after: 'A governed, company-wide AI deployment with consistent access, a formal usage framework covering data, IP and client work, and an AI Champions structure to maintain standards as the group grows.' },
+        { icon: 'workflow', area: 'Automation', before: 'Systems disconnected, staff manually bridging the gaps between tools, and hours of avoidable admin absorbed across multiple roles every week.', after: 'Automation connecting the stack as each tool comes online — won deals flowing into project management, dormant contacts flagged, documents reviewed on demand. Manual connective tissue replaced by background workflows.' },
+        { icon: 'presentation', area: 'Sales capability', before: 'No shared case study library, no unified service offering, and proposal quality dependent on individual initiative rather than shared foundations.', after: 'A centralised case study library tagged by service, sector and outcome, a shared service offering document, a structured outreach framework, and proposal templates for the whole team. Consistent, fast pitching from a shared foundation.' },
+      ],
+      deliverables: [
+        { icon: 'gauge', title: 'AI Readiness Report', desc: 'Benchmarked against the UWE 7-Dimensional Framework.', delay: 0 },
+        { icon: 'layers', title: 'Complete Tool Audit', desc: 'Retain, replace and remove recommendations for every platform in the stack.', delay: 90 },
+        { icon: 'map', title: 'Prioritised Opportunity Map', desc: 'Eight scoped initiatives and seven quick wins, each rated by impact and effort.', delay: 180 },
+        { icon: 'scale', title: 'AI Governance & Policy Framework', desc: 'Covering IP, data handling, acceptable use and shadow software.', delay: 0 },
+        { icon: 'route', title: '12-Month Roadmap', desc: 'Sequenced to maximise impact and account for dependencies.', delay: 90 },
+        { icon: 'projector', title: 'Executive Presentation', desc: 'Delivered to the full leadership team ahead of their internal board session.', delay: 180 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

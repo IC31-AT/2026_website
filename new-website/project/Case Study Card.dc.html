@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+</helmet>
+<a href="#" style="display: flex; flex-direction: column; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; font-family: var(--font-sans); height: 100%; transition: box-shadow 250ms ease, transform 250ms ease;" style-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)">
+  <span style="background: var(--at-cyprus); padding: 34px 30px 30px; display: flex; flex-direction: column; gap: 4px;">
+    <span style="display: flex; align-items: baseline; gap: 2px;">
+      <span style="font-size: 60px; line-height: 1; font-weight: 800; letter-spacing: -0.04em; color: var(--at-turquoise-light);">{{ metric }}</span>
+      <span style="font-size: 26px; line-height: 1; font-weight: 700; color: var(--at-turquoise-light);">{{ metricSuffix }}</span>
+    </span>
+    <span style="font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.85); margin-top: 6px;">{{ metricLabel }}</span>
+  </span>
+  <span style="display: flex; flex-direction: column; gap: 10px; padding: 24px 30px 28px; flex: 1;">
+    <span style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--at-turquoise); background: rgba(6,154,152,0.08); border: 1px solid rgba(6,154,152,0.22); padding: 3px 9px; border-radius: var(--radius-pill);">{{ tag }}</span>
+      <span style="font-size: 12px; color: var(--at-faint);">{{ client }}</span>
+    </span>
+    <span style="font-size: 17px; line-height: 1.35; font-weight: 700; color: var(--text-heading);">{{ title }}</span>
+    <span style="font-size: 13.5px; line-height: 1.6; color: var(--text-muted);">{{ summary }}</span>
+    <span style="margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: var(--at-turquoise);">Read case study
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </span>
+  </span>
+</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 380, &quot;height&quot;: 420}, &quot;metric&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;24→3&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;metricSuffix&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;metricLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;click rate, six months apart&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;tag&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;IT Services&quot;, &quot;Futureproofing&quot;], &quot;default&quot;: &quot;IT Services&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;client&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Creative agency · Bristol&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;title&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Case study title&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;summary&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Short summary of the engagement and outcome.&quot;, &quot;tsType&quot;: &quot;string&quot;}}"></script>
+</body>
+</html>

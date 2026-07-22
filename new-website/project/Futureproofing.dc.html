@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; background: #fff; }
+    @keyframes at-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes at-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.82); } }
+  </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- ================ 1. HERO — name the feeling ================ -->
+<section data-screen-label="Hero" style="position: relative; overflow: hidden; background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 176px 32px 104px; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 72px; align-items: center;">
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <span class="at-eyebrow">Futureproofing Program</span>
+      <h1 style="margin: 0; font-size: 56px; line-height: 1.06; letter-spacing: -0.025em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Stop Feeling Behind on AI. Start Feeling Ready for It.</h1>
+      <p style="margin: 0; font-size: 18.5px; line-height: 1.6; color: var(--text-muted); max-width: 500px; text-wrap: pretty;">A structured path to AI readiness — built and run by the people who already keep your systems secure, not a chatbot bolted on by strangers.</p>
+      <div style="display: flex; gap: 14px; margin-top: 6px; flex-wrap: wrap;">
+        <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book The Review</a>
+        <a href="Futureproofing About.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; background: transparent; color: var(--text-heading); border: 2px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--surface-subtle); transform: scale(1.02)">See how it works</a>
+      </div>
+    </div>
+    <div style="position: relative;">
+      <image-slot id="futureproofing-hero-team" shape="rounded" radius="6" placeholder="Photo — the Futureproofing team" style="width: 100%; height: 420px; display: block; box-shadow: var(--shadow-lg);"></image-slot>
+      <div style="position: absolute; left: -34px; top: 40px; animation: at-float 5s ease-in-out infinite; background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 16px; display: flex; align-items: center; gap: 11px;">
+        <span style="width: 30px; height: 30px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="clock" style="width: 16px; height: 16px;"></i></span>
+        <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">Hours back in the week</span>
+      </div>
+      <div style="position: absolute; right: -26px; bottom: 34px; animation: at-float 6s ease-in-out 1.3s infinite; background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 12px 16px; display: flex; align-items: center; gap: 11px;">
+        <span style="width: 30px; height: 30px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="heart-handshake" style="width: 16px; height: 16px;"></i></span>
+        <span style="font-size: 13px; font-weight: 700; color: var(--text-heading);">One less thing to carry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 2. THE RELIEF — functional + emotional, fused ================ -->
+<section data-screen-label="The Relief" style="background: #fff;">
+  <div style="max-width: 920px; margin: 0 auto; padding: 128px 32px 120px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; margin-bottom: 72px;">
+      <span class="at-eyebrow">What Changes</span>
+      <h2 style="margin: 0; font-size: 42px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading); text-wrap: balance;">What Changes When AI Is Actually Working For You</h2>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <sc-for list="{{ reliefLines }}" as="line" hint-placeholder-count="5">
+        <div data-reveal data-reveal-delay="{{ line.delay }}" style="display: flex; align-items: flex-start; gap: 22px; padding: 30px 0; border-top: 1px solid var(--border-default);">
+          <span style="flex: none; margin-top: 12px; width: 11px; height: 11px; border-radius: 3px; background: var(--at-turquoise); transform: rotate(45deg);"></span>
+          <p style="margin: 0; font-size: 26px; line-height: 1.4; letter-spacing: -0.01em; text-wrap: pretty;"><span style="font-weight: 700; color: var(--text-heading);">{{ line.strong }}</span> <span style="font-weight: 500; color: var(--at-faint);">— {{ line.muted }}</span></p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 3. TEAM REVEAL — one relationship, three specialisms ================ -->
+<section data-screen-label="Team Reveal" style="position: relative; background: var(--at-cyprus); overflow: hidden;">
+  <img src="assets/blob-scene-1.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.42; pointer-events: none;">
+  <div style="position: relative; max-width: 1080px; margin: 0 auto; padding: 118px 32px 124px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; margin-bottom: 24px;">
+      <span class="at-eyebrow" style="color: var(--at-turquoise-light);">Why This Is Actually Deliverable</span>
+      <h2 style="margin: 0; font-size: 42px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: #fff; text-wrap: balance;">One Relationship. Three Specialisms.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 680px; text-wrap: pretty;">What looks like one AI partner is actually three: someone thinking about your AI strategy and operations, someone building and securing the systems underneath it, and someone making sure your team can actually use what's been built.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
+      <sc-for list="{{ teamRoles }}" as="role" hint-placeholder-count="3">
+        <div data-reveal data-reveal-delay="{{ role.delay }}" style="background: var(--at-cyprus-light); border: 1px solid var(--border-on-dark); border-radius: var(--radius-md); padding: 30px 26px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 48px; height: 48px; border-radius: var(--radius-sm); background: rgba(43,188,186,0.16); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise-light);"><i data-lucide="{{ role.icon }}" style="width: 23px; height: 23px;"></i></span>
+          <span style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise-light);">{{ role.kicker }}</span>
+          <h3 style="margin: 0; font-size: 19px; line-height: 1.25; font-weight: 600; color: #fff;">{{ role.title }}</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.7); text-wrap: pretty;">{{ role.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-reveal data-reveal-delay="120" style="position: relative; height: 96px;">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+        <path d="M16.7 0 C16.7 60, 50 42, 50 100" fill="none" stroke="#2BBCBA" stroke-width="1.5" stroke-opacity="0.6" vector-effect="non-scaling-stroke"></path>
+        <path d="M50 0 L50 100" fill="none" stroke="#2BBCBA" stroke-width="1.5" stroke-opacity="0.6" vector-effect="non-scaling-stroke"></path>
+        <path d="M83.3 0 C83.3 60, 50 42, 50 100" fill="none" stroke="#2BBCBA" stroke-width="1.5" stroke-opacity="0.6" vector-effect="non-scaling-stroke"></path>
+      </svg>
+    </div>
+
+    <div data-reveal data-reveal-delay="200" style="display: flex; justify-content: center;">
+      <span style="display: inline-flex; align-items: center; gap: 12px; background: var(--at-turquoise); color: #fff; border-radius: var(--radius-pill); padding: 15px 28px; font-size: 16px; font-weight: 700; box-shadow: 0 0 0 8px rgba(6,154,152,0.14);"><i data-lucide="handshake" style="width: 20px; height: 20px;"></i>One relationship — accountable to a plan, not a trend</span>
+    </div>
+
+    <p data-reveal data-reveal-delay="120" style="margin: 44px auto 0; max-width: 660px; text-align: center; font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.6); text-wrap: pretty;">Most "AI experts" can only offer you the first one — and usually not even that, underneath the confidence.</p>
+  </div>
+</section>
+
+<!-- ================ 4. EVIDENCE ================ -->
+<section data-screen-label="Evidence" style="background: #fff;">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 120px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin-bottom: 52px;">
+      <span class="at-eyebrow">Evidence It's Real</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">We've Done This With AI Before — Here's What Happened</h2>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 44px;">
+      <sc-for list="{{ evidenceGroups }}" as="g" hint-placeholder-count="2">
+        <div data-reveal style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--at-turquoise); background: rgba(6,154,152,0.08); border: 1px solid rgba(6,154,152,0.22); padding: 6px 14px; border-radius: var(--radius-pill);"><i data-lucide="{{ g.icon }}" style="width: 14px; height: 14px;"></i>{{ g.label }}</span>
+            <span style="flex: 1; height: 1px; background: var(--border-default);"></span>
+            <span style="font-size: 13px; color: var(--at-faint);">{{ g.note }}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat({{ g.cols }}, 1fr); gap: 24px; align-items: stretch;">
+            <sc-for list="{{ g.cases }}" as="c" hint-placeholder-count="3">
+              <div data-reveal data-reveal-delay="{{ c.delay }}" style="height: 100%;">
+                <dc-import name="Case Study Card" tag="{{ c.tag }}" metric="{{ c.metric }}" metric-suffix="{{ c.suffix }}" metric-label="{{ c.label }}" client="{{ c.client }}" title="{{ c.title }}" summary="{{ c.summary }}" hint-size="100%,440px" style="height: 100%; display: block;"></dc-import>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 5. THE STAGES — tier ladder ================ -->
+<section data-screen-label="The Stages" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 118px 32px 124px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 16px; max-width: 680px; margin-bottom: 20px;">
+      <span class="at-eyebrow">The Four Tiers</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Wherever You're Starting From, There's a Next Step</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">The Review places you in one of four tiers — and your tier is set by your weakest dimension, not an average. One critical gap holds the whole business back, so moving up a tier is exactly what “not lagging behind” looks like: concrete, not abstract.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: end; margin-top: 44px;">
+      <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="4">
+        <div data-reveal data-reveal-delay="{{ tier.delay }}" style="position: relative; overflow: hidden; min-height: {{ tier.minH }}; background: {{ tier.bg }}; border: 1px solid {{ tier.border }}; border-radius: var(--radius-md); padding: 30px 26px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="position: absolute; right: 14px; bottom: -18px; font-size: 128px; line-height: 1; font-weight: 800; color: {{ tier.ghost }};">{{ tier.num }}</span>
+          <span style="position: relative; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: {{ tier.kicker }};">Stage {{ tier.num }}</span>
+          <h3 style="position: relative; margin: 0; font-size: 23px; line-height: 1.15; font-weight: 700; color: {{ tier.nameColor }};">{{ tier.name }}</h3>
+          <span style="position: relative; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: {{ tier.possibleKicker }};">Score {{ tier.band }}</span>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: {{ tier.labelColor }};">Where you are</span>
+            <span style="font-size: 14px; line-height: 1.55; color: {{ tier.whereColor }}; text-wrap: pretty;">{{ tier.where }}</span>
+          </div>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 4px; margin-top: 6px;">
+            <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: {{ tier.possibleKicker }};">What's possible</span>
+            <span style="font-size: 14px; line-height: 1.55; font-weight: 600; color: {{ tier.possibleColor }}; text-wrap: pretty;">{{ tier.possible }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 6. HOW IT WORKS → next steps ================ -->
+<section id="next-steps" data-screen-label="Next Steps" style="background: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 112px 32px 40px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin-bottom: 48px;">
+      <span class="at-eyebrow">How It Works</span>
+      <h2 style="margin: 0; font-size: 38px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Three Ways In, One Starting Point</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: var(--text-muted); text-wrap: pretty;">Everything begins with The Review — a clear, honest picture of where you stand. What you do next is up to you.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <sc-for list="{{ nextSteps }}" as="step" hint-placeholder-count="3">
+        <a data-reveal data-reveal-delay="{{ step.delay }}" href="{{ step.href }}" style="display: flex; flex-direction: column; gap: 14px; background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; text-decoration: none; transition: box-shadow 250ms ease, transform 250ms ease;" style-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="{{ step.icon }}" style="width: 22px; height: 22px;"></i></span>
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--at-turquoise);">{{ step.tag }}</span>
+          <span style="font-size: 20px; font-weight: 700; color: var(--text-heading);">{{ step.title }}</span>
+          <span style="font-size: 14px; line-height: 1.6; color: var(--text-muted);">{{ step.desc }}</span>
+          <span style="font-size: 13px; font-weight: 700; color: var(--text-heading); margin-top: 4px;">{{ step.meta }}</span>
+          <span style="margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--at-turquoise);">{{ step.cta }} <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 7. FINAL CTA ================ -->
+<section id="contact" data-screen-label="Final CTA" style="background: #fff;">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 60px 32px 112px;">
+    <div data-reveal style="position: relative; overflow: hidden; border-radius: var(--radius-md); background: var(--at-cyprus);">
+      <img src="assets/blob-scene-2.svg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; pointer-events: none;">
+      <div style="position: relative; padding: 84px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+        <h2 style="margin: 0; font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: #fff; max-width: 620px; text-wrap: balance;">Find Out Exactly Where You Stand</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 480px; text-wrap: pretty;">The Review is a complete purchase on its own — no obligation into anything else. In writing, in five weeks.</p>
+        <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--at-turquoise); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 6px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--at-turquoise-light); transform: scale(1.02)">Book The Review <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+function stagger(list, step) {
+  step = step || 90;
+  return list.map((item, i) => Object.assign({}, item, { delay: (i % 3) * step }));
+}
+
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    const tierDefs = [
+      { num: '01', name: 'Experimenting', band: '0–4.9', where: 'Using free tools, no structure or governance yet.', possible: 'A clear, honest picture of where you stand — and a first governance layer in place.', minH: '300px' },
+      { num: '02', name: 'Consolidating', band: '5–6.9', where: 'Clear processes, structured data, early automation.', possible: 'Real returns from first automations — one consistent way of working.', minH: '336px' },
+      { num: '03', name: 'Accelerating', band: '7–8.9', where: 'Custom systems built around how you actually work.', possible: 'Real margin and capacity gains — foundations for new service lines.', minH: '372px' },
+      { num: '04', name: 'Ascending', band: '9–10', where: 'Creating new AI-powered services to sell.', possible: 'New, sellable products on your own IP — revenue no competitor can copy.', minH: '408px', peak: true },
+    ];
+    const tiers = tierDefs.map((t, i) => {
+      const peak = !!t.peak;
+      return Object.assign({}, t, {
+        delay: i * 100,
+        bg: peak ? 'var(--at-cyprus)' : '#fff',
+        border: peak ? 'var(--at-cyprus)' : 'var(--border-default)',
+        ghost: peak ? 'rgba(43,188,186,0.12)' : 'rgba(0,64,64,0.05)',
+        kicker: peak ? 'var(--at-turquoise-light)' : 'var(--at-faint)',
+        nameColor: peak ? '#fff' : 'var(--text-heading)',
+        labelColor: peak ? 'rgba(255,255,255,0.55)' : 'var(--at-faint)',
+        whereColor: peak ? 'rgba(255,255,255,0.7)' : 'var(--text-muted)',
+        possibleKicker: peak ? 'var(--at-turquoise-light)' : 'var(--at-turquoise)',
+        possibleColor: peak ? '#fff' : 'var(--text-heading)',
+      });
+    });
+
+    return {
+      heroRoster: [
+        { icon: 'compass', label: 'Strategy & operations' },
+        { icon: 'shield-check', label: 'Build & security' },
+        { icon: 'graduation-cap', label: 'Team training' },
+      ],
+      reliefLines: stagger([
+        { strong: 'Hours back in the week', muted: 'not more to learn on top of everything else.' },
+        { strong: 'One team who actually knows your systems', muted: 'not five browser tabs of conflicting advice.' },
+        { strong: 'Decisions made with you', muted: 'not left for you to guess at alone.' },
+        { strong: 'Margins and output that move', muted: 'not \u201cAI adoption\u201d as a box to tick.' },
+        { strong: 'A plan that keeps you ahead', muted: 'not scrambling to catch up with everyone else\u2019s LinkedIn posts.' },
+      ], 60),
+      teamRoles: [
+        { icon: 'compass', kicker: 'The thinking', title: 'AI Strategist & Operations Partner', desc: 'Works out what\u2019s actually worth doing, and how it fits the way you run.', delay: 0 },
+        { icon: 'shield-check', kicker: 'The building', title: 'Developer & Security', desc: 'Makes it real — built properly, kept secure, safe to rely on.', delay: 100 },
+        { icon: 'graduation-cap', kicker: 'The enabling', title: 'Trainer', desc: 'Makes sure your team can actually use what\u2019s been built.', delay: 200 },
+      ],
+      tiers: tiers,
+      evidenceGroups: [
+        { label: 'FP Review', icon: 'clipboard-check', note: 'Phase 1 \u00b7 the audit that sets your tier', cols: 2, cases: [
+          { tag: 'Futureproofing', metric: '2.5', suffix: 'wks', label: 'kickoff to a board-ready 12-month roadmap', client: 'PointZeroGroup \u00b7 employer comms group', title: 'Understanding What Held PointZeroGroup Back', summary: 'A Phase 1 Review across three merged agencies \u2014 scored on all seven dimensions, with a sequenced 12-month roadmap delivered in two and a half weeks.', delay: 0 },
+          { tag: 'Futureproofing', metric: '86', suffix: '%', label: 'of the team already using AI, actively', client: 'SquareEye \u00b7 legal-sector web agency', title: 'Cutting Through the Noise, Getting Aligned', summary: 'Already ahead on AI but uncoordinated. A four-week Review joined it up \u2014 one managed platform, a clear information architecture, and a shared roadmap.', delay: 90 },
+        ] },
+        { label: 'FP Implementation', icon: 'wrench', note: 'Phase 2 \u00b7 what we built from the roadmap', cols: 3, cases: [
+          { tag: 'Futureproofing', metric: '4', suffix: 'hrs/wk', label: 'reclaimed per person, company-wide', client: 'Design & marketing agency \u00b7 60+ staff', title: 'AI, From Experimentation to Capability', summary: 'A governed, company-wide ChatGPT rollout \u2014 training, custom GPTs and AI-ready file structure \u2014 turning random individual use into a repeatable team capability.', delay: 0 },
+          { tag: 'Futureproofing', metric: '16', suffix: 'hrs/wk', label: 'of manual data entry removed', client: 'Content agency \u00b7 60+ staff', title: 'A Live Database That Maintains Itself', summary: 'Custom automation scraping 1,400+ listings across 32 sources into one accurate, always-current database the whole team relies on.', delay: 90 },
+          { tag: 'Futureproofing', metric: '34', suffix: '%', label: 'increase in average monthly leads', client: 'Device repair company', title: 'A Technical Overhaul Built to Scale', summary: 'A new website, an AI-driven leads funnel with automated booking, and an internal knowledge base \u2014 with 2.5 hours reclaimed per person each week.', delay: 180 },
+        ] },
+      ],
+      nextSteps: [
+        { icon: 'clipboard-check', tag: 'Phase 1', title: 'The Review', desc: 'A fixed-price, fixed-length audit that tells you exactly where you stand — in writing.', meta: 'From \u00a32,500 + VAT \u00b7 4\u20135 weeks', cta: 'Explore The Review', href: 'The Review.dc.html', delay: 0 },
+        { icon: 'wrench', tag: 'Phase 2', title: 'Ongoing Work', desc: 'Two ways to build what the Review found — advisory, or we build it for you.', meta: 'Advisory from \u00a3800 + VAT / month', cta: 'Explore Ongoing Work', href: 'Ongoing Work.dc.html', delay: 90 },
+        { icon: 'zap', tag: 'Start light', title: 'Automations', desc: 'Not ready for the full engagement? A half-day to align on what\u2019s worth automating first.', meta: '~\u00a3800 + VAT \u00b7 half-day', cta: 'Explore Automations', href: 'Automations.dc.html', delay: 180 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+</helmet>
+<div style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: {{ navBg }}; box-shadow: {{ navShadow }}; backdrop-filter: {{ navBlur }}; -webkit-backdrop-filter: {{ navBlur }}; transition: background 350ms ease, box-shadow 350ms ease; font-family: var(--font-sans);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 76px; display: flex; align-items: center; gap: 40px;">
+    <a href="Home.dc.html" data-cursor style="display: flex; align-items: center; flex: none;">
+      <img src="{{ logoSrc }}" alt="AgencyTech" style="height: 24px; display: block;">
+    </a>
+    <nav style="display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end;">
+      <a href="Home.dc.html" style="padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ homeColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">Home</a>
+
+      <div style="position: relative;" onMouseEnter="{{ openIt }}" onMouseLeave="{{ closeMenus }}">
+        <a href="IT Services.dc.html" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ itColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">IT Services
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
+        <sc-if value="{{ itOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 10px;">
+            <div style="width: 600px; background: var(--at-white); border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px;">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div class="at-eyebrow" style="padding: 6px 10px; font-size: 11px;">What We Cover</div>
+                <sc-for list="{{ itAnchorLinks }}" as="l" hint-placeholder-count="8">
+                  <a href="{{ l.href }}" data-cursor style="display: block; padding: 7px 10px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 500; color: var(--text-body); text-decoration: none; transition: background 150ms ease, color 150ms ease;" style-hover="background: var(--surface-subtle); color: var(--at-turquoise)">{{ l.label }}</a>
+                </sc-for>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border-default); padding-left: 28px;">
+                <div class="at-eyebrow" style="padding: 6px 10px; font-size: 11px;">Services</div>
+                <sc-for list="{{ itServiceLinks }}" as="l" hint-placeholder-count="3">
+                  <a href="{{ l.href }}" data-cursor style="display: block; padding: 9px 10px; border-radius: var(--radius-sm); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">
+                    <span style="display: block; font-size: 13.5px; font-weight: 600; color: var(--text-heading);">{{ l.label }}</span>
+                    <span style="display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px;">{{ l.sub }}</span>
+                  </a>
+                </sc-for>
+                <a href="IT Services.dc.html" data-cursor style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 10px; margin-top: 2px; font-size: 12.5px; font-weight: 700; color: var(--at-turquoise); text-decoration: none;">All services
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </a>
+                <a href="IT Case Studies.dc.html" data-cursor style="display: block; margin-top: 14px; padding: 16px; border-radius: var(--radius-sm); background: var(--at-cyprus); text-decoration: none; transition: background 200ms ease;" style-hover="background: var(--at-cyprus-light)">
+                  <span style="display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--at-turquoise-light);">Case Studies</span>
+                  <span style="display: flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 13px; font-weight: 600; color: #fff;">Results for agencies like yours
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="position: relative;" onMouseEnter="{{ openFp }}" onMouseLeave="{{ closeMenus }}">
+        <a href="Futureproofing About.dc.html" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ fpColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">Futureproofing Program
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 1px;"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
+        <sc-if value="{{ fpOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 10px;">
+            <div style="width: 460px; background: var(--at-white); border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px;">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div class="at-eyebrow" style="padding: 6px 10px; font-size: 11px;">The Program</div>
+                <sc-for list="{{ fpAboutLinks }}" as="l" hint-placeholder-count="2">
+                  <a href="{{ l.href }}" data-cursor style="display: block; padding: 9px 10px; border-radius: var(--radius-sm); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">
+                    <span style="display: block; font-size: 13.5px; font-weight: 600; color: var(--text-heading);">{{ l.label }}</span>
+                    <span style="display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px;">{{ l.sub }}</span>
+                  </a>
+                </sc-for>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--border-default); padding-left: 28px;">
+                <div class="at-eyebrow" style="padding: 6px 10px; font-size: 11px;">Services</div>
+                <sc-for list="{{ fpServiceLinks }}" as="l" hint-placeholder-count="3">
+                  <a href="{{ l.href }}" data-cursor style="display: block; padding: 9px 10px; border-radius: var(--radius-sm); text-decoration: none; transition: background 150ms ease;" style-hover="background: var(--surface-subtle)">
+                    <span style="display: block; font-size: 13.5px; font-weight: 600; color: var(--text-heading);">{{ l.label }}</span>
+                    <span style="display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px;">{{ l.sub }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <a href="Case Studies.dc.html" style="padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ csColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">Case Studies</a>
+      <a href="#" style="padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ aboutColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">About</a>
+      <a href="#" style="padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; text-decoration: none; color: {{ newsColor }}; transition: color 200ms ease;" style-hover="color: var(--at-turquoise)">News</a>
+    </nav>
+    <a href="#contact" style="flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; height: 44px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; text-decoration: none; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Book a Call</a>
+  </div>
+  <a href="AI Readiness Audit.dc.html" data-cursor style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 40px; background: linear-gradient(90deg, var(--at-cyprus) 0%, var(--at-turquoise) 100%); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: opacity 150ms ease;" style-hover="opacity: 0.92">
+    <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+    Free AI Readiness Mini-Audit — see exactly where you stand, in 5 minutes
+    <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+  </a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: 420}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;it&quot;, &quot;fp&quot;, &quot;case-studies&quot;, &quot;about&quot;, &quot;news&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;theme&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;light&quot;, &quot;dark&quot;], &quot;default&quot;: &quot;light&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, openMenu: null };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 32;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    clearTimeout(this._closeT);
+  }
+
+  renderVals() {
+    const theme = this.props.theme || 'light';
+    const active = this.props.active || '';
+    const { scrolled, openMenu } = this.state;
+    const dark = theme === 'dark' && !scrolled;
+
+    const base = dark ? 'rgba(255,255,255,0.88)' : 'var(--text-heading)';
+    const col = (key) => (active === key ? 'var(--at-turquoise)' : base);
+
+    const open = (m) => { clearTimeout(this._closeT); this.setState({ openMenu: m }); };
+
+    return {
+      navBg: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
+      navShadow: scrolled ? 'var(--shadow-md)' : 'none',
+      navBlur: scrolled ? 'blur(10px)' : 'none',
+      logoSrc: dark ? 'assets/logo_linear_dark.png' : 'assets/logo_linear_light.png',
+      homeColor: col('home'),
+      itColor: col('it'),
+      fpColor: col('fp'),
+      csColor: col('case-studies'),
+      aboutColor: col('about'),
+      newsColor: col('news'),
+      itOpen: openMenu === 'it',
+      fpOpen: openMenu === 'fp',
+      openIt: () => open('it'),
+      openFp: () => open('fp'),
+      closeMenus: () => {
+        clearTimeout(this._closeT);
+        this._closeT = setTimeout(() => this.setState({ openMenu: null }), 120);
+      },
+      itAnchorLinks: [
+        { label: 'Managed IT', href: 'IT Services.dc.html#managed-it' },
+        { label: 'Microsoft 365', href: 'IT Services.dc.html#microsoft-365' },
+        { label: 'Google Workspace', href: 'IT Services.dc.html#google-workspace' },
+        { label: 'Operational Apps', href: 'IT Services.dc.html#operational-apps' },
+        { label: 'VOIP', href: 'IT Services.dc.html#voip' },
+        { label: 'WiFi', href: 'IT Services.dc.html#wifi' },
+        { label: 'Connectivity & Broadband', href: 'IT Services.dc.html#connectivity' },
+        { label: 'Cyber Essentials Certification', href: 'IT Services.dc.html#cyber-essentials' },
+      ],
+      itServiceLinks: [
+        { label: 'Managed IT', sub: 'Proactive, fully managed support', href: 'IT Services.dc.html#managed-it' },
+        { label: 'Phishing Simulations', sub: 'Test and train your team', href: 'Phishing Simulations.dc.html' },
+        { label: 'IT Recycling', sub: 'Secure IT asset disposal', href: 'ITAD.dc.html' },
+      ],
+      fpAboutLinks: [
+        { label: 'About', sub: 'The Futureproofing Program', href: 'Futureproofing About.dc.html' },
+        { label: 'Case Studies', sub: 'Futureproofing in practice', href: 'Futureproofing Case Studies.dc.html' },
+      ],
+      fpServiceLinks: [
+        { label: 'The Review', sub: 'Phase 1 — where you stand', href: 'The Review.dc.html' },
+        { label: 'Ongoing Work', sub: 'Phase 2 — advisory & delivery', href: 'Ongoing Work.dc.html' },
+        { label: 'Automations', sub: 'Bespoke, one-off builds', href: 'Automations.dc.html' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

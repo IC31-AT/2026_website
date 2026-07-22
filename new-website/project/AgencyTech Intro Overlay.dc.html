@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="blobscene.js"></script>
+</helmet>
+
+<!-- Fixed top layer. pointer-events:none on the root so that once the overlay
+     dismisses, the site underneath is fully clickable. -->
+<div ref="{{ setRoot }}" style="position:fixed; inset:0; z-index:9999; pointer-events:none; font-family:'Manrope','Montserrat',system-ui,sans-serif;">
+
+  <div data-screen-label="Intro overlay" ref="{{ setOverlay }}" style="position:absolute; inset:0; background:#004040; overflow:hidden; pointer-events:auto;">
+
+    <!-- Generated stepped blob scenes, anchored top-right + bottom-left -->
+    <div style="position:absolute; inset:0; overflow:hidden;">
+      <div data-blob data-corner="tr" style="position:absolute; top:0; right:0; width:min(37vw,378px); height:min(37vw,378px); opacity:0; will-change:transform,opacity; background-image:{{ trBg }}; background-size:contain; background-repeat:no-repeat; background-position:top right;"></div>
+      <div data-blob data-corner="bl" style="position:absolute; bottom:0; left:0; width:min(61vw,630px); height:min(61vw,630px); opacity:0; will-change:transform,opacity; background-image:{{ blBg }}; background-size:contain; background-repeat:no-repeat; background-position:bottom left;"></div>
+    </div>
+
+    <!-- Logo lockup, centred -->
+    <div style="position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); z-index:3;">
+      <div ref="{{ setLockup }}" style="display:flex; align-items:center; gap:clamp(12px,2.2vw,28px); transform:translateX(0px); padding:0 16px; max-width:100vw; box-sizing:border-box;">
+        <img data-mark ref="{{ setMark }}" src="assets/mark-white.png" alt="" style="height:clamp(42px,8.4vw,100px); width:auto; display:block; flex:none;">
+        <div data-word ref="{{ setWord }}" style="font-weight:800; font-size:clamp(30px,6.6vw,82px); line-height:1; letter-spacing:-0.025em; white-space:nowrap; clip-path:inset(-0.35em 0% -0.35em 0);">
+          <span style="color:#FFFFFF;">Agency</span><span style="color:#2BBCBA;">Tech</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;frequency&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;session&quot;,&quot;always&quot;,&quot;once&quot;],&quot;default&quot;:&quot;session&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { trBg: '', blBg: '', seed: 1 };
+
+  setRoot = (el) => { this.root = el; };
+  setMark = (el) => { this.mark = el; };
+  setWord = (el) => { this.word = el; };
+  setLockup = (el) => { this.lockup = el; };
+  setOverlay = (el) => { this.overlay = el; };
+
+  // How often the intro shows:
+  //  - 'session' : once per browser tab session (default)
+  //  - 'always'  : every page load
+  //  - 'once'    : once ever, per device
+  get frequency() { return this.props.frequency || 'session'; }
+
+  componentDidMount() {
+    if (this.alreadySeen()) { this.hideRoot(); return; }
+    this.markSeen();
+    this.ensureBlobs(true);
+    this._t = setTimeout(() => this.play(), 60);
+    // Wall-clock backstop: never leave the page blocked if the animation
+    // timeline stalls (e.g. a never-painted / throttled tab). Well past the
+    // normal ~2.5s play, so it never triggers on the happy path.
+    this._safety = setTimeout(() => this.hideRoot(), 6000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this._t);
+    clearTimeout(this._safety);
+    (this._anims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+  }
+
+  alreadySeen() {
+    try {
+      if (this.frequency === 'always') return false;
+      const store = this.frequency === 'once' ? window.localStorage : window.sessionStorage;
+      return store.getItem('at_intro_seen') === '1';
+    } catch (e) { return false; }
+  }
+  markSeen() {
+    try {
+      if (this.frequency === 'always') return;
+      const store = this.frequency === 'once' ? window.localStorage : window.sessionStorage;
+      store.setItem('at_intro_seen', '1');
+    } catch (e) {}
+  }
+  hideRoot() { if (this.root) this.root.style.display = 'none'; }
+
+  ensureBlobs(newSeed) {
+    if (!window.BlobScene) {
+      if (!this._loading) {
+        this._loading = true;
+        const existing = document.querySelector('script[data-blobscene]');
+        const done = () => { this._loading = false; if (window.BlobScene) this.ensureBlobs(newSeed); };
+        if (existing) {
+          existing.addEventListener('load', done);
+        } else {
+          const s = document.createElement('script');
+          s.src = 'blobscene.js';
+          s.setAttribute('data-blobscene', '1');
+          s.onload = done;
+          document.head.appendChild(s);
+        }
+      }
+      return;
+    }
+    const ramp = ['#004B4B', '#016B6B', '#038281', '#069A98', '#2BBCBA'];
+    const base = newSeed ? (1 + Math.floor(Math.random() * 200)) : this.state.seed;
+    const gen = (corner, seed) => 'url("' + window.BlobScene.dataUri({
+      width: 900, height: 900, corner, layers: 5, points: 6,
+      jitter: 0.02, spread: 0.66, palette: { bg: 'transparent', ramp }, seed
+    }) + '")';
+    this.setState({ seed: base, trBg: gen('tr', base), blBg: gen('bl', base + 17) });
+  }
+
+  renderVals() {
+    return {
+      setRoot: this.setRoot,
+      setMark: this.setMark,
+      setWord: this.setWord,
+      setLockup: this.setLockup,
+      setOverlay: this.setOverlay,
+      trBg: this.state.trBg,
+      blBg: this.state.blBg,
+    };
+  }
+
+  async play() {
+    const { mark, word, lockup, overlay } = this;
+    if (!mark || !word || !lockup || !overlay) return;
+
+    (this._anims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    this._anims = [];
+    const A = [];
+    const push = (a) => { A.push(a); return a; };
+    const EO = 'cubic-bezier(0.22,0.61,0.36,1)';
+
+    try { if (document.fonts) await document.fonts.ready; } catch (e) {}
+    if (!this.mark) return;
+
+    overlay.style.transform = 'translateY(0)';
+    overlay.querySelectorAll('[data-blob]').forEach(el => { el.style.opacity = '0'; });
+
+    const cs = getComputedStyle(lockup);
+    const gap = parseFloat(cs.columnGap || cs.gap) || 24;
+    const wordW = word.getBoundingClientRect().width;
+    const shift = (gap + wordW) / 2;
+
+    // 1. icon drops into dead centre
+    push(mark.animate(
+      [{ opacity: 0, transform: 'translateY(-58px) scale(.86)' },
+       { opacity: 1, transform: 'translateY(0px) scale(1)' }],
+      { duration: 460, delay: 120, easing: EO, fill: 'both' }));
+
+    // 2. lockup slides left
+    push(lockup.animate(
+      [{ transform: `translateX(${shift}px)` },
+       { transform: 'translateX(0px)' }],
+      { duration: 480, delay: 600, easing: EO, fill: 'both' }));
+
+    // 3. wordmark wipes on to the right
+    push(word.animate(
+      [{ clipPath: 'inset(-0.35em 100% -0.35em 0)' },
+       { clipPath: 'inset(-0.35em 0% -0.35em 0)' }],
+      { duration: 500, delay: 640, easing: EO, fill: 'both' }));
+    push(word.animate(
+      [{ opacity: 0 }, { opacity: 1 }],
+      { duration: 180, delay: 640, easing: 'ease-out', fill: 'both' }));
+
+    // 4. corner blobs spread in
+    const from = { tr: [28, -28], bl: [-28, 28] };
+    overlay.querySelectorAll('[data-blob]').forEach((el, i) => {
+      const o = from[el.getAttribute('data-corner')] || [0, 0];
+      push(el.animate(
+        [{ opacity: 0, transform: `translate(${o[0]}%,${o[1]}%) scale(.72)` },
+         { opacity: 1, transform: 'translate(0%,0%) scale(1)' }],
+        { duration: 760, delay: 600 + i * 110, easing: EO, fill: 'both' }));
+    });
+
+    // 5. overlay wipes up, then the whole layer removes itself
+    const up = push(overlay.animate(
+      [{ transform: 'translateY(0)' },
+       { transform: 'translateY(-106%)' }],
+      { duration: 660, delay: 1820, easing: 'cubic-bezier(0.76,0,0.24,1)', fill: 'forwards' }));
+    up.finished.then(() => this.hideRoot()).catch(() => {});
+
+    this._anims = A;
+  }
+}
+</script>
+</body>
+</html>

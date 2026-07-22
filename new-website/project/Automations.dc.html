@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/styles.css">
+  <script src="_ds/new-callout-at-design-system-f716f78a-1199-4b73-9e33-d7ae54b19d7a/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style> body { margin: 0; background: #fff; } </style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--text-body); background: var(--at-white);">
+<dc-import name="Site Nav" active="fp" theme="light" hint-size="100%,76px"></dc-import>
+
+<!-- HERO -->
+<section data-screen-label="Hero" style="background: linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%);">
+  <div style="max-width: 820px; margin: 0 auto; padding: 176px 32px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px;">
+    <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--at-turquoise);"><span style="width: 7px; height: 7px; background: var(--at-turquoise); border-radius: 2px; transform: rotate(45deg);"></span>Start Light · The Activation Workshop</span>
+    <h1 style="margin: 0; font-size: 50px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Not Ready for the Full Engagement? Start With Half a Day.</h1>
+    <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--text-muted); max-width: 560px; text-wrap: pretty;">A half-day session that gets your management team aligned on what's actually worth automating first — before anyone commits to building anything.</p>
+  </div>
+</section>
+
+<!-- HALF-DAY, ONE OUTCOME -->
+<section data-screen-label="Format" style="background: #fff;">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 56px 32px 96px;">
+    <div data-reveal style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; background: var(--surface-subtle); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 40px 44px;">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;">
+        <span style="width: 52px; height: 52px; border-radius: 50%; background: var(--at-cyprus); color: var(--at-turquoise-light); display: inline-flex; align-items: center; justify-content: center;"><i data-lucide="clock" style="width: 24px; height: 24px;"></i></span>
+        <span style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Half a day</span>
+        <span style="font-size: 13px; color: var(--text-muted);">One room, your management team</span>
+      </div>
+      <span style="color: var(--at-faint);"><i data-lucide="arrow-right" style="width: 24px; height: 24px;"></i></span>
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;">
+        <span style="width: 52px; height: 52px; border-radius: 50%; background: var(--at-turquoise); color: #fff; display: inline-flex; align-items: center; justify-content: center;"><i data-lucide="list-checks" style="width: 24px; height: 24px;"></i></span>
+        <span style="font-size: 22px; font-weight: 800; color: var(--text-heading);">One outcome</span>
+        <span style="font-size: 13px; color: var(--text-muted);">An agreed Now / Next / Later view</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HAPPENS -->
+<section data-screen-label="What Happens" style="background: var(--surface-subtle); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 100px 32px;">
+    <div data-reveal style="display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin-bottom: 44px;">
+      <span class="at-eyebrow">What Happens in the Room</span>
+      <h2 style="margin: 0; font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; color: var(--text-heading);">Prioritise Together, Leave With a Plan</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+        <div data-reveal data-reveal-delay="{{ it.delay }}" style="background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 30px 28px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(6,154,152,0.10); display: inline-flex; align-items: center; justify-content: center; color: var(--at-turquoise);"><i data-lucide="{{ it.icon }}" style="width: 21px; height: 21px;"></i></span>
+          <h3 style="margin: 0; font-size: 17px; font-weight: 700; color: var(--text-heading);">{{ it.title }}</h3>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">{{ it.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING + CTA -->
+<section id="contact" data-screen-label="Pricing" style="background: #fff;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 100px 32px 108px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <span style="font-size: 20px; font-weight: 700; color: var(--text-muted);">~</span>
+        <span style="font-size: 56px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: var(--text-heading);">£800</span>
+        <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">+ VAT</span>
+      </div>
+      <p style="margin: 0; font-size: 15px; color: var(--text-muted);">Half-day session, plus a follow-up report.</p>
+      <h2 style="margin: 8px 0 0; font-size: 34px; line-height: 1.14; letter-spacing: -0.02em; font-weight: 800; color: var(--text-heading); text-wrap: balance;">Get the Room Aligned</h2>
+      <a href="Book The Review.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 32px; background: var(--accent); color: #fff; border-radius: var(--radius-sm); font-size: 15.5px; font-weight: 700; text-decoration: none; margin-top: 4px; transition: background 200ms ease, transform 200ms ease;" style-hover="background: var(--accent-hover); transform: scale(1.02)">Enquire About a Workshop <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i></a>
+      <span style="display: inline-flex; align-items: flex-start; gap: 8px; margin-top: 8px; font-size: 12px; line-height: 1.5; color: var(--at-faint); max-width: 460px; text-align: left;"><i data-lucide="info" style="width: 13px; height: 13px; flex: none; margin-top: 2px;"></i>Working draft: this page describes the Activation Workshop format. If Automations should cover a broader menu of one-off projects, this scope is still to be confirmed.</span>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import('./site-motion.js').then((m) => m.initMotion(document));
+  }
+  renderVals() {
+    return {
+      items: [
+        { icon: 'layout-grid', title: 'Live Prioritisation', desc: 'We work through a full board of deliverables and opportunities with your management team, live.', delay: 0 },
+        { icon: 'git-branch', title: 'Priority Workflows per Function', desc: 'What\u2019s realistic for each part of the business — not just what\u2019s on a wishlist.', delay: 90 },
+        { icon: 'list-checks', title: 'A Shared Now / Next / Later', desc: 'One agreed view the whole team builds together and actually owns.', delay: 180 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

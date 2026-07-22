@@ -1,0 +1,4 @@
+/* AgencyTech webfonts
+   Brand font: Manrope (loaded from Google Fonts — this is the real brand font, not a substitution).
+   Fallback order per guidelines: Montserrat, Inter, Futura, system sans. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap');

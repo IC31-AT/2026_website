@@ -1,0 +1,52 @@
+/* AgencyTech — Base element styles & typographic helpers.
+   Applies brand defaults; safe to ship to consumers. */
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background: var(--surface-page);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings — Manrope, tightened tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); font-weight: var(--fw-h1); }
+h2 { font-size: var(--fs-h2); font-weight: var(--fw-h2); }
+h3 { font-size: var(--fs-h3); font-weight: var(--fw-h3); }
+h4 { font-size: var(--fs-h4); font-weight: var(--fw-h4); }
+
+/* Eyebrow — semibold, tracked, used sparingly with H2 */
+.at-eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+/* Highlighted section — grey bg + standard border, for CTAs / next steps.
+   Use sparingly per guidelines. */
+.at-highlight {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
