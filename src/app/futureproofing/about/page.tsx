@@ -121,6 +121,9 @@ export default function FutureproofingAboutPage() {
           continuous scene, opaque sections (reveal, white CTA, footer) cover it. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={pageBlob} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top right', opacity: 0.5, pointerEvents: 'none', zIndex: 0 }} />
+      {/* Keep the very top solid dark green — masks the light turquoise blob
+          contours behind the hero, then fades to let the scene show through below. */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 640, background: 'linear-gradient(180deg, var(--at-cyprus) 0%, var(--at-cyprus) 14%, transparent 100%)', pointerEvents: 'none', zIndex: 0 }} />
 
       <SiteNav active="fp" theme="dark" />
 

@@ -121,6 +121,31 @@ const pricingFeatures = [
   'Quarterly business reviews',
 ];
 
+/* Full base-package inclusions, shown in the "What's Included" section. */
+const baseIncludes = [
+  'Password manager (2FA-enabled)',
+  'Email security — SPF / DKIM / DMARC management',
+  'MFA management & enforcement',
+  'Daily cloud backups — mail, files, calendar & collaboration data (Microsoft 365 or Google Workspace)',
+  'Centralised email signature management',
+  'Managed WiFi (subject to site survey)',
+  'Wired network / office ethernet (subject to site survey)',
+  'Network monitoring & alerting — switches, routers & access points, no separate tooling cost',
+  'New starter setup — no charge',
+  'Leaver / offboarding — no charge',
+  'Cloud admin & user creation, day-to-day (M365 or Google Workspace) — no charge',
+  'Ad-hoc documentation — security notes, network diagrams, compliance pro-formas — no charge',
+  'Standard support response: 2 hours, 9–5 weekdays',
+];
+
+/* Priced extras that sit outside the base package. */
+const addOns = [
+  { name: 'Managed 24/7 EDR', desc: 'Behavioural threat hunting, active response and a dedicated SOC — antivirus included.', price: '£7.76', unit: '/ user / month' },
+  { name: 'Managed phishing simulation & SAT', desc: 'Ongoing simulated phishing and security awareness training for your whole team.', price: '£1.90', unit: '/ user / month' },
+  { name: 'Cyber Essentials Basic + Plus', desc: 'Full certification support and assessment to get you badged and keep you compliant.', price: 'Annual fee', unit: '' },
+  { name: 'Internet leased line + failover', desc: 'Dedicated business connectivity with a failover line so you are never offline.', price: 'Per site survey', unit: '' },
+];
+
 const eyebrow = 'at-eyebrow';
 
 export default function ITServicesPage() {
@@ -359,8 +384,46 @@ export default function ITServicesPage() {
         </div>
       </section>
 
+      {/* 8b. WHAT'S INCLUDED */}
+      <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 1040, margin: '0 auto', padding: '104px 32px 40px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640, marginBottom: 44 }}>
+            <span className={eyebrow}>What&rsquo;s Included</span>
+            <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Exactly What&rsquo;s in the Package</h2>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Everything below is in the base price — no per-ticket charges, no surprise line items. Delivered identically whether you run Microsoft 365 or Google Workspace.</p>
+          </div>
+          <div data-reveal data-reveal-delay={90} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 40px' }}>
+            {baseIncludes.map((f) => (
+              <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-body)' }}><Icon name="check" size={16} style={{ color: 'var(--at-turquoise)', flex: 'none', marginTop: 2 }} />{f}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Add-ons */}
+        <div style={{ maxWidth: 1040, margin: '0 auto', padding: '32px 32px 96px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
+            <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: 'var(--text-heading)' }}>Available as Add-ons</h3>
+            <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-muted)' }}>Optional extras that sit outside the base package — add them when you need them.</p>
+          </div>
+          <div data-reveal data-reveal-delay={90} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+            {addOns.map((a) => (
+              <div key={a.name} style={{ display: 'flex', flexDirection: 'column', gap: 8, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '24px 24px' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>{a.name}</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 4, flex: 'none' }}>
+                    <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--at-turquoise)' }}>{a.price}</span>
+                    {a.unit && <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-muted)' }}>{a.unit}</span>}
+                  </span>
+                </div>
+                <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--text-muted)', textWrap: 'pretty' }}>{a.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 9. PRICING */}
-      <section style={{ background: '#fff' }}>
+      <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1040, margin: '0 auto', padding: '104px 32px 96px', display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 64, alignItems: 'center' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span className={eyebrow}>Pricing</span>
@@ -369,9 +432,21 @@ export default function ITServicesPage() {
             <p style={{ margin: 0, fontSize: 13, color: 'var(--at-faint)' }}>Billed monthly. No long lock-ins.</p>
           </div>
           <div data-reveal data-reveal-delay={100} style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '40px 38px', display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-              <span style={{ fontSize: 56, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£60</span>
-              <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-muted)' }}>/ team member / month</span>
+            <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <span style={{ fontSize: 56, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£60</span>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
+                </div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per full-time user</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <span style={{ fontSize: 56, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£50</span>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
+                </div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per freelancer</span>
+              </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 20px' }}>
               {pricingFeatures.map((f) => (

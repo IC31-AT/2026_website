@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import Link from 'next/link';
 import ImageSlot from './ImageSlot';
-import { ROUTES } from '@/lib/routes';
 
 /* Scroll-driven "From review → to implementation → and training" reveal. A tall
    wrapper pins a full-viewport stage; scroll progress swaps the headline phrase
@@ -74,12 +72,11 @@ export default function ReviewToTrainingReveal() {
   const reviewOpacity = 1 - ease(winT(p, 0.22, 0.3));
   const implementationOpacity = ease(winT(p, 0.3, 0.4)) * (1 - ease(winT(p, 0.54, 0.62)));
   const trainingOpacity = ease(winT(p, 0.62, 0.72)) * (1 - ease(winT(p, 0.88, 0.98)));
-  const pIn = ease(winT(p, 0.9, 1.0));
 
   const phrase: CSSProperties = { fontSize: 'clamp(40px,7vw,88px)', fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.02em' };
 
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', height: '420vh', fontFamily: 'var(--font-sans)' }}>
+    <div ref={wrapperRef} style={{ position: 'relative', height: '360vh', fontFamily: 'var(--font-sans)' }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
         {CARDS.map((_, i) => (
           <div key={i} style={cardStyle(i)}>
@@ -92,10 +89,6 @@ export default function ReviewToTrainingReveal() {
             <div style={{ ...phrase, opacity: reviewOpacity, color: '#FFFFFF' }}>From review</div>
             <div style={{ ...phrase, position: 'absolute', inset: 0, opacity: implementationOpacity, color: 'var(--at-turquoise-light)' }}>to implementation</div>
             <div style={{ ...phrase, position: 'absolute', inset: 0, opacity: trainingOpacity, color: 'var(--at-turquoise-light)' }}>and training</div>
-          </div>
-          <div style={{ marginTop: 28, pointerEvents: 'auto', zIndex: 8, position: 'relative', opacity: pIn, transform: `translateY(${(1 - pIn) * 20}px)` }}>
-            <p style={{ fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.78)', margin: '0 0 24px' }}>From review to implementation, our team turns audit findings into a working plan — the systems, tools and support to see it through.</p>
-            <Link href={ROUTES.theReview} data-hover="background: var(--accent-hover)" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--at-turquoise)', color: '#FFFFFF', textDecoration: 'none', fontWeight: 700, fontSize: 15, padding: '12px 22px', borderRadius: '0.25rem', transition: 'background 160ms ease-out' }}>See our process →</Link>
           </div>
         </div>
       </div>
