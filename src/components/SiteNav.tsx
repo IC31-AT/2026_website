@@ -166,10 +166,10 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
           </div>
 
           <Link href={ROUTES.caseStudies} data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('case-studies'))}>Case Studies</Link>
-          <a href="#" data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('about'))}>About</a>
+          <Link href={ROUTES.about} data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('about'))}>About</Link>
           <a href="#" data-hover="color: var(--at-turquoise)" style={navLinkStyle(col('news'))}>News</a>
         </nav>
-        <a href="#contact" className="at-nav-desktop" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 22px', height: 44, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call</a>
+        <Link href={ROUTES.contact} className="at-nav-desktop" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 22px', height: 44, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call</Link>
 
         {/* Burger — hidden on desktop, shown ≤900px via globals.css */}
         <button
@@ -260,12 +260,12 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
             )}
 
             <Link href={ROUTES.caseStudies} onClick={closeMobile} style={mLink}>Case Studies</Link>
-            <a href="#" onClick={closeMobile} style={mLink}>About</a>
+            <Link href={ROUTES.about} onClick={closeMobile} style={mLink}>About</Link>
             <a href="#" onClick={closeMobile} style={{ ...mLink, borderBottom: 'none' }}>News</a>
           </div>
 
           <div style={{ flex: 'none', padding: '16px 22px', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-            <a href="#contact" onClick={closeMobile} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 48, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>Book a Call</a>
+            <Link href={ROUTES.contact} onClick={closeMobile} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 48, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>Book a Call</Link>
           </div>
         </div>
         </div>,

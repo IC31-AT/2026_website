@@ -19,8 +19,12 @@ export default function SiteFooter() {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px clamp(20px, 5vw, 32px) 0' }}>
         <div className="at-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1.1fr 1fr 0.8fr 0.8fr 0.8fr', gap: 40, paddingBottom: 56 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18, paddingRight: 24 }}>
+            {/* Wordmark is width-driven (height:auto) so the global img{max-width:100%}
+                rule can never distort it; below ~520px it swaps to the icon-only mark. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/logo_linear_dark.png" alt="AgencyTech" style={{ height: 40, width: 'auto', alignSelf: 'flex-start' }} />
+            <img className="at-footer-logo-full" src="/assets/logo_linear_dark.png" alt="AgencyTech" style={{ width: 190, height: 'auto', alignSelf: 'flex-start' }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="at-footer-logo-icon" src="/assets/icon_dark.png" alt="AgencyTech" style={{ width: 44, height: 'auto', alignSelf: 'flex-start' }} />
             <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 260 }}>The strategic tech partner for creative agencies — running today, ready for tomorrow.</p>
             <a href="#" data-hover={hover} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 600, color: 'var(--at-turquoise-light)', textDecoration: 'none' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z" /></svg>
@@ -51,10 +55,10 @@ export default function SiteFooter() {
           </Col>
 
           <Col title="Company">
-            <a href="#" data-hover={hover} style={linkStyle}>About</a>
+            <Link href={ROUTES.about} data-hover={hover} style={linkStyle}>About</Link>
             <Link href={ROUTES.caseStudies} data-hover={hover} style={linkStyle}>Case Studies</Link>
             <a href="#" data-hover={hover} style={linkStyle}>News</a>
-            <a href="#contact" data-hover={hover} style={linkStyle}>Contact</a>
+            <Link href={ROUTES.contact} data-hover={hover} style={linkStyle}>Contact</Link>
           </Col>
 
           <Col title="Locations">

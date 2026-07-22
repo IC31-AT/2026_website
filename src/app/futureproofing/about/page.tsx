@@ -20,11 +20,14 @@ export const metadata: Metadata = {
     'The Futureproofing Program starts with a fixed-price audit — The Review — that scores where your agency stands today and hands you a prioritised 12-month roadmap.',
 };
 
-const assessed = [
-  { icon: 'git-fork', label: 'How decisions get made' },
-  { icon: 'database', label: 'Whether your data can be trusted' },
-  { icon: 'users', label: 'How your team works day to day' },
-  { icon: 'shield-check', label: 'Whether the right guardrails exist' },
+/* Process steps — "How It Runs", ported from The Review page and dark-themed
+   to sit on the Cyprus background of this page. */
+const steps = [
+  { num: '1', icon: 'messages-square', title: 'Interviews', desc: 'We talk to the people who actually run the work.', connector: true, delay: 0 },
+  { num: '2', icon: 'search', title: 'Systems Audit', desc: 'A full look at the tools and data underneath.', connector: true, delay: 90 },
+  { num: '3', icon: 'gauge', title: 'Scoring', desc: 'Seven dimensions, each scored 1–10 against fixed descriptors — from what we observe, not what’s claimed.', connector: true, delay: 180 },
+  { num: '4', icon: 'route', title: 'Roadmap Delivery', desc: 'A prioritised plan, in writing, handed over.', connector: true, delay: 270 },
+  { num: '5', icon: 'presentation', title: 'Executive Presentation', desc: 'Walked through with your leadership team.', connector: false, delay: 360 },
 ];
 
 type TierDef = {
@@ -152,33 +155,50 @@ export default function FutureproofingAboutPage() {
         <ReviewToTrainingReveal />
       </section>
 
-      {/* WHAT GETS ASSESSED */}
+      {/* HOW IT RUNS — process flow, ported from The Review (dark-themed) */}
       <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
-        <div style={{ position: 'relative', maxWidth: 900, margin: '0 auto', padding: '104px 32px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>What Gets Assessed</span>
-            <h2 style={{ margin: 0, fontSize: 34, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: '#fff', maxWidth: 640, textWrap: 'balance' }}>We Look at What Actually Determines Whether AI Sticks</h2>
-            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.65, color: 'rgba(255,255,255,0.78)', maxWidth: 640, textWrap: 'pretty' }}>We look at the areas that actually determine whether AI adoption sticks or stalls — things like how decisions get made, whether your data can be trusted, how your team actually works day to day, and whether the right guardrails exist before anything gets automated.</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
-              {assessed.map((a) => (
-                <span key={a.label} style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '10px 16px', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-pill)', background: 'var(--at-cyprus-light)', fontSize: 14, fontWeight: 600, color: '#fff' }}>
-                  <Icon name={a.icon} size={15} style={{ color: 'var(--at-turquoise-light)' }} />
-                  {a.label}
-                </span>
-              ))}
-            </div>
-            <p style={{ margin: '10px 0 0', fontSize: 13.5, color: 'rgba(255,255,255,0.55)', textWrap: 'pretty' }}>Each area is scored 1–10 against a fixed set of descriptors — based on what we observe on the ground, not what’s self-reported.</p>
+        <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '104px 32px 88px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640, marginBottom: 56 }}>
+            <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>How It Runs</span>
+            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: '#fff' }}>Five Weeks, Five Steps</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 0, alignItems: 'stretch' }}>
+            {steps.map((s) => (
+              <div key={s.num} data-reveal data-reveal-delay={s.delay} style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 12, padding: '0 18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+                  <span style={{ width: 46, height: 46, flex: 'none', borderRadius: '50%', background: 'rgba(43,188,186,0.16)', color: 'var(--at-turquoise-light)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}><Icon name={s.icon} size={21} /></span>
+                  {s.connector && (
+                    <span style={{ flex: 1, height: 2, background: 'rgba(255,255,255,0.22)' }} />
+                  )}
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)' }}>Step {s.num}</span>
+                <h3 style={{ margin: 0, fontSize: 17, lineHeight: 1.2, fontWeight: 700, color: '#fff' }}>{s.title}</h3>
+                <p style={{ margin: 0, fontSize: 13, lineHeight: 1.55, color: 'rgba(255,255,255,0.7)', textWrap: 'pretty' }}>{s.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* TIER LADDER — full depth */}
+      {/* HOW WE SCORE IT — scoring narrative merged with the four-tier ladder */}
       <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640, marginBottom: 56 }}>
-            <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>The Four Tiers</span>
-            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: '#fff' }}>The Results Compound as You Climb</h2>
-            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'var(--text-on-dark-muted)', textWrap: 'pretty' }}>The Review places you in one of four tiers — set by your weakest dimension, not an average, so one critical gap is what holds you back. Every tier up is a step up in margin, capacity or revenue; each unlocks a bigger result than the one before.</p>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 660, marginBottom: 40 }}>
+            <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>How We Score It</span>
+            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: '#fff' }}>A Number You Can Stand Behind</h2>
+            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'var(--text-on-dark-muted)', textWrap: 'pretty' }}>We score your business across seven dimensions of AI readiness — adapted from our UWE licence — each rated 1–10 against a fixed set of descriptors. The score reflects what we observe on the ground, not what a business believes about itself. Those seven scores place you in one of four tiers.</p>
+          </div>
+
+          <div data-reveal style={{ display: 'flex', gap: 20, alignItems: 'flex-start', padding: '30px 32px', marginBottom: 56, background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)' }}>
+            <span style={{ flex: 'none', width: 46, height: 46, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.16)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="trending-down" size={22} /></span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <h3 style={{ margin: 0, fontSize: 19, fontWeight: 700, color: '#fff' }}>Your tier is set by your weakest dimension — not an average</h3>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, color: 'rgba(255,255,255,0.78)', textWrap: 'pretty' }}>One critical gap holds the whole business back, however strong everything else looks. A business can score well on culture and ethics and still be pinned to the lowest tier by a weak strategy or data foundation. It’s walk-before-you-run, built into the maths — and it’s exactly what tells you where to start.</p>
+            </div>
+          </div>
+
+          <div data-reveal style={{ maxWidth: 640, marginBottom: 56 }}>
+            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'var(--text-on-dark-muted)', textWrap: 'pretty' }}>Those four tiers aren’t just labels — the results compound as you climb. Every tier up is a step up in margin, capacity or revenue; each unlocks a bigger result than the one before.</p>
           </div>
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, alignItems: 'end', paddingBottom: 8 }}>
             <svg viewBox={tierArrow.viewBox} preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none', zIndex: 0 }}>

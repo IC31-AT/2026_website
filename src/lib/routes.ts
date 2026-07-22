@@ -13,6 +13,8 @@ export const ROUTES = {
   automations: '/automations',
   bookTheReview: '/book-the-review',
   aiReadinessAudit: '/ai-readiness-audit',
+  about: '/about',
+  contact: '/contact',
   // Case studies now live on one filterable page; the category query pre-selects
   // a filter without splitting them across separate URLs.
   caseStudies: '/case-studies',
@@ -37,6 +39,9 @@ const DC_TO_ROUTE: Record<string, string> = {
   'Automations': ROUTES.automations,
   'Book The Review': ROUTES.bookTheReview,
   'AI Readiness Audit': ROUTES.aiReadinessAudit,
+  'About Us': ROUTES.about,
+  'Contact': ROUTES.contact,
+  'Get in Touch': ROUTES.contact,
   'Case Studies': ROUTES.caseStudies,
   'Case Study PointZeroGroup': ROUTES.caseStudyPointZeroGroup,
   'Case Study SquareEye': ROUTES.caseStudySquareEye,

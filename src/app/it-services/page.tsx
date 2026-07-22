@@ -229,12 +229,16 @@ export default function ITServicesPage() {
 
       {/* 3. TECHNOLOGY PARTNERS */}
       <section style={{ marginTop: 64, borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)', background: 'var(--surface-subtle)', padding: '30px 0' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', gap: 40 }}>
           <span style={{ flex: 'none', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Technology Partners</span>
-          {partnerLogos.map((logo) => (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img key={logo.name} src={logo.src} alt={logo.name} data-hover="opacity: 1; filter: grayscale(0)" style={{ height: 24, width: 'auto', objectFit: 'contain', filter: 'grayscale(1)', opacity: 0.5, transition: 'opacity 200ms ease, filter 200ms ease' }} />
-          ))}
+          <div style={{ flex: 1, minWidth: 0, overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 48, width: 'max-content', animation: 'at-marquee 32s linear infinite' }}>
+              {partnerLogos.concat(partnerLogos).map((logo, i) => (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img key={`${logo.name}-${i}`} src={logo.src} alt={logo.name} data-hover="opacity: 1; filter: grayscale(0)" style={{ height: 24, width: 'auto', objectFit: 'contain', filter: 'grayscale(1)', opacity: 0.5, transition: 'opacity 200ms ease, filter 200ms ease' }} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -244,11 +248,10 @@ export default function ITServicesPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
             <span className={eyebrow}>When Something Breaks</span>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginTop: 10 }}>
-              <span style={{ fontSize: 96, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>&lt;</span>
-              <span data-countup={30} style={{ fontSize: 176, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.05em', color: 'var(--at-turquoise)' }}>30</span>
+              <span data-countup={8} style={{ fontSize: 176, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.05em', color: 'var(--at-turquoise)' }}>8</span>
               <span style={{ fontSize: 40, lineHeight: 1, fontWeight: 700, color: 'var(--text-heading)', marginLeft: 10 }}>minutes</span>
             </div>
-            <p style={{ margin: '12px 0 0', fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 440, textWrap: 'balance' }}>Target response time for critical issues — a named account manager, not a ticket queue.</p>
+            <p style={{ margin: '12px 0 0', fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 440, textWrap: 'balance' }}>Average response time across all tickets — a named account manager, not a ticket queue.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginTop: 48, width: '100%', maxWidth: 760 }}>
               {slaTiers.map((t) => (
                 <div key={t.label} style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 16px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', textAlign: 'left' }}>

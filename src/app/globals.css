@@ -45,6 +45,9 @@ img, video { max-width: 100%; }
 /* Burger nav: hidden on desktop, shown on tablet/mobile. */
 .at-nav-burger { display: none; }
 
+/* Footer brand: full wordmark by default, icon-only mark on very narrow screens. */
+.at-footer-logo-icon { display: none; }
+
 @media (max-width: 900px) {
   /* Prevent residual sideways scroll from any fixed-width block.
      'clip' (not 'hidden') keeps position: sticky working. */
@@ -68,6 +71,13 @@ img, video { max-width: 100%; }
 
 @media (max-width: 600px) {
   .at-audit-bar { font-size: 12px !important; }
+}
+
+@media (max-width: 520px) {
+  /* Below this the footer's first column is too narrow for the wordmark —
+     swap to the square icon mark so nothing gets squashed. */
+  .at-footer-logo-full { display: none !important; }
+  .at-footer-logo-icon { display: block !important; }
 }
 
 /* Home hero — bespoke mobile layout: the whole stack (text + buttons +

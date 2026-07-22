@@ -84,18 +84,18 @@ const eyebrow = 'at-eyebrow';
 export default function FutureproofingPage() {
   return (
     <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
-      <SiteNav active="fp" theme="light" />
+      <SiteNav active="fp" theme="dark" />
 
       {/* 1. HERO */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%)' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '176px 32px 104px', display: 'grid', gridTemplateColumns: '1.08fr 0.92fr', gap: 72, alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-            <span className={eyebrow}>Futureproofing Program</span>
-            <h1 style={{ margin: 0, fontSize: 56, lineHeight: 1.06, letterSpacing: '-0.025em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Stop Feeling Behind on AI. Start Feeling Ready for It.</h1>
-            <p style={{ margin: 0, fontSize: 18.5, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 500, textWrap: 'pretty' }}>A structured path to AI readiness — built and run by the people who already keep your systems secure, not a chatbot bolted on by strangers.</p>
+            <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>Futureproofing Program</span>
+            <h1 style={{ margin: 0, fontSize: 56, lineHeight: 1.06, letterSpacing: '-0.025em', fontWeight: 800, color: '#fff', textWrap: 'balance' }}>Stop Feeling Behind on AI. Start Feeling Ready for It.</h1>
+            <p style={{ margin: 0, fontSize: 18.5, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 500, textWrap: 'pretty' }}>A structured path to AI readiness — built and run by the people who already keep your systems secure, not a chatbot bolted on by strangers.</p>
             <div style={{ display: 'flex', gap: 14, marginTop: 6, flexWrap: 'wrap' }}>
               <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review</Link>
-              <Link href={ROUTES.futureproofingAbout} data-hover="background: var(--surface-subtle); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'transparent', color: 'var(--text-heading)', border: '2px solid var(--border-strong)', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>See how it works</Link>
+              <Link href={ROUTES.futureproofingAbout} data-hover="background: var(--at-cyprus-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'transparent', color: '#fff', border: '2px solid var(--border-on-dark)', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>See how it works</Link>
             </div>
           </div>
           <div style={{ position: 'relative' }}>
