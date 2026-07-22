@@ -79,7 +79,7 @@ export default function ReviewToTrainingReveal() {
   const phrase: CSSProperties = { fontSize: 'clamp(40px,7vw,88px)', fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.02em' };
 
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', height: '420vh', fontFamily: "'Manrope','Montserrat',system-ui,sans-serif" }}>
+    <div ref={wrapperRef} style={{ position: 'relative', height: '420vh', fontFamily: 'var(--font-sans)' }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
         {CARDS.map((_, i) => (
           <div key={i} style={cardStyle(i)}>

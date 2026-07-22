@@ -96,7 +96,7 @@ export default function IntroOverlay({ frequency = 'session' }: { frequency?: 's
   }, [frequency]);
 
   return (
-    <div ref={rootRef} style={{ position: 'fixed', inset: 0, zIndex: 9999, pointerEvents: 'none', fontFamily: "'Manrope','Montserrat',system-ui,sans-serif" }}>
+    <div ref={rootRef} style={{ position: 'fixed', inset: 0, zIndex: 9999, pointerEvents: 'none', fontFamily: 'var(--font-sans)' }}>
       <div ref={overlayRef} style={{ position: 'absolute', inset: 0, background: '#004040', overflow: 'hidden', pointerEvents: 'auto' }}>
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
           <div data-blob data-corner="tr" style={{ position: 'absolute', top: 0, right: 0, width: 'min(37vw,378px)', height: 'min(37vw,378px)', opacity: 0, willChange: 'transform,opacity', backgroundImage: bgs.tr, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'top right' }} />

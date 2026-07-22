@@ -1,6 +1,8 @@
 /* AgencyTech 2026 — global stylesheet.
    Fonts + design-system tokens first, then site-wide helpers and keyframes. */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap');
+/* Manrope = brand font. Montserrat + Inter = brand fallbacks #1/#2 (loaded so
+   they resolve without local install); Futura (#3) stays a system fallback. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 @import '../styles/tokens/colors.css';
 @import '../styles/tokens/typography.css';
 @import '../styles/tokens/spacing.css';
