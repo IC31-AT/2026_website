@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Icon from './Icon';
 import { ROUTES } from '@/lib/routes';
@@ -37,7 +38,11 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
   const [openMenu, setOpenMenu] = useState<null | 'it' | 'fp'>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [acc, setAcc] = useState<null | 'it' | 'fp'>(null);
+  const [mounted, setMounted] = useState(false);
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  // Portal the mobile drawer to <body> only after mount (avoids SSR mismatch).
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);

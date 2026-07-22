@@ -208,7 +208,7 @@ export default function FutureproofingAboutPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section id="contact" style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
+      <section id="contact" style={{ position: 'relative', zIndex: 1, background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '100px 32px 108px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>See Where You Land</h2>
@@ -218,7 +218,9 @@ export default function FutureproofingAboutPage() {
         </div>
       </section>
 
-      <SiteFooter />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <SiteFooter />
+      </div>
     </div>
   );
 }
