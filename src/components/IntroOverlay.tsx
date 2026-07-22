@@ -11,7 +11,7 @@ export default function IntroOverlay({ frequency = 'session' }: { frequency?: 's
   const overlayRef = useRef<HTMLDivElement>(null);
   const lockupRef = useRef<HTMLDivElement>(null);
   const markRef = useRef<HTMLImageElement>(null);
-  const wordRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLImageElement>(null);
   const [bgs, setBgs] = useState<{ tr: string; bl: string }>({ tr: '', bl: '' });
 
   useEffect(() => {
@@ -106,9 +106,10 @@ export default function IntroOverlay({ frequency = 'session' }: { frequency?: 's
           <div ref={lockupRef} style={{ display: 'flex', alignItems: 'center', gap: 'clamp(12px,2.2vw,28px)', transform: 'translateX(0px)', padding: '0 16px', maxWidth: '100vw', boxSizing: 'border-box' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img ref={markRef} data-mark src="/assets/mark-white.png" alt="" style={{ height: 'clamp(42px,8.4vw,100px)', width: 'auto', display: 'block', flex: 'none' }} />
-            <div ref={wordRef} data-word style={{ fontWeight: 800, fontSize: 'clamp(30px,6.6vw,82px)', lineHeight: 1, letterSpacing: '-0.025em', whiteSpace: 'nowrap', clipPath: 'inset(-0.35em 0% -0.35em 0)' }}>
-              <span style={{ color: '#FFFFFF' }}>Agency</span><span style={{ color: '#2BBCBA' }}>Tech</span>
-            </div>
+            {/* Real AgencyTech logotype (cropped from the brand logo asset), not re-typeset.
+                aspect-ratio keeps the width measurable before the image loads. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img ref={wordRef} data-word src="/assets/wordmark-white.png" alt="AgencyTech" style={{ height: 'clamp(30px,6vw,72px)', width: 'auto', aspectRatio: '2760 / 472', display: 'block', flex: 'none', clipPath: 'inset(-2% 0% -2% 0)' }} />
           </div>
         </div>
       </div>
