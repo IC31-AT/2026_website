@@ -190,16 +190,18 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
         <Icon name="arrow-right" size={14} />
       </Link>
 
-      {/* ---- Mobile slide-in panel ---- */}
-      <div
-        onClick={closeMobile}
-        aria-hidden={!mobileOpen}
-        style={{
-          position: 'fixed', inset: 0, zIndex: 1100, background: 'rgba(0,20,20,0.5)',
-          opacity: mobileOpen ? 1 : 0, pointerEvents: mobileOpen ? 'auto' : 'none',
-          transition: 'opacity 260ms ease', backdropFilter: mobileOpen ? 'blur(2px)' : 'none',
-        }}
-      >
+      {/* ---- Mobile slide-in panel — portaled to <body> so no page-level
+           stacking context can ever trap it behind page content ---- */}
+      {mounted && createPortal(
+        <div
+          onClick={closeMobile}
+          aria-hidden={!mobileOpen}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 2000, background: 'rgba(0,20,20,0.5)',
+            opacity: mobileOpen ? 1 : 0, pointerEvents: mobileOpen ? 'auto' : 'none',
+            transition: 'opacity 260ms ease', backdropFilter: mobileOpen ? 'blur(2px)' : 'none',
+          }}
+        >
         <div
           onClick={(e) => e.stopPropagation()}
           role="dialog"
@@ -266,7 +268,9 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
             <a href="#contact" onClick={closeMobile} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 48, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>Book a Call</a>
           </div>
         </div>
-      </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
