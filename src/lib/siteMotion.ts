@@ -39,16 +39,24 @@ export function teardown(): void {
 /* Manually-scrolled carousel that feels infinite. */
 function initLoopCarousel(root: Document | HTMLElement, signal: AbortSignal) {
   root.querySelectorAll<HTMLElement>('[data-loop-carousel]').forEach((el) => {
-    const half = () => el.scrollWidth / 2;
-    const max = () => el.scrollWidth - el.clientWidth;
+    // The carousel may lay out horizontally (default) or vertically (e.g. the
+    // "More From Our Clients" cards on mobile). Pick the scroll axis from the
+    // current flex direction so the infinite-loop maths works either way.
+    const vertical = getComputedStyle(el).flexDirection === 'column';
+    const size = () => (vertical ? el.scrollHeight : el.scrollWidth);
+    const client = () => (vertical ? el.clientHeight : el.clientWidth);
+    const pos = () => (vertical ? el.scrollTop : el.scrollLeft);
+    const setPos = (v: number) => { if (vertical) el.scrollTop = v; else el.scrollLeft = v; };
+    const half = () => size() / 2;
+    const max = () => size() - client();
     const h = half();
     if (!h) return;
-    el.scrollLeft = h / 2;
+    setPos(h / 2);
     el.addEventListener('scroll', () => {
       const hw = half();
       if (!hw) return;
-      if (el.scrollLeft < 4) el.scrollLeft += hw;
-      else if (el.scrollLeft > max() - 4) el.scrollLeft -= hw;
+      if (pos() < 4) setPos(pos() + hw);
+      else if (pos() > max() - 4) setPos(pos() - hw);
     }, { passive: true, signal });
   });
 }

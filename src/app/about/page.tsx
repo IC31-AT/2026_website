@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
+import FaqAccordion from '@/components/FaqAccordion';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import { ROUTES } from '@/lib/routes';
@@ -190,6 +191,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FaqAccordion />
 
       <SiteFooter />
     </div>

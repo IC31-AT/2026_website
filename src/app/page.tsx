@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
+import FaqAccordion from '@/components/FaqAccordion';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import IntroOverlay from '@/components/IntroOverlay';
@@ -9,7 +10,7 @@ import { dcHref } from '@/lib/routes';
 const logos = [
   { name: 'Bristol Creative Industries', src: '/assets/partner-logos/bristol-creative-industries.png' },
   { name: 'Business West', src: '/assets/partner-logos/businesswest.webp' },
-  { name: 'Claude', src: '/assets/partner-logos/claude.png' },
+  { name: 'Claude Partner Network', src: '/assets/partner-logos/claude-partner-network.webp' },
   { name: 'NinjaOne', src: '/assets/partner-logos/ninjaone.png' },
   { name: 'Apple', src: '/assets/partner-logos/apple-business.png' },
   { name: 'Google', src: '/assets/partner-logos/google.png' },
@@ -64,19 +65,19 @@ const moreQuotesLoop = moreQuotes.concat(moreQuotes);
 const testimonials = [
   {
     index: '01', isVideo: true, isImage: false, slotId: 'home-tst-cl', mediaPlaceholder: '',
-    quote: '“Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems, and the integrated approach to technology and AI has helped us strengthen our operations, bring structure to how we use our tools, automate admin, and start using AI confidently across the team.”',
+    quote: '“AgencyTech has taken real pressure off our leadership team and given us genuine peace of mind on cybersecurity. Support is fast and proactive — issues get solved before they become problems — and their integrated approach has us using AI confidently across the team.”',
     name: 'Charlotte Laing', nameNote: '', role: 'Founder & Director · The Content Emporium',
     statValue: '84', statLabel: 'person agency — IT, security & AI training all under one roof',
   },
   {
     index: '02', isVideo: false, isImage: true, slotId: 'home-tst-mb', mediaPlaceholder: 'Photo — Mark Beavan / PointZeroGroup',
-    quote: '“Within two and a half weeks they’d spoken to the whole team, mapped every tool we used, and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.”',
+    quote: '“Within two and a half weeks they’d mapped every tool we used and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.”',
     name: 'Mark Beavan', nameNote: '', role: 'Managing Director · PointZeroGroup',
     statValue: '7', statLabel: 'dimensions of AI readiness mapped in Phase 1',
   },
   {
     index: '03', isVideo: false, isImage: true, slotId: 'home-tst-3', mediaPlaceholder: 'Photo — The Harbour',
-    quote: '“AgencyTech feel like an extension of our team. They’ve strengthened our Microsoft 365 security, supported us through licensing changes, reduced risk by cleaning up legacy accounts, and provided hands-on IT support when we’ve needed it. The client portal and clear guidance give us confidence that everything is managed properly. Their support has been professional and genuinely valued.”',
+    quote: '“AgencyTech feel like an extension of our team. They’ve strengthened our Microsoft 365 security, cleaned up legacy accounts, and been there for hands-on support whenever we’ve needed it. Everything is managed properly — professional, and genuinely valued.”',
     name: 'The Harbour', nameNote: '', role: 'Charity · Microsoft 365 security overhaul',
     statValue: '56%', statLabel: 'improvement in Microsoft Secure Score',
   },
@@ -202,10 +203,10 @@ export default function HomePage() {
                 <span style={{ position: 'absolute', top: 32, left: 32, zIndex: 2, fontSize: 12, fontWeight: 800, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.85)', background: 'rgba(0,64,64,0.55)', padding: '5px 11px', borderRadius: 'var(--radius-pill)', backdropFilter: 'blur(4px)' }}>{t.index}</span>
               </div>
               {/* QUOTE + CALLOUT STAT — full-bleed right half */}
-              <div style={{ background: '#fff', padding: '0 100px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 30 }}>
+              <div className="at-tst-quote" style={{ background: '#fff', padding: 'clamp(28px, 6vw, 100px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 'clamp(18px, 2.4vw, 30px)' }}>
                 <Icon name="quote" size={34} color="var(--at-turquoise)" style={{ opacity: 0.5 }} />
-                <blockquote style={{ margin: 0, fontSize: 30, lineHeight: 1.42, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>{t.quote}</blockquote>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 20, paddingTop: 26, borderTop: '1px solid var(--border-default)' }}>
+                <blockquote style={{ margin: 0, fontSize: 'clamp(18px, 2.3vw, 30px)', lineHeight: 1.42, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>{t.quote}</blockquote>
+                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 20, paddingTop: 26, borderTop: '1px solid var(--border-default)' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>{t.name} <span style={{ fontWeight: 500, color: 'var(--at-faint)', fontSize: 12.5 }}>{t.nameNote}</span></span>
                     <span style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>{t.role}</span>
@@ -227,9 +228,9 @@ export default function HomePage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 560, marginBottom: 48 }}>
             <span className={eyebrow}>More From Our Clients</span>
           </div>
-          <div data-loop-carousel style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 10, margin: '0 -32px', paddingLeft: 32, paddingRight: 32, scrollbarWidth: 'none' }}>
+          <div data-loop-carousel className="at-mq-carousel" style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 10, margin: '0 -32px', paddingLeft: 32, paddingRight: 32, scrollbarWidth: 'none' }}>
             {moreQuotesLoop.map((mq, i) => (
-              <div key={`${mq.name}-${i}`} style={{ flex: 'none', width: 'calc((100% - 60px) / 4)', display: 'flex', flexDirection: 'column', gap: 16, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '28px 26px' }}>
+              <div key={`${mq.name}-${i}`} className="at-mq-card" style={{ flex: 'none', width: 'calc((100% - 60px) / 4)', display: 'flex', flexDirection: 'column', gap: 16, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '28px 26px' }}>
                 <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)', background: 'rgba(6,154,152,0.08)', borderRadius: 'var(--radius-pill)', padding: '5px 12px' }}>{mq.tag}</span>
                 <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-body)', textWrap: 'pretty', flex: 1 }}>&quot;{mq.quote}&quot;</p>
                 {mq.hasLogo && (
@@ -309,6 +310,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FaqAccordion />
 
       <SiteFooter />
 

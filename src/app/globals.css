@@ -107,3 +107,31 @@ img, video { max-width: 100%; }
   .at-hero-badge-l { left: 12px !important; bottom: 12px !important; min-width: 0 !important; }
   .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
 }
+
+/* Testimonial pinned stack on mobile: the 2-col grid collapses to 1 col,
+   leaving the media half at ~0 height. Let the quote fill and center within
+   the pinned 100vh card so it never spills past the fold. */
+@media (max-width: 640px) {
+  [data-tcard] { align-content: center; }
+  .at-tst-quote { min-height: 100vh; padding-left: 24px !important; padding-right: 24px !important; }
+}
+
+/* "More From Our Clients" carousel: on desktop each card is a quarter of the
+   row (4 up, scrolls horizontally). Once that width would start squeezing the
+   quotes into narrow strips, flip the whole thing to a vertical carousel —
+   full-width horizontal cards that scroll/swipe up-down inside a fixed box,
+   ~2 rows in view at a time. The looping JS is axis-aware (see siteMotion.ts). */
+@media (max-width: 900px) {
+  .at-mq-carousel {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    max-height: 520px;
+    scroll-snap-type: y proximity;
+    margin: 0 !important;
+    padding: 0 4px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .at-mq-card { width: 100% !important; scroll-snap-align: start; }
+}

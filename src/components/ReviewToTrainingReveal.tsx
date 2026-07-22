@@ -58,8 +58,7 @@ export default function ReviewToTrainingReveal() {
     const start = GROUP_STARTS[group] + within * 0.05;
     const end = start + 0.16;
     const tIn = ease(winT(p, start, end));
-    const tOut = ease(winT(p, 0.88, 0.98));
-    const opacity = tIn * (1 - tOut);
+    const opacity = tIn; // no fade-out — the final scene stays until the pin releases
     const ty = (1 - tIn) * 60;
     return {
       position: 'absolute', left: `${c.left}%`, top: `${c.top}%`, width: c.w, height: c.h,
@@ -69,14 +68,14 @@ export default function ReviewToTrainingReveal() {
     };
   };
 
-  const reviewOpacity = 1 - ease(winT(p, 0.22, 0.3));
-  const implementationOpacity = ease(winT(p, 0.3, 0.4)) * (1 - ease(winT(p, 0.54, 0.62)));
-  const trainingOpacity = ease(winT(p, 0.62, 0.72)) * (1 - ease(winT(p, 0.88, 0.98)));
+  const reviewOpacity = 1 - ease(winT(p, 0.20, 0.28));
+  const implementationOpacity = ease(winT(p, 0.28, 0.38)) * (1 - ease(winT(p, 0.58, 0.66)));
+  const trainingOpacity = ease(winT(p, 0.66, 0.85)); // arrives near the end, then holds — no fade-out
 
   const phrase: CSSProperties = { fontSize: 'clamp(40px,7vw,88px)', fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.02em' };
 
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', height: '360vh', fontFamily: 'var(--font-sans)' }}>
+    <div ref={wrapperRef} style={{ position: 'relative', height: '300vh', fontFamily: 'var(--font-sans)' }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
         {CARDS.map((_, i) => (
           <div key={i} style={cardStyle(i)}>
