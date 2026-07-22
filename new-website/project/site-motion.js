@@ -364,26 +364,21 @@ function initCursor() {
 
 /* ----------------------------------------------------------------------------
    Page-wipe transition. Intercepts clicks on internal <a href="*.dc.html">
-   links: a brand wave washes up from the bottom to fully cover the screen,
-   the browser navigates, then the same wave recedes to reveal the new page.
-   The wave's organic crest reuses blobscene.js's tone-stepped layering
-   (Cyprus body, Turquoise mid, Turquoise-light leading edge) as a
-   horizontal band rather than a corner wedge.
+   links: two organic brand blobs grow from the bottom-left and top-right
+   corners until they meet and fully cover the viewport, the browser navigates,
+   then both blobs shrink back into their corners to reveal the new page.
+   Colors step through the same Cyprus -> Turquoise tone ramp used by
+   blobscene.js.
 ------------------------------------------------------------------------------ */
 const WIPE_STORE_KEY = 'at_wipe_pending';
 const WIPE_WRAP_ID = 'at-page-wipe';
-const WIPE_BAND = 220;        // px height of the organic wave band
-const WIPE_POINTS = 8;        // waviness resolution across the width
-const WIPE_JITTER_PX = 24;    // organic amplitude, shared across layers (keeps them parallel)
-const WIPE_LAYERS = [         // painted back-to-front: largest reach (leading tip) first
-  { depth: 40, color: '#2BBCBA' },   // Turquoise-light — leading edge
-  { depth: 110, color: '#069A98' },  // Turquoise — mid
-  { depth: 180, color: '#004040' }   // Cyprus — trailing, blends into the body below
-];
-const WIPE_BODY_COLOR = '#004040';
-const WIPE_COVER_MS = 320;
-const WIPE_REVEAL_MS = 360;
+const WIPE_R0 = 470;          // outer blob radius in its own 1000x1000 local box
+const WIPE_JITTER = 0.24;     // big organic lobes, not fine waviness
+const WIPE_POINTS = 7;        // fewer points -> chunkier "blob" silhouette
+const WIPE_COVER_MS = 560;
+const WIPE_REVEAL_MS = 600;
 const WIPE_EASE = 'cubic-bezier(0.22,0.61,0.36,1)';
+const WIPE_ROT_MID = 6;       // deg, subtle drift while covered
 const WIPE_FONT_WAIT_CAP_MS = 150;
 
 function mulberry32(a) {
@@ -397,40 +392,64 @@ function mulberry32(a) {
 
 function wr(n) { return Math.round(n * 10) / 10; }
 
-// Open Catmull-Rom -> cubic bezier through a left-to-right run of points.
-function wipeSmoothPath(pts) {
+// Closed Catmull-Rom loop through a ring of points (wraps around, no open ends).
+function wipeSmoothClosedPath(pts) {
+  const n = pts.length;
   let d = 'M ' + wr(pts[0].x) + ' ' + wr(pts[0].y);
-  for (let i = 0; i < pts.length - 1; i++) {
-    const p0 = pts[i - 1] || pts[i];
+  for (let i = 0; i < n; i++) {
+    const p0 = pts[(i - 1 + n) % n];
     const p1 = pts[i];
-    const p2 = pts[i + 1];
-    const p3 = pts[i + 2] || p2;
+    const p2 = pts[(i + 1) % n];
+    const p3 = pts[(i + 2) % n];
     const c1x = p1.x + (p2.x - p0.x) / 6, c1y = p1.y + (p2.y - p0.y) / 6;
     const c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
     d += ' C ' + wr(c1x) + ' ' + wr(c1y) + ' ' + wr(c2x) + ' ' + wr(c2y) + ' ' + wr(p2.x) + ' ' + wr(p2.y);
   }
-  return d;
+  return d + ' Z';
 }
 
-function buildWaveSvg(seed) {
-  const w = 1000;
-  const rng = mulberry32(Math.floor(seed) + 11);
-  const offsets = [];
-  for (let k = 0; k < WIPE_POINTS; k++) offsets.push((rng() * 2 - 1) * WIPE_JITTER_PX);
-  offsets[0] *= 0.35;
-  offsets[WIPE_POINTS - 1] *= 0.35; // settle at the screen edges, no seam glitch
+function getRamp() {
+  try {
+    const pal = window.BlobScene && window.BlobScene.PALETTES && window.BlobScene.PALETTES.brandTeal;
+    if (pal && pal.ramp && pal.ramp.length >= 5) return pal.ramp;
+  } catch (e) {}
+  return ['#004040', '#016B6B', '#038281', '#069A98', '#2BBCBA']; // brandTeal fallback
+}
+
+// Two nested closed blobs (a corner's own tone-stepped silhouette).
+function buildBlobSvg(seed, layers) {
+  const size = 1000, cx = 500, cy = 500;
+  const rng = mulberry32(Math.floor(seed) + 7);
+  const prof = [];
+  for (let k = 0; k < WIPE_POINTS; k++) prof.push(1 + (rng() * 2 - 1) * WIPE_JITTER);
 
   let paths = '';
-  WIPE_LAYERS.forEach((layer) => {
+  layers.forEach((layer) => {
     const pts = [];
     for (let k = 0; k < WIPE_POINTS; k++) {
-      pts.push({ x: (k / (WIPE_POINTS - 1)) * w, y: layer.depth + offsets[k] });
+      const th = (k / WIPE_POINTS) * Math.PI * 2;
+      const rad = layer.r * prof[k];
+      pts.push({ x: cx + Math.cos(th) * rad, y: cy + Math.sin(th) * rad });
     }
-    const d = wipeSmoothPath(pts) + ' L ' + w + ' ' + WIPE_BAND + ' L 0 ' + WIPE_BAND + ' Z';
-    paths += '<path d="' + d + '" fill="' + layer.color + '"></path>';
+    paths += '<path d="' + wipeSmoothClosedPath(pts) + '" fill="' + layer.color + '"></path>';
   });
-  return '<svg viewBox="0 0 ' + w + ' ' + WIPE_BAND + '" width="100%" height="' + WIPE_BAND +
-    '" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">' + paths + '</svg>';
+  return '<svg viewBox="0 0 ' + size + ' ' + size + '" width="' + size + '" height="' + size +
+    '" xmlns="http://www.w3.org/2000/svg" style="display:block;">' + paths + '</svg>';
+}
+
+// Minimum guaranteed radius across all angles (worst-case dent), used so each
+// blob fully covers its half of the viewport no matter how it's rotated.
+function minGuaranteedRadius() { return WIPE_R0 * (1 - WIPE_JITTER); }
+
+function finalScaleFor(x, y) {
+  const w = window.innerWidth, h = window.innerHeight;
+  const corners = [[0, 0], [w, 0], [0, h], [w, h]];
+  let maxD = 0;
+  corners.forEach(([cx, cy]) => {
+    const d = Math.hypot(cx - x, cy - y);
+    if (d > maxD) maxD = d;
+  });
+  return (maxD * 0.40) / minGuaranteedRadius();
 }
 
 function removeExistingWipe(doc) {
@@ -438,31 +457,50 @@ function removeExistingWipe(doc) {
   if (existing) existing.remove();
 }
 
-// panel: absolute, anchored to the wrap's bottom, taller than the viewport by
-// WIPE_BAND so translateY(0%) fully covers and translateY(100%) is fully hidden.
-function buildWipeContainer(doc, seed, startShown) {
+function makeBlobEl(doc, x, y, seed, layers, scale, rotate) {
+  const el = doc.createElement('div');
+  el.style.cssText = 'position:fixed;left:' + x + 'px;top:' + y + 'px;width:1000px;height:1000px;' +
+    'transform:translate(-50%,-50%) scale(' + scale + ') rotate(' + rotate + 'deg);transform-origin:center center;will-change:transform;';
+  el.innerHTML = buildBlobSvg(seed, layers);
+  return el;
+}
+
+// scaleFrac: 0 = collapsed into the corner, 1 = fully covering the viewport.
+function buildWipeContainer(doc, seed, scaleFrac, rot) {
   removeExistingWipe(doc);
+  const ramp = getRamp();
+  const w = window.innerWidth, h = window.innerHeight;
+  const blFull = finalScaleFor(0, h), trFull = finalScaleFor(w, 0);
+  const blScale = 0.03 + (blFull - 0.03) * scaleFrac;
+  const trScale = 0.03 + (trFull - 0.03) * scaleFrac;
+
   const wrap = doc.createElement('div');
   wrap.id = WIPE_WRAP_ID;
   wrap.setAttribute('aria-hidden', 'true');
   wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483647;pointer-events:none;overflow:hidden;';
 
-  const panel = doc.createElement('div');
-  panel.style.cssText = 'position:absolute;left:0;right:0;bottom:0;height:calc(100vh + ' + WIPE_BAND + 'px);' +
-    'transform:translateY(' + (startShown ? '0%' : '100%') + ');will-change:transform;';
+  // Solid Cyprus field: appears instantly so the viewport is fully covered
+  // the moment the wipe starts (guarantees coverage regardless of how far
+  // apart the two corner blobs are), while the blobs add organic color
+  // blooms near the corners on top of it.
+  const bg = doc.createElement('div');
+  bg.style.cssText = 'position:absolute;inset:0;background:' + ramp[0] + ';opacity:1;';
+  wrap.appendChild(bg);
 
-  const wave = doc.createElement('div');
-  wave.style.cssText = 'width:100%;height:' + WIPE_BAND + 'px;';
-  wave.innerHTML = buildWaveSvg(seed);
+  const bl = makeBlobEl(doc, 0, h, seed, [
+    { r: WIPE_R0, color: ramp[0] },
+    { r: WIPE_R0 * 0.6, color: ramp[2] }
+  ], blScale, rot);
+  const tr = makeBlobEl(doc, w, 0, seed + 1, [
+    { r: WIPE_R0, color: ramp[4] },
+    { r: WIPE_R0 * 0.6, color: ramp[3] }
+  ], trScale, -rot);
 
-  const body = doc.createElement('div');
-  body.style.cssText = 'position:absolute;left:0;right:0;top:' + WIPE_BAND + 'px;bottom:0;background:' + WIPE_BODY_COLOR + ';';
-
-  panel.appendChild(wave);
-  panel.appendChild(body);
-  wrap.appendChild(panel);
+  wrap.appendChild(bl);
+  wrap.appendChild(tr);
   (doc.body || doc.documentElement).appendChild(wrap);
-  return panel;
+
+  return { bg, bl, tr, blFull, trFull };
 }
 
 function waitForPaint(doc, cb) {
@@ -476,6 +514,37 @@ function waitForPaint(doc, cb) {
   else window.addEventListener('load', run, { once: true });
 }
 
+function animatePair(pair, fromRot, toRot, fromFrac, toFrac, duration, onDone, fadeBg) {
+  if (!pair.bl.animate || !pair.tr.animate) { onDone(); return; }
+  const blFrom = 0.03 + (pair.blFull - 0.03) * fromFrac, blTo = 0.03 + (pair.blFull - 0.03) * toFrac;
+  const trFrom = 0.03 + (pair.trFull - 0.03) * fromFrac, trTo = 0.03 + (pair.trFull - 0.03) * toFrac;
+  const a1 = pair.bl.animate(
+    [
+      { transform: 'translate(-50%,-50%) scale(' + blFrom + ') rotate(' + fromRot + 'deg)' },
+      { transform: 'translate(-50%,-50%) scale(' + blTo + ') rotate(' + toRot + 'deg)' }
+    ],
+    { duration, easing: WIPE_EASE, fill: 'forwards' }
+  );
+  const a2 = pair.tr.animate(
+    [
+      { transform: 'translate(-50%,-50%) scale(' + trFrom + ') rotate(' + (-fromRot) + 'deg)' },
+      { transform: 'translate(-50%,-50%) scale(' + trTo + ') rotate(' + (-toRot) + 'deg)' }
+    ],
+    { duration, easing: WIPE_EASE, fill: 'forwards' }
+  );
+  const anims = [a1.finished, a2.finished];
+  if (fadeBg && pair.bg.animate) {
+    const a3 = pair.bg.animate(
+      [{ opacity: fadeBg[0] }, { opacity: fadeBg[1] }],
+      { duration, easing: 'linear', fill: 'forwards' }
+    );
+    anims.push(a3.finished);
+  } else if (fadeBg) {
+    pair.bg.style.opacity = String(fadeBg[1]);
+  }
+  Promise.all(anims).then(onDone).catch(onDone);
+}
+
 function handlePendingWipeReveal(doc) {
   let pending;
   try { pending = JSON.parse(sessionStorage.getItem(WIPE_STORE_KEY) || 'null'); } catch (e) { pending = null; }
@@ -483,28 +552,17 @@ function handlePendingWipeReveal(doc) {
   try { sessionStorage.removeItem(WIPE_STORE_KEY); } catch (e) {}
 
   // Cover instantly (no transition) so nothing unstyled ever shows, then wait
-  // for full paint before washing back down.
-  const panel = buildWipeContainer(doc, pending.seed, true);
-  if (!panel.animate) { removeExistingWipe(doc); return; }
+  // for full paint before shrinking the blobs back into their corners.
+  const pair = buildWipeContainer(doc, pending.seed, 1, WIPE_ROT_MID);
 
   waitForPaint(doc, () => {
-    const anim = panel.animate(
-      [{ transform: 'translateY(0%)' }, { transform: 'translateY(100%)' }],
-      { duration: WIPE_REVEAL_MS, easing: WIPE_EASE, fill: 'forwards' }
-    );
-    const done = () => removeExistingWipe(doc);
-    anim.finished.then(done).catch(done);
+    animatePair(pair, WIPE_ROT_MID, 0, 1, 0, WIPE_REVEAL_MS, () => removeExistingWipe(doc), [1, 0]);
   });
 }
 
 function runWipeCover(doc, seed, onDone) {
-  const panel = buildWipeContainer(doc, seed, false);
-  if (!panel.animate) { onDone(); return; }
-  const anim = panel.animate(
-    [{ transform: 'translateY(100%)' }, { transform: 'translateY(0%)' }],
-    { duration: WIPE_COVER_MS, easing: WIPE_EASE, fill: 'forwards' }
-  );
-  anim.finished.then(onDone).catch(onDone);
+  const pair = buildWipeContainer(doc, seed, 0, 0);
+  animatePair(pair, 0, WIPE_ROT_MID, 0, 1, WIPE_COVER_MS, onDone);
 }
 
 function isPlainLeftClick(e) {
@@ -544,6 +602,7 @@ function onWipeClick(e, doc, reduce) {
 }
 
 function initPageWipe(doc) {
+  doc = doc || document;
   if (doc.__atMotionWipeInit) return;
   doc.__atMotionWipeInit = true;
 
