@@ -46,6 +46,7 @@ export const testimonials: Testimonial[] = [
     quote: 'Casey and the AgencyTech team have been great to work with and have filled a gap in our service, providing support to personally owned devices of our staff and students. We look forward to continuing to work with them.',
     name: 'Joanna Dainton', title: 'Head of Circular Economy', company: 'UWE Bristol',
     logo: '/assets/client-logos/uwe-bristol.webp', tag: 'IT Support',
+    caseStudyHref: ROUTES.caseStudyUwe,
   },
   {
     quote: 'AgencyTech delivers fantastic customer service for students and staff. Servicing electrical devices reduces costs for students who don’t have to buy new, and contributes to UoB’s circular economy goals.',
@@ -54,7 +55,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote: 'AgencyTech feel like an extension of our team — they’ve strengthened our Microsoft 365 security, supported us through licensing changes, and cleaned up legacy accounts to reduce risk. The client portal and clear guidance give us confidence everything is managed properly.',
-    name: 'Geeta', title: '', company: 'The Harbour',
+    name: 'Geeta Rowland', title: '', company: 'The Harbour',
     logo: '/assets/client-logos/the-harbour.png', tag: 'IT Support',
   },
   {
@@ -66,5 +67,6 @@ export const testimonials: Testimonial[] = [
     quote: 'AgencyTech’s asset-collection solution aligns with Six’s sustainability and B-Corp values — cyber-secure asset handling that reduces landfill and supports community reuse.',
     name: 'Dan Pritchard', title: 'Head of Production', company: 'Six Agency',
     logo: '/assets/client-logos/six-agency.png', tag: 'IT Support',
+    caseStudyHref: ROUTES.caseStudySix,
   },
 ];

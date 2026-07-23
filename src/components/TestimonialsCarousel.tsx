@@ -21,43 +21,40 @@ export default function TestimonialsCarousel({
   cardBg?: string;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
   const [overflowing, setOverflowing] = useState(true);
 
   const sync = useCallback(() => {
     const el = trackRef.current;
     if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    setOverflowing(max > 4);
-    setCanPrev(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft < max - 4);
+    setOverflowing(el.scrollWidth - el.clientWidth > 4);
   }, []);
 
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     sync();
-    el.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync, { passive: true });
-    return () => {
-      el.removeEventListener('scroll', sync);
-      window.removeEventListener('resize', sync);
-    };
+    return () => window.removeEventListener('resize', sync);
   }, [sync]);
 
+  // Loops: paging past the last card wraps to the first, and vice-versa.
   const page = (dir: 1 | -1) => {
     const el = trackRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth, behavior: 'smooth' });
+    const max = el.scrollWidth - el.clientWidth;
+    const atEnd = el.scrollLeft >= max - 4;
+    const atStart = el.scrollLeft <= 4;
+    if (dir === 1 && atEnd) el.scrollTo({ left: 0, behavior: 'smooth' });
+    else if (dir === -1 && atStart) el.scrollTo({ left: max, behavior: 'smooth' });
+    else el.scrollBy({ left: dir * el.clientWidth, behavior: 'smooth' });
   };
 
-  const arrowStyle = (enabled: boolean): React.CSSProperties => ({
+  const arrowStyle: React.CSSProperties = {
     width: 44, height: 44, flex: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     borderRadius: '50%', border: '1px solid var(--border-strong)', background: cardBg,
-    color: 'var(--text-heading)', cursor: enabled ? 'pointer' : 'default', opacity: enabled ? 1 : 0.35,
-    transition: 'background 200ms ease, opacity 200ms ease', padding: 0,
-  });
+    color: 'var(--text-heading)', cursor: 'pointer', transition: 'background 200ms ease',
+    padding: 0,
+  };
 
   return (
     <>
@@ -70,12 +67,12 @@ export default function TestimonialsCarousel({
         </div>
         {overflowing && (
           <div style={{ display: 'flex', gap: 10 }}>
-            <button type="button" aria-label="Previous testimonials" onClick={() => page(-1)} disabled={!canPrev}
-              data-hover={canPrev ? 'background: var(--surface-subtle)' : undefined} style={arrowStyle(canPrev)}>
+            <button type="button" aria-label="Previous testimonials" onClick={() => page(-1)}
+              data-hover="background: var(--surface-subtle)" style={arrowStyle}>
               <Icon name="arrow-left" size={18} />
             </button>
-            <button type="button" aria-label="Next testimonials" onClick={() => page(1)} disabled={!canNext}
-              data-hover={canNext ? 'background: var(--surface-subtle)' : undefined} style={arrowStyle(canNext)}>
+            <button type="button" aria-label="Next testimonials" onClick={() => page(1)}
+              data-hover="background: var(--surface-subtle)" style={arrowStyle}>
               <Icon name="arrow-right" size={18} />
             </button>
           </div>

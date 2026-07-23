@@ -22,6 +22,14 @@ export const ROUTES = {
   futureproofingCaseStudies: '/case-studies?category=futureproofing',
   caseStudyPointZeroGroup: '/case-studies/pointzerogroup',
   caseStudySquareEye: '/case-studies/squareeye',
+  caseStudyCybersecurity: '/case-studies/cybersecurity-overhaul',
+  caseStudyM365: '/case-studies/microsoft-365-security',
+  caseStudyAiRollout: '/case-studies/ai-rollout',
+  caseStudySix: '/case-studies/six-agency',
+  caseStudyLiveDatabase: '/case-studies/live-database',
+  caseStudyTechnicalOverhaul: '/case-studies/technical-overhaul',
+  caseStudyUwe: '/case-studies/hardship-device-scheme',
+  caseStudyEcommerce: '/case-studies/ecommerce-automation',
 } as const;
 
 /* Filename (without extension, as linked in the prototypes) -> route path. */
