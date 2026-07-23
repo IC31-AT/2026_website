@@ -117,21 +117,10 @@ img, video { max-width: 100%; }
 }
 
 /* "More From Our Clients" carousel: on desktop each card is a quarter of the
-   row (4 up, scrolls horizontally). Once that width would start squeezing the
-   quotes into narrow strips, flip the whole thing to a vertical carousel —
-   full-width horizontal cards that scroll/swipe up-down inside a fixed box,
-   ~2 rows in view at a time. The looping JS is axis-aware (see siteMotion.ts). */
+   row (4 up). Once that width would start squeezing the quotes into narrow
+   strips, page it 2-up — two cards in view, swipe left/right through the set,
+   snapping a fresh pair into place each page. Stays a horizontal carousel. */
 @media (max-width: 900px) {
-  .at-mq-carousel {
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    max-height: 520px;
-    scroll-snap-type: y proximity;
-    margin: 0 !important;
-    padding: 0 4px !important;
-    -webkit-overflow-scrolling: touch;
-  }
-  .at-mq-card { width: 100% !important; scroll-snap-align: start; }
+  .at-mq-carousel { scroll-snap-type: x mandatory; }
+  .at-mq-card { width: calc((100% - 20px) / 2) !important; scroll-snap-align: start; }
 }
