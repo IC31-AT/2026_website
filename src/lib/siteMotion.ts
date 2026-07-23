@@ -61,11 +61,12 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
   els.forEach((el) => {
     const r = el.getBoundingClientRect();
     if (r.top < window.innerHeight * 0.9) return; // already visible — never hide
-    // data-reveal-scale opts into a fade + slight scale-in (0.95 -> 1) instead
-    // of the default fade + slide-up. reduced-motion is handled in globals.css,
-    // which neutralises [data-reveal] transforms for both variants.
+    // data-reveal-scale opts into a fade + slight scale-in (0.95 -> 1). A
+    // data-reveal-from value of left/right provides a restrained horizontal
+    // entrance for paired content. Reduced motion is handled in globals.css.
     el.style.opacity = '0';
-    el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(0.95)' : 'translateY(24px)';
+    const from = el.getAttribute('data-reveal-from');
+    el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(0.95)' : from === 'left' ? 'translateX(-28px)' : from === 'right' ? 'translateX(28px)' : 'translateY(24px)';
     pending.push(el);
   });
   if (!pending.length) return;
@@ -75,7 +76,7 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
     el.style.transition = 'opacity 650ms ' + EASE + ' ' + delay + 'ms, transform 650ms ' + EASE + ' ' + delay + 'ms';
     requestAnimationFrame(() => {
       el.style.opacity = '1';
-      el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(1)' : 'translateY(0)';
+      el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(1)' : 'translate(0)';
     });
   }
   function check() {
