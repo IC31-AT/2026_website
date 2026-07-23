@@ -25,12 +25,31 @@ const logos = [
 ];
 const marqueeLogos = logos.concat(logos);
 
-/* Results — two real figures, each counts up on scroll. Response time is the
-   live IT SLA average; the reclaimed-hours figure is the Tier 1 ("Early Stage")
-   value from the mini-assessment ROI model (10 hrs/person/week). */
-const results: { num: number; prefix?: string; suffix?: string; unit: string; label: string }[] = [
+/* Results — split into two clearly-divided rows: IT numbers and Futureproofing
+   numbers. Every figure counts up on scroll (reuses the data-countup pattern;
+   reduced-motion + formatting handled in siteMotion.ts).
+   Sources: 8 min = live IT SLA average. 24%->3% = phishing click rate over six
+   months of simulations (illustrative — see phishing-simulations page). 460 hrs
+   = "Early Stage" reclaimed per person/year (10 hrs/wk x 46 working weeks) — the
+   lowest band of the mini-assessment, which has the most to gain. 4 hrs/wk =
+   AI-training rollout case study. */
+type StatTile =
+  | { num: number; prefix?: string; suffix?: string; unit?: string; label: string; caption?: string }
+  | { from: number; to: number; unit?: string; label: string; illustrative?: boolean };
+
+const itResults: StatTile[] = [
   { num: 8, unit: 'min', label: 'Average response time to tickets' },
-  { num: 10, unit: 'hrs / person / week', label: 'Average time reclaimed, Futureproofing clients' },
+  { from: 24, to: 3, unit: '%', label: 'Phishing click-through rate after six months of simulations', illustrative: true },
+];
+
+const fppResults: StatTile[] = [
+  { num: 460, unit: 'hrs / person / year', label: 'Time reclaimed after the Program, for agencies at the Early Stage of AI readiness', caption: '≈ 10 hours a week' },
+  { num: 4, unit: 'hrs / person / week', label: 'Saved after an AI training session' },
+];
+
+const resultGroups: { label: string; items: StatTile[] }[] = [
+  { label: 'IT Managed Services', items: itResults },
+  { label: 'The Futureproofing Program', items: fppResults },
 ];
 
 const eyebrow = 'at-eyebrow';
@@ -135,14 +154,35 @@ export default function HomePage() {
             <span className={eyebrow}>Results</span>
             <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>The Numbers Behind It</h2>
           </div>
-          <div className="at-keep-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, maxWidth: 760, margin: '0 auto' }}>
-            {results.map((r, i) => (
-              <div key={i} data-reveal data-reveal-delay={i * 90} style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '36px 32px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', minHeight: 176 }}>
-                <span style={{ fontSize: 'clamp(48px, 7vw, 72px)', lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>
-                  {r.prefix}<span data-countup={r.num}>{r.num}</span>{r.suffix}
-                  <span style={{ fontSize: '0.34em', fontWeight: 700, color: 'var(--text-heading)', marginLeft: 8 }}>{r.unit}</span>
-                </span>
-                <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-muted)', marginTop: 'auto', textWrap: 'pretty' }}>{r.label}</span>
+          <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 40 }}>
+            {resultGroups.map((group, gi) => (
+              <div key={group.label} data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 22, paddingTop: gi > 0 ? 40 : 0, borderTop: gi > 0 ? '1px solid var(--border-default)' : 'none' }}>
+                <span className={eyebrow} style={{ textAlign: 'center' }}>{group.label}</span>
+                <div className="at-keep-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+                  {group.items.map((r, i) => (
+                    <div key={i} data-reveal data-reveal-delay={i * 90} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '32px 30px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', minHeight: 168 }}>
+                      {'from' in r ? (
+                        <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 12, fontSize: 'clamp(40px, 5.6vw, 60px)', lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em' }}>
+                          <span style={{ color: 'var(--at-faint)', textDecoration: 'line-through', textDecorationThickness: 3 }}><span data-countup={r.from}>{r.from}</span>{r.unit}</span>
+                          <Icon name="arrow-right" size={22} style={{ flex: 'none', color: 'var(--text-muted)', alignSelf: 'center' }} />
+                          <span style={{ color: 'var(--at-turquoise)' }}><span data-countup={r.to}>{r.to}</span>{r.unit}</span>
+                        </span>
+                      ) : (
+                        <span style={{ fontSize: 'clamp(44px, 6.4vw, 66px)', lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>
+                          {r.prefix}<span data-countup={r.num}>{r.num}</span>{r.suffix}
+                          {r.unit && <span style={{ fontSize: '0.32em', fontWeight: 700, color: 'var(--text-heading)', marginLeft: 8 }}>{r.unit}</span>}
+                        </span>
+                      )}
+                      {'caption' in r && r.caption && (
+                        <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--at-turquoise)' }}>{r.caption}</span>
+                      )}
+                      <span style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-muted)', marginTop: 'auto', textWrap: 'pretty' }}>{r.label}</span>
+                      {'illustrative' in r && r.illustrative && (
+                        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Illustrative</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
