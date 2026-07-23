@@ -61,8 +61,11 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
   els.forEach((el) => {
     const r = el.getBoundingClientRect();
     if (r.top < window.innerHeight * 0.9) return; // already visible — never hide
+    // data-reveal-scale opts into a fade + slight scale-in (0.95 -> 1) instead
+    // of the default fade + slide-up. reduced-motion is handled in globals.css,
+    // which neutralises [data-reveal] transforms for both variants.
     el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
+    el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(0.95)' : 'translateY(24px)';
     pending.push(el);
   });
   if (!pending.length) return;
@@ -72,7 +75,7 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
     el.style.transition = 'opacity 650ms ' + EASE + ' ' + delay + 'ms, transform 650ms ' + EASE + ' ' + delay + 'ms';
     requestAnimationFrame(() => {
       el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
+      el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(1)' : 'translateY(0)';
     });
   }
   function check() {
@@ -95,10 +98,26 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
   check();
 }
 
-/* Count 0 -> data-countup when scrolled into view. ~1.1s ease-out. */
+/* Format a count value with thousands separators (10000 -> "10,000"). Values
+   below 1000 are unaffected, so existing count-ups render identically. */
+function fmtCount(n: number, decimals: number) {
+  return n.toLocaleString('en-GB', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+/* Count 0 -> data-countup when scrolled into view. ~1.1s ease-out. Honours
+   prefers-reduced-motion by rendering the final number immediately. */
 function initCountUps(root: Document | HTMLElement, signal: AbortSignal) {
   let pending = Array.from(root.querySelectorAll<HTMLElement>('[data-countup]'));
   if (!pending.length) return;
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (reduce) {
+    pending.forEach((el) => {
+      const target = parseFloat(el.getAttribute('data-countup') || '0');
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      el.textContent = fmtCount(target, decimals);
+    });
+    return;
+  }
   function check() {
     if (!pending.length) return;
     const vh = window.innerHeight;
@@ -126,9 +145,9 @@ function runCount(el: HTMLElement) {
   function tick(now: number) {
     const p = Math.min(1, (now - t0) / dur);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = (target * eased).toFixed(decimals);
+    el.textContent = fmtCount(target * eased, decimals);
     if (p < 1) requestAnimationFrame(tick);
-    else el.textContent = target.toFixed(decimals);
+    else el.textContent = fmtCount(target, decimals);
   }
   requestAnimationFrame(tick);
 }

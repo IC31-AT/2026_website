@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import FaqAccordion from '@/components/FaqAccordion';
+import TeamBios from '@/components/TeamBios';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import { ROUTES } from '@/lib/routes';
@@ -32,13 +33,39 @@ const storyParagraphs = [
   'We learned first-hand that technology is either a blocker or an enabler, so we mastered the art of making it an enabler. That expertise in cutting through chaos, automating manual work, and building systems that scale is the foundation of everything we do today.',
 ];
 
-/* Headline stats pulled from the founding story. */
-const stats = [
-  { value: '40+', label: 'Technicians trained' },
-  { value: '10,000+', label: 'Devices repaired' },
-  { value: '4', label: 'University locations' },
-  { value: '2017', label: 'Where it started' },
+/* Headline stats pulled from the founding story. The three counts animate up
+   from 0 on scroll into view (data-countup); the founding year stays static —
+   counting a year up from zero reads oddly. */
+const stats: { num?: number; suffix?: string; display: string; label: string }[] = [
+  { num: 40, suffix: '+', display: '40', label: 'Technicians trained' },
+  { num: 10000, suffix: '+', display: '10,000', label: 'Devices repaired' },
+  { num: 4, suffix: '', display: '4', label: 'University locations' },
+  { display: '2017', label: 'Where it started' },
 ];
+
+/* Our Approach — four pillars. */
+const approachCards = [
+  {
+    icon: 'compass',
+    title: 'We Start With the Business, Not the Tools',
+    desc: 'Most AI advice begins with which tool to buy. We begin with whether your data, systems and processes can actually hold the weight of what you’re about to build on them. That’s the difference between AI that compounds and AI that quietly collapses.',
+  },
+  {
+    icon: 'wrench',
+    title: 'We’ve Built and Broken This Ourselves',
+    desc: 'Before we advised anyone else, we ran and scaled a real operation of our own — trained a team, watched growth outpace our own systems, and had to fix it. We’re not describing a problem we read about.',
+  },
+  {
+    icon: 'package',
+    title: 'Everything We Produce Belongs to You',
+    desc: 'The Review’s roadmap, tools audit and governance framework are yours outright — whether you continue with us or not. A provider whose value only holds while you keep paying them isn’t a partner, that’s a dependency.',
+  },
+  {
+    icon: 'scale',
+    title: 'Scored Against Evidence, Not Claims',
+    desc: 'The Review scores your business against what we actually find — not what leadership assumes or hopes is true. It’s built to tell you the truth.',
+  },
+] as const;
 
 /* Why Choose AgencyTech — comparison against the alternatives. */
 const compareCols = ['Specialism', 'Quality', 'Scalability', 'Cost-efficiency'];
@@ -71,9 +98,9 @@ export default function AboutPage() {
     <div style={{ position: 'relative', fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
       <SiteNav active="about" />
 
-      {/* HERO */}
+      {/* HERO — copy/layout unchanged; simple fade-in on page load only. */}
       <section style={{ position: 'relative', background: 'var(--at-white)', overflow: 'hidden' }}>
-        <div style={{ maxWidth: 860, margin: '0 auto', padding: '176px 32px 64px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
+        <div className="at-load-fade" style={{ maxWidth: 860, margin: '0 auto', padding: '176px 32px 64px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <span className={eyebrow}>About Us</span>
           <h1 style={{ margin: 0, fontSize: 54, lineHeight: 1.06, letterSpacing: '-0.025em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>Not Just IT Support, a Tech Partner to Grow Your Business</h1>
           <p style={{ margin: 0, fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 620, textWrap: 'pretty' }}>AgencyTech is the dedicated technology and growth partner for creative and marketing agencies. We give leadership teams peace of mind around their cybersecurity and IT operations, maximise creative output and create confidence in navigating the AI landscape — with proactive IT, practical strategy, and embedded support that keeps you ahead.</p>
@@ -86,6 +113,23 @@ export default function AboutPage() {
           <div data-reveal style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
             <ImageSlot placeholder="Photo — the AgencyTech team in the shop" style={{ width: '100%', minHeight: 460, display: 'block' }} />
           </div>
+        </div>
+      </section>
+
+      {/* FOUNDER QUOTE — pull quote, distinct from body type. Fade + scale-in on
+          scroll into view (data-reveal-scale), once. Copy is placeholder. */}
+      <section style={{ position: 'relative', background: 'var(--at-white)' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 32px 104px' }}>
+          <blockquote data-reveal data-reveal-scale style={{ margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 26 }}>
+            <Icon name="quote" size={40} style={{ color: 'var(--at-turquoise)', opacity: 0.9 }} aria-hidden />
+            <p style={{ margin: 0, fontSize: 30, lineHeight: 1.4, fontWeight: 500, fontStyle: 'italic', letterSpacing: '-0.01em', color: 'var(--at-cyprus)', textWrap: 'balance' }}>
+              [Founder pull quote — one or two sentences in the founder&rsquo;s own voice. Replace with final copy before launch.]
+            </p>
+            <footer style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <span style={{ fontStyle: 'normal', fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>[Founder name]</span>
+              <span style={{ fontStyle: 'normal', fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>[Role — e.g. Founder]</span>
+            </footer>
+          </blockquote>
         </div>
       </section>
 
@@ -128,7 +172,13 @@ export default function AboutPage() {
             <div className="at-keep-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 8 }}>
               {stats.map((s) => (
                 <div key={s.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--at-turquoise)' }}>{s.value}</span>
+                  <span style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--at-turquoise)' }}>
+                    {s.num != null ? (
+                      <>
+                        <span data-countup={s.num}>{s.display}</span>{s.suffix}
+                      </>
+                    ) : s.display}
+                  </span>
                   <span style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>{s.label}</span>
                 </div>
               ))}
@@ -142,6 +192,29 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* OUR APPROACH — four cards, staggered fade/slide-in on scroll.
+          Reuses the card pattern from the IT Services "Why Choose" grid. */}
+      <section style={{ position: 'relative', background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640, marginBottom: 48 }}>
+            <span className={eyebrow}>Our Approach</span>
+            <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>How We Work With You</h2>
+          </div>
+          <div className="at-keep-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 24 }}>
+            {approachCards.map((c, i) => (
+              <div key={i} data-reveal data-reveal-delay={i * 100} style={{ background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '28px 26px', display: 'flex', flexDirection: 'column', gap: 12, boxShadow: 'var(--shadow-sm)' }}>
+                <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name={c.icon} size={22} /></span>
+                <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: 'var(--text-heading)' }}>{c.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MEET THE TEAM — bio accordion cards (multi-open, independent). */}
+      <TeamBios />
+
       {/* WHY CHOOSE — comparison table */}
       <section style={{ position: 'relative', background: 'var(--at-white)', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '104px 32px 96px' }}>
@@ -153,7 +226,7 @@ export default function AboutPage() {
             <table style={{ width: '100%', minWidth: 760, borderCollapse: 'collapse', fontSize: 13.5 }}>
               <thead>
                 <tr>
-                  <th style={{ textAlign: 'left', padding: '16px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', background: 'var(--surface-subtle)', borderBottom: '1px solid var(--border-default)', width: 200 }}>Provider</th>
+                  <th style={{ position: 'sticky', left: 0, zIndex: 2, textAlign: 'left', padding: '16px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', background: 'var(--surface-subtle)', borderBottom: '1px solid var(--border-default)', width: 200 }}>Provider</th>
                   {compareCols.map((c) => (
                     <th key={c} style={{ textAlign: 'left', padding: '16px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', background: 'var(--surface-subtle)', borderBottom: '1px solid var(--border-default)' }}>{c}</th>
                   ))}
@@ -162,7 +235,7 @@ export default function AboutPage() {
               <tbody>
                 {compareRows.map((row) => (
                   <tr key={row.provider} style={row.highlight ? { background: 'rgba(43,188,186,0.08)' } : undefined}>
-                    <th scope="row" style={{ textAlign: 'left', padding: '18px 20px', fontWeight: 700, color: row.highlight ? 'var(--at-turquoise)' : 'var(--text-heading)', borderBottom: '1px solid var(--border-default)', borderLeft: row.highlight ? '3px solid var(--at-turquoise)' : '3px solid transparent', verticalAlign: 'top', whiteSpace: 'nowrap' }}>{row.provider}</th>
+                    <th scope="row" style={{ position: 'sticky', left: 0, zIndex: 1, background: row.highlight ? 'var(--status-info-soft)' : 'var(--at-white)', textAlign: 'left', padding: '18px 20px', fontWeight: 700, color: row.highlight ? 'var(--at-turquoise)' : 'var(--text-heading)', borderBottom: '1px solid var(--border-default)', borderLeft: row.highlight ? '3px solid var(--at-turquoise)' : '3px solid transparent', verticalAlign: 'top', whiteSpace: 'nowrap' }}>{row.provider}</th>
                     {row.cells.map((cell, i) => (
                       <td key={i} style={{ padding: '18px 20px', lineHeight: 1.5, color: row.highlight ? 'var(--text-heading)' : 'var(--text-muted)', fontWeight: row.highlight ? 600 : 400, borderBottom: '1px solid var(--border-default)', verticalAlign: 'top' }}>
                         {row.highlight ? (

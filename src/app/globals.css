@@ -18,6 +18,11 @@ body { margin: 0; background: var(--at-white); }
 @keyframes at-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.82); } }
 @keyframes at-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes at-bookbar-in { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes at-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Simple on-load fade-in (e.g. page hero). Uses fill 'both' so it starts
+   hidden with no flash. Disabled under reduced-motion below. */
+.at-load-fade { animation: at-fade-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* Loop carousel — horizontal scroll track with hidden scrollbar. */
 [data-loop-carousel] { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
@@ -31,6 +36,7 @@ body { margin: 0; background: var(--at-white); }
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
   .at-bookbar { animation: none !important; }
+  .at-load-fade { animation: none !important; }
 }
 
 /* ============================================================
