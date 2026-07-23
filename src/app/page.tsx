@@ -64,22 +64,20 @@ const moreQuotesLoop = moreQuotes.concat(moreQuotes);
 
 const testimonials = [
   {
-    index: '01', isVideo: true, isImage: false, slotId: 'home-tst-cl', mediaPlaceholder: '',
-    quote: '“AgencyTech has taken real pressure off our leadership team and given us genuine peace of mind on cybersecurity. Support is fast and proactive — issues get solved before they become problems — and their integrated approach has us using AI confidently across the team.”',
-    name: 'Charlotte Laing', nameNote: '', role: 'Founder & Director · The Content Emporium',
-    statValue: '84', statLabel: 'person agency — IT, security & AI training all under one roof',
+    quote: 'AgencyTech has taken real pressure off our leadership team and given us genuine peace of mind on cybersecurity. Support is fast and proactive — issues get solved before they become problems — and their integrated approach has us using AI confidently across the team.',
+    name: 'Charlotte Laing', title: 'Founder & Director', company: 'The Content Emporium',
   },
   {
-    index: '02', isVideo: false, isImage: true, slotId: 'home-tst-mb', mediaPlaceholder: 'Photo — Mark Beavan / PointZeroGroup',
-    quote: '“Within two and a half weeks they’d mapped every tool we used and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.”',
-    name: 'Mark Beavan', nameNote: '', role: 'Managing Director · PointZeroGroup',
-    statValue: '7', statLabel: 'dimensions of AI readiness mapped in Phase 1',
+    quote: 'Within two and a half weeks they’d mapped every tool we used and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.',
+    name: 'Mark Beavan', title: 'Managing Director', company: 'PointZeroGroup',
   },
   {
-    index: '03', isVideo: false, isImage: true, slotId: 'home-tst-3', mediaPlaceholder: 'Photo — The Harbour',
-    quote: '“AgencyTech feel like an extension of our team. They’ve strengthened our Microsoft 365 security, cleaned up legacy accounts, and been there for hands-on support whenever we’ve needed it. Everything is managed properly — professional, and genuinely valued.”',
-    name: 'The Harbour', nameNote: '', role: 'Charity · Microsoft 365 security overhaul',
-    statValue: '56%', statLabel: 'improvement in Microsoft Secure Score',
+    quote: 'AgencyTech handled upgrades and ongoing support across our IT fleet — quick, well-priced and convenient, with clear recommendations on issues that could have cost us dearly. Professional, communicative and attentive throughout.',
+    name: 'Adam Nor', title: 'IT Manager', company: 'Synergy Group',
+  },
+  {
+    quote: 'A reliable, professional partner throughout — responsive, flexible, and able to handle complex needs at scale. We’d confidently recommend them to other institutions or businesses.',
+    name: 'Van Pham', title: 'IT Technician', company: 'University of Southampton',
   },
 ];
 
@@ -183,42 +181,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. TESTIMONIALS — pinned stacked scroll */}
-      <section data-stack style={{ position: 'relative', background: 'var(--at-grey)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
-        <div data-stack-pin style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
-          <span className={eyebrow} style={{ position: 'absolute', top: 40, left: 40, zIndex: 10, color: 'var(--text-muted)' }}>What Agencies Say</span>
-          {testimonials.map((t) => (
-            <article key={t.index} data-tcard style={{ position: 'absolute', inset: 0, display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-              {/* MEDIA — full-bleed left half, supports image or video */}
-              <div style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
-                {t.isVideo && (
-                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, background: 'linear-gradient(150deg, var(--at-cyprus) 0%, var(--at-cyprus-light) 100%)' }}>
-                    <span style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(255,255,255,0.10)', border: '1.5px solid rgba(255,255,255,0.3)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><Icon name="play" size={28} style={{ marginLeft: 4 }} /></span>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)' }}>Video testimonial · drop-in placeholder</span>
-                  </div>
-                )}
-                {t.isImage && (
-                  <ImageSlot placeholder={t.mediaPlaceholder} radius={0} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }} />
-                )}
-                <span style={{ position: 'absolute', top: 32, left: 32, zIndex: 2, fontSize: 12, fontWeight: 800, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.85)', background: 'rgba(0,64,64,0.55)', padding: '5px 11px', borderRadius: 'var(--radius-pill)', backdropFilter: 'blur(4px)' }}>{t.index}</span>
-              </div>
-              {/* QUOTE + CALLOUT STAT — full-bleed right half */}
-              <div className="at-tst-quote" style={{ background: '#fff', padding: 'clamp(28px, 6vw, 100px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 'clamp(18px, 2.4vw, 30px)' }}>
-                <Icon name="quote" size={34} color="var(--at-turquoise)" style={{ opacity: 0.5 }} />
-                <blockquote style={{ margin: 0, fontSize: 'clamp(18px, 2.3vw, 30px)', lineHeight: 1.42, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>{t.quote}</blockquote>
-                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 20, paddingTop: 26, borderTop: '1px solid var(--border-default)' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>{t.name} <span style={{ fontWeight: 500, color: 'var(--at-faint)', fontSize: 12.5 }}>{t.nameNote}</span></span>
-                    <span style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>{t.role}</span>
-                  </div>
-                  <div style={{ marginLeft: 'auto', textAlign: 'right', display: 'flex', flexDirection: 'column', gap: 0 }}>
-                    <span style={{ fontSize: 48, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>{t.statValue}</span>
-                    <span style={{ fontSize: 12, lineHeight: 1.4, color: 'var(--text-muted)', maxWidth: 210 }}>{t.statLabel}</span>
-                  </div>
+      {/* 5. TESTIMONIALS — 2×2 card grid */}
+      <section style={{ background: 'var(--at-grey)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
+          <span className={eyebrow} style={{ display: 'block', color: 'var(--text-muted)', marginBottom: 48 }}>What Agencies Say</span>
+          <div className="at-tst-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            {testimonials.map((t) => (
+              <article key={t.name} className="at-tst-card" data-reveal style={{ display: 'flex', gap: 28, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '34px 36px' }}>
+                {/* PERSON — far left */}
+                <div className="at-tst-person" style={{ flex: '0 0 158px', display: 'flex', flexDirection: 'column', gap: 3, borderRight: '1px solid var(--border-default)', paddingRight: 26 }}>
+                  <Icon name="quote" size={26} color="var(--at-turquoise)" style={{ opacity: 0.45, marginBottom: 10 }} />
+                  <span style={{ fontSize: 15.5, fontWeight: 700, color: 'var(--text-heading)', letterSpacing: '-0.01em' }}>{t.name}</span>
+                  <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{t.title}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--at-turquoise)' }}>{t.company}</span>
                 </div>
-              </div>
-            </article>
-          ))}
+                {/* QUOTE — far right */}
+                <blockquote className="at-tst-body" style={{ margin: 0, alignSelf: 'center', fontSize: 15.5, lineHeight: 1.65, fontWeight: 500, color: 'var(--text-body)', textWrap: 'pretty' }}>{t.quote}</blockquote>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

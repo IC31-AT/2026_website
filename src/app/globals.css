@@ -17,6 +17,7 @@ body { margin: 0; background: var(--at-white); }
 @keyframes at-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 @keyframes at-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.82); } }
 @keyframes at-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes at-bookbar-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Loop carousel — horizontal scroll track with hidden scrollbar. */
 [data-loop-carousel] { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
@@ -29,6 +30,7 @@ body { margin: 0; background: var(--at-white); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .at-bookbar { animation: none !important; }
 }
 
 /* ============================================================
@@ -108,12 +110,23 @@ img, video { max-width: 100%; }
   .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
 }
 
-/* Testimonial pinned stack on mobile: the 2-col grid collapses to 1 col,
-   leaving the media half at ~0 height. Let the quote fill and center within
-   the pinned 100vh card so it never spills past the fold. */
-@media (max-width: 640px) {
-  [data-tcard] { align-content: center; }
-  .at-tst-quote { min-height: 100vh; padding-left: 24px !important; padding-right: 24px !important; }
+/* Testimonial card grid: 2×2 on desktop -> single column of horizontal
+   cards (person left, quote right) as it narrows. Horizontal cards stay
+   short and readable instead of growing tall. */
+@media (max-width: 900px) {
+  .at-tst-grid { grid-template-columns: 1fr !important; }
+}
+/* True phone width: the horizontal split leaves the quote too narrow, so
+   stack it — person on top, quote below. */
+@media (max-width: 440px) {
+  .at-tst-card { flex-direction: column !important; gap: 16px !important; }
+  .at-tst-person {
+    flex-basis: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-default) !important;
+    padding-right: 0 !important;
+    padding-bottom: 16px !important;
+  }
 }
 
 /* "More From Our Clients" carousel: on desktop each card is a quarter of the

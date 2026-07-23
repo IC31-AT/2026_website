@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import SiteMotion from '@/components/SiteMotion';
 import PageWipe from '@/components/PageWipe';
+import BookCallBar from '@/components/BookCallBar';
 
 export const metadata: Metadata = {
   title: {
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-GB">
       <body>
         {children}
+        <BookCallBar />
         <SiteMotion />
         <PageWipe />
       </body>
