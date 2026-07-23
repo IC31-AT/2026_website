@@ -31,6 +31,20 @@ const newsCards = [
   { delay: 180, icon: 'laptop', tag: 'IT Services', date: 'May 2026', title: 'What Happens to Your Old Laptops? ITAD, Explained', excerpt: 'Secure disposal is a compliance issue hiding in your cupboard. Here is how to handle it properly.' },
 ];
 
+/* Results — the "<30 min" figure is real, live copy (count-up on scroll). The
+   other three are real aggregates from the scoring model, left visibly bracketed
+   until confirmed — no invented numbers. Swap `value` for `{ num, prefix, suffix,
+   unit }` (like the first) once a figure is signed off and it'll count up too. */
+const results: (
+  | { num: number; prefix?: string; suffix?: string; unit?: string; label: string }
+  | { value: string; label: string }
+)[] = [
+  { prefix: '<', num: 30, unit: 'min', label: 'Average response time when something breaks' },
+  { value: '[X hrs/week]', label: 'Average time reclaimed, Futureproofing clients' },
+  { value: '[X/10 → X/10]', label: 'Average score movement in the first 12 months' },
+  { value: '[X%]', label: 'Clients who continue from the Review into Phase 2' },
+];
+
 const eyebrow = 'at-eyebrow';
 
 export default function HomePage() {
@@ -87,39 +101,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. OUTCOMES — FUTUREPROOFING */}
-      <section id="futureproofing" style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '112px 32px 96px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <span className={eyebrow}>Futureproofing Services</span>
-            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Ready for a future of AI</h2>
-            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Everyone&apos;s talking about AI, and doing nothing feels increasingly like a decision. AI readiness isn&apos;t a technical question — it&apos;s a leadership one. The Futureproofing Program gives your agency a structured, research-backed way to find its footing, starting with The Review.</p>
-            <div>
-              <Link href={dcHref('Futureproofing.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore Futureproofing Services <Icon name="arrow-right" size={17} /></Link>
-            </div>
+      {/* 3. SERVICE — two standalone services, one partner. Replaces the old
+          separate Futureproofing Services + IT Services outcome blocks. */}
+      <section id="services" style={{ background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '112px 32px 112px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, maxWidth: 680, margin: '0 auto 52px' }}>
+            <span className={eyebrow}>What We Do</span>
+            <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Two Services. One Partner.</h2>
+            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>Take one or take both — each stands entirely on its own. But because we run both, we do each one better than a partner who only ever does one.</p>
           </div>
-          <div data-reveal data-reveal-delay={100} style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '56px 48px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8 }}>
-            <span style={{ fontSize: 92, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>Clarity.</span>
-            <span style={{ fontSize: 17, fontWeight: 600, color: 'var(--text-heading)' }}>A plan the whole leadership team is aligned on</span>
-            <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>&quot;For the first time, we have real clarity on where the business is and what needs to happen next&quot; — Mark Beavan, PointZeroGroup.</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. OUTCOMES — IT SERVICES */}
-      <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '16px 32px 112px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
-          <div data-reveal style={{ background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', padding: '56px 48px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 8, order: 1 }}>
-            <span style={{ fontSize: 128, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.04em', color: 'var(--at-turquoise-light)' }}>&lt;<span data-countup={30}>30</span></span>
-            <span style={{ fontSize: 17, fontWeight: 600, color: '#fff' }}>minutes — target response time</span>
-            <span style={{ fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.65)' }}>When something breaks mid-project, you&apos;re talking to a person in minutes — not raising a ticket into the void.</span>
-          </div>
-          <div data-reveal data-reveal-delay={100} style={{ display: 'flex', flexDirection: 'column', gap: 20, order: 2 }}>
-            <span className={eyebrow}>IT Services</span>
-            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Keeping the foundations secure</h2>
-            <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Proactive, reliable and secure IT management for agencies — helpdesk, cybersecurity, cloud, devices and everything between — so your team stays focused on client work, not firefighting.</p>
-            <div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, alignItems: 'stretch' }}>
+            {/* Card 1 — IT Managed Services */}
+            <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 18, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '40px 36px' }}>
+              <span style={{ width: 48, height: 48, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="server" size={24} /></span>
+              <h3 style={{ margin: 0, fontSize: 23, lineHeight: 1.2, fontWeight: 700, color: 'var(--text-heading)' }}>IT Managed Services</h3>
+              <p style={{ margin: 0, flex: 1, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Proactive, reliable and secure IT management — helpdesk, cybersecurity, cloud, devices and everything between — so your team stays focused on client work, not firefighting.</p>
               <Link href={dcHref('IT Services.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore IT Services <Icon name="arrow-right" size={17} /></Link>
+            </div>
+            {/* Card 2 — The Futureproofing Program */}
+            <div data-reveal data-reveal-delay={100} style={{ display: 'flex', flexDirection: 'column', gap: 18, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '40px 36px' }}>
+              <span style={{ width: 48, height: 48, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="brain-circuit" size={24} /></span>
+              <h3 style={{ margin: 0, fontSize: 23, lineHeight: 1.2, fontWeight: 700, color: 'var(--text-heading)' }}>The Futureproofing Program</h3>
+              <p style={{ margin: 0, flex: 1, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>A structured, research-backed way to find your footing on AI — starting with a scored Review of where you stand, and a costed plan to get there.</p>
+              <Link href={dcHref('Futureproofing.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore Futureproofing <Icon name="arrow-right" size={17} /></Link>
             </div>
           </div>
         </div>
@@ -137,26 +141,56 @@ export default function HomePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1040, margin: '0 auto', padding: '120px 32px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, marginBottom: 64 }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, marginBottom: 44 }}>
             <span className={eyebrow} style={{ color: 'var(--at-turquoise-light)' }}>Why Both, Together</span>
             <h2 style={{ margin: 0, fontSize: 42, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: '#fff', maxWidth: 640, textWrap: 'balance' }}>One Partner for Where You Are and Where You&apos;re Headed</h2>
           </div>
+          <div data-reveal data-reveal-delay={80} style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 720, margin: '0 auto 60px' }}>
+            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.7, color: 'rgba(255,255,255,0.82)', textWrap: 'pretty' }}>AI only works on solid ground. Every dimension of AI readiness — your data, your systems, your security — depends on IT that&apos;s actually holding up underneath it. And IT decisions only make sense when someone understands where you&apos;re headed, not just where you stand today.</p>
+            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.7, color: 'rgba(255,255,255,0.82)', textWrap: 'pretty' }}>Most providers only ever see one half of that picture. We built AgencyTech to run both — because treating them as separate conversations is exactly how good AI budget ends up spent on tools sitting on infrastructure nobody&apos;s actually secured.</p>
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 0, alignItems: 'stretch' }}>
-            <div data-reveal style={{ background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div data-reveal style={{ background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)', padding: '32px 32px', display: 'flex', flexDirection: 'column', gap: 14 }}>
               <span style={{ width: 42, height: 42, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.14)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="server" size={21} /></span>
-              <h3 style={{ margin: 0, fontSize: 21, fontWeight: 600, color: '#fff' }}>Readiness needs solid IT</h3>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', textWrap: 'pretty' }}>Every dimension of AI readiness — data, systems, security, workflows — depends on IT that&apos;s actually solid underneath it.</p>
+              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 600, color: '#fff' }}>Where you are — solid IT</h3>
             </div>
             <div data-reveal data-reveal-delay={150} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 28px', gap: 10 }}>
               <span style={{ width: 54, height: 54, borderRadius: '50%', background: 'var(--at-turquoise)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff', boxShadow: '0 0 0 10px rgba(6,154,152,0.18)' }}><Icon name="arrow-left-right" size={24} /></span>
             </div>
-            <div data-reveal data-reveal-delay={100} style={{ background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div data-reveal data-reveal-delay={100} style={{ background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)', padding: '32px 32px', display: 'flex', flexDirection: 'column', gap: 14 }}>
               <span style={{ width: 42, height: 42, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.14)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="compass" size={21} /></span>
-              <h3 style={{ margin: 0, fontSize: 21, fontWeight: 600, color: '#fff' }}>IT needs to know the destination</h3>
-              <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', textWrap: 'pretty' }}>Every IT decision we make is informed by understanding where your agency is headed — not just where it stands today.</p>
+              <h3 style={{ margin: 0, fontSize: 20, fontWeight: 600, color: '#fff' }}>Where you&apos;re headed — AI readiness</h3>
             </div>
           </div>
-          <p data-reveal data-reveal-delay={200} style={{ margin: '56px auto 0', maxWidth: 620, textAlign: 'center', fontSize: 18, lineHeight: 1.6, fontWeight: 600, color: 'var(--at-turquoise-light)', textWrap: 'balance' }}>Doing both means we look after each one better than a specialist doing only one ever could.</p>
+        </div>
+      </section>
+
+      {/* 6b. RESULTS — count-up stats. Reuses the existing data-countup pattern
+          (reduced-motion + formatting handled in siteMotion.ts). */}
+      <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, maxWidth: 640, margin: '0 auto 52px' }}>
+            <span className={eyebrow}>Results</span>
+            <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>The Numbers Behind It</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
+            {results.map((r, i) => {
+              const isCount = 'num' in r;
+              return (
+                <div key={i} data-reveal data-reveal-delay={i * 90} style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '32px 26px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', minHeight: 168 }}>
+                  <span style={{ fontSize: 'clamp(34px, 4.4vw, 52px)', lineHeight: 1.05, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)', textWrap: 'balance' }}>
+                    {isCount ? (
+                      <>
+                        {r.prefix}<span data-countup={r.num}>{r.num}</span>{r.suffix}
+                        {r.unit && <span style={{ fontSize: '0.42em', fontWeight: 700, color: 'var(--text-heading)', marginLeft: 6 }}>{r.unit}</span>}
+                      </>
+                    ) : r.value}
+                  </span>
+                  <span style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--text-muted)', marginTop: 'auto', textWrap: 'pretty' }}>{r.label}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
