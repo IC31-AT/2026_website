@@ -140,9 +140,11 @@ export default function HomePage() {
       </section>
 
       {/* 4. TESTIMONIALS — one carousel of client cards */}
-      <section style={{ background: 'var(--at-grey)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
-          <TestimonialsCarousel items={testimonials} eyebrow="What Agencies Say" cardBg="var(--surface-card)" />
+      <section style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
+          <TestimonialsCarousel items={testimonials} heading="What Agencies Say" cardBg="var(--surface-card)" theme="dark" />
         </div>
       </section>
 

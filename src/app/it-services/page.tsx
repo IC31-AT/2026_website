@@ -53,7 +53,7 @@ const categories = [
     title: 'Managed IT & Helpdesk',
     dur: '26s',
     anchors: ['managed-it-anchor'],
-    desc: 'Unlimited support from people who already know your setup — a target response under 30 minutes on critical issues, proactive monitoring that heads off problems, and one named account manager rather than a ticket queue.',
+    desc: 'Unlimited support from people who already know your setup, with proactive monitoring that heads off problems before they cost you time.',
     items: ['IT Helpdesk', 'Proactive Monitoring', 'Maintenance', 'Device & User Management', 'Onboarding & Offboarding'],
   }),
   cat({
@@ -76,7 +76,7 @@ const categories = [
     dur: '24s',
     anchors: ['microsoft-365', 'google-workspace', 'operational-apps'],
     desc: 'Full management of the platforms your agency lives in — Microsoft 365 or Google Workspace tenancies, plus the operational job-management apps like Synergist that keep projects and time moving.',
-    items: ['Microsoft 365', 'Google Workspace', 'Operational Apps', 'Synergist', 'SharePoint & Teams'],
+    items: ['Microsoft 365', 'Google Workspace', 'Operational Apps', 'SharePoint & Teams'],
   }),
   cat({
     id: 'connectivity',
@@ -86,7 +86,7 @@ const categories = [
     title: 'Device & Identity Management',
     dur: '28s',
     anchors: ['mdm', 'byod'],
-    desc: 'Enrolment and management for every device via NinjaOne and Apple Business Manager, with BYOD freelancers handled through Apple User Enrolment or conditional access — never a “trust the freelancer” policy.',
+    desc: 'Every device, account and level of access set up and managed properly — including a secure approach to freelancers using their own devices, so your team can work flexibly without compromising security.',
     items: ['MDM Enrolment', 'Apple Business Manager', 'BYOD (User Enrolment)', 'Conditional Access', 'Identity Management'],
   }),
   cat({
@@ -103,11 +103,8 @@ const categories = [
 ];
 
 const whyPointDefs = [
-  { icon: 'radar', title: 'Proactive, not just reactive', desc: 'Monitoring and maintenance that prevents issues rather than billing for them.' },
-  { icon: 'lock', title: 'Security & compliance built-in', desc: 'Not an add-on or an upsell — part of how everything is set up from day one.' },
   { icon: 'trending-up', title: 'Scalable at every stage', desc: 'From five desks to fifty — the setup grows with the agency, not against it.' },
   { icon: 'users', title: 'Empowered teams, not just managed devices', desc: 'Training and plain-language guidance so your people get more capable over time.' },
-  { icon: 'user-check', title: 'One point of contact', desc: 'A named account manager who knows your business — never a ticket queue lottery.' },
 ];
 const whyPoints = whyPointDefs.map((p, i) => ({ ...p, delay: (i % 3) * 90 }));
 
@@ -142,9 +139,15 @@ const baseIncludes = [
 /* Priced extras that sit outside the base package. */
 const addOns = [
   { name: 'Managed 24/7 EDR', desc: 'Behavioural threat hunting, active response and a dedicated SOC — antivirus included.', price: '£7.76', unit: '/ user / month' },
-  { name: 'Managed phishing simulation & SAT', desc: 'Ongoing simulated phishing and security awareness training for your whole team.', price: '£1.90', unit: '/ user / month' },
-  { name: 'Cyber Essentials Basic + Plus', desc: 'Full certification support and assessment to get you badged and keep you compliant.', price: 'Annual fee', unit: '' },
-  { name: 'Internet leased line + failover', desc: 'Dedicated business connectivity with a failover line so you are never offline.', price: 'Per site survey', unit: '' },
+  { name: 'Managed phishing simulation & SAT', desc: 'Ongoing simulated phishing and security awareness training for your whole team.', price: '£2.50', unit: '/ user / month' },
+  { name: 'Cyber Essentials Basic + Plus', desc: 'Full certification support and assessment to get you badged and keep you compliant.' },
+  { name: 'Connectivity', desc: 'Dedicated business connectivity and failover options, designed around your office and how it works.' },
+  { name: 'Wi-Fi', desc: 'Office Wi-Fi installation, upgrades and coverage improvements for a reliable connection throughout your space.' },
+  { name: 'VoIP', desc: 'Business phone systems that keep your team connected wherever they are working.' },
+  { name: 'SIMs', desc: 'Business mobile SIMs and data plans, managed alongside the rest of your setup.' },
+  { name: 'IT Asset Management', desc: 'A clear record of your technology, who has it and where it is in its lifecycle.' },
+  { name: 'Repairs', desc: 'Practical support for device repairs and replacements when something needs attention.' },
+  { name: 'Training Sessions', desc: 'Focused sessions that help your team use their tools confidently and securely.' },
 ];
 
 const eyebrow = 'at-eyebrow';
@@ -152,11 +155,7 @@ const eyebrow = 'at-eyebrow';
 export default function ITServicesPage() {
   return (
     <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
-      <style>{`
-        [data-cat-visual] { opacity: 0; }
-        [data-cat-visual]:first-child { opacity: 1; }
-        #it-hero-photo { width: 100% !important; height: 100% !important; display: block !important; }
-      `}</style>
+      <style>{`#it-hero-photo { width: 100% !important; height: 100% !important; display: block !important; }`}</style>
 
       <SiteNav active="it" theme="light" />
 
@@ -201,7 +200,23 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 2. SERVICES & SOFTWARE RANGE — sticky panels + marquees */}
+      {/* 2. PROOF */}
+      <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 32px' }}>
+          <figure data-reveal style={{ margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch', gap: 56 }}>
+            <div aria-label="Charlotte Laing video testimonial" style={{ minHeight: 340, borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--at-cyprus)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+              <span style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="play" size={26} /></span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 22 }}>
+              <Icon name="quote" size={32} color="var(--at-turquoise)" style={{ opacity: 0.65 }} />
+              <blockquote style={{ margin: 0, fontSize: 25, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems.&rdquo;</blockquote>
+              <figcaption style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Charlotte Laing</strong> · The Content Emporium</figcaption>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      {/* 3. SERVICES & SOFTWARE RANGE */}
       <section id="services" style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 8px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 620 }}>
@@ -210,46 +225,34 @@ export default function ITServicesPage() {
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>One partner across the whole stack — from the helpdesk your team calls to the broadband your studio runs on. Five areas, each with everything included.</p>
           </div>
         </div>
-        <div data-sticky-cats style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'grid', gridTemplateColumns: '0.92fr 1.08fr', gap: 72 }}>
-          {/* LEFT — sticky visual panels */}
-          <div style={{ position: 'relative' }}>
-            <div style={{ position: 'sticky', top: 108, height: 520 }}>
-              {categories.map((c) => (
-                <div key={c.id} data-cat-visual style={{ position: 'absolute', inset: 0, borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
-                  <span style={{ position: 'absolute', right: -60, bottom: -80, fontSize: 340, lineHeight: 1, fontWeight: 800, color: 'rgba(43,188,186,0.08)' }}>{c.num}</span>
-                  <div style={{ position: 'relative', height: '100%', padding: 32, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                    <span style={{ width: 56, height: 56, borderRadius: 'var(--radius-md)', background: 'rgba(43,188,186,0.14)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name={c.icon} size={30} /></span>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)' }}>{c.kicker}</span>
-                      <span style={{ fontSize: 26, fontWeight: 700, lineHeight: 1.15, color: '#fff' }}>{c.title}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* RIGHT — scrolling category blocks */}
-          <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+        <div style={{ maxWidth: 840, margin: '0 auto', padding: '18px 32px 72px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          {/* Compact service list — capability tags retain the established marquee treatment. */}
             {categories.map((c) => (
-              <div key={c.id} data-cat-block id={c.id} style={{ minHeight: '46vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20, padding: '30px 0', scrollMarginTop: 100, position: 'relative' }}>
+              <div key={c.id} id={c.id} data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '34px 0', scrollMarginTop: 100, position: 'relative', borderBottom: '1px solid var(--border-default)' }}>
                 {c.anchors.map((a) => (
                   <span key={a} id={a} style={{ position: 'absolute', top: 60 }} />
                 ))}
-                <span style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.04em', color: 'var(--at-faint)' }}>{c.num}</span>
-                <h3 style={{ margin: 0, fontSize: 30, lineHeight: 1.2, letterSpacing: '-0.01em', fontWeight: 700, color: 'var(--text-heading)' }}>{c.title}</h3>
-                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>{c.desc}</p>
-                <div style={{ overflow: 'hidden', position: 'relative', marginTop: 6, maskImage: 'linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent)' }}>
-                  <div style={{ display: 'flex', gap: 10, width: 'max-content', animation: `at-marquee ${c.dur} linear infinite` }}>
-                    {c.marquee.map((item, i) => (
-                      <span key={i} style={{ flex: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, padding: '9px 16px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-pill)', background: 'var(--surface-subtle)', fontSize: 13.5, fontWeight: 600, color: 'var(--text-heading)', whiteSpace: 'nowrap' }}>
-                        <span style={{ width: 6, height: 6, borderRadius: 2, background: 'var(--at-turquoise)', transform: 'rotate(45deg)' }} />{item}
-                      </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <span style={{ width: 38, height: 38, flex: 'none', borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name={c.icon} size={19} /></span>
+                  <h3 style={{ margin: 0, fontSize: 27, lineHeight: 1.2, letterSpacing: '-0.01em', fontWeight: 700, color: 'var(--text-heading)' }}>{c.title}</h3>
+                </div>
+                {c.id === 'cloud' ? (
+                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Full management of the platforms your agency lives in — Microsoft 365 or Google Workspace tenancies, plus <strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>operational job-management apps like Synergist</strong> that keep projects and time moving.</p>
+                ) : (
+                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>{c.desc}</p>
+                )}
+                <div style={{ marginTop: 2 }}>
+                  <span style={{ display: 'block', marginBottom: 10, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Includes</span>
+                  <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(155px, 1fr))', gap: '8px 18px', margin: 0, padding: 0, listStyle: 'none' }}>
+                    {c.items.map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.45, color: 'var(--text-muted)' }}>
+                        <span aria-hidden="true" style={{ width: 5, height: 5, flex: 'none', marginTop: 6, borderRadius: '50%', background: 'var(--at-turquoise)' }} />{item}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
             ))}
-          </div>
         </div>
       </section>
 
@@ -332,60 +335,7 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 7. LINK-OUT CARDS */}
-      <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
-            <span className={eyebrow}>Go Deeper</span>
-            <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Three Places to Look Next</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
-            <Link href={dcHref('Phishing Simulations.dc.html')} data-reveal data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
-              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="fish" size={22} /></span>
-              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>Phishing Simulations</span>
-              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>The service with our strongest case-study results. See how a simulated attack changes a team.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
-            </Link>
-            <Link href={dcHref('ITAD.dc.html')} data-reveal data-reveal-delay={90} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
-              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="recycle" size={22} /></span>
-              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>ITAD</span>
-              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>IT asset disposal done properly — secure collection, certified data destruction, resale and recycling.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
-            </Link>
-            <Link href={dcHref('IT Case Studies.dc.html')} data-reveal data-reveal-delay={180} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
-              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="file-text" size={22} /></span>
-              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>IT Case Studies</span>
-              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>Real problems, measured outcomes — what working with us actually looks like for agencies.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. TESTIMONIALS (IT) */}
-      <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', padding: '92px 32px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, textAlign: 'center' }}>
-            <span className={eyebrow}>From IT Clients</span>
-            <div data-quotes style={{ position: 'relative', width: '100%', minHeight: 200, marginTop: 12 }}>
-              <figure data-quote style={{ position: 'absolute', inset: 0, margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, opacity: 1 }}>
-                <blockquote style={{ margin: 0, fontSize: 24, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems.&rdquo;</blockquote>
-                <figcaption style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Charlotte Laing</strong> · Founder & Director, The Content Emporium</figcaption>
-              </figure>
-              <figure data-quote style={{ position: 'absolute', inset: 0, margin: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, opacity: 0, pointerEvents: 'none' }}>
-                <blockquote style={{ margin: 0, fontSize: 24, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;We passed Cyber Essentials first time. Our biggest client noticed before we&rsquo;d even told them.&rdquo;</blockquote>
-                <figcaption style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Managing Director</strong> · PR agency, Bath <span style={{ opacity: 0.6 }}>(placeholder quote)</span></figcaption>
-              </figure>
-              <div style={{ position: 'absolute', left: 0, right: 0, bottom: -14, display: 'flex', justifyContent: 'center', gap: 8 }}>
-                <button data-quote-dot aria-label="Quote 1" style={{ width: 9, height: 9, borderRadius: '50%', border: 'none', padding: 0, cursor: 'pointer', background: 'var(--accent)' }} />
-                <button data-quote-dot aria-label="Quote 2" style={{ width: 9, height: 9, borderRadius: '50%', border: 'none', padding: 0, cursor: 'pointer', background: 'rgba(0,64,64,0.18)' }} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8b. WHAT'S INCLUDED */}
+      {/* 7. WHAT'S INCLUDED */}
       <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1040, margin: '0 auto', padding: '104px 32px 40px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640, marginBottom: 44 }}>
@@ -411,10 +361,12 @@ export default function ITServicesPage() {
               <div key={a.name} style={{ display: 'flex', flexDirection: 'column', gap: 8, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '24px 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>{a.name}</span>
-                  <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 4, flex: 'none' }}>
-                    <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--at-turquoise)' }}>{a.price}</span>
-                    {a.unit && <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-muted)' }}>{a.unit}</span>}
-                  </span>
+                  {a.price && (
+                    <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 4, flex: 'none' }}>
+                      <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--at-turquoise)' }}>{a.price}</span>
+                      {a.unit && <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-muted)' }}>{a.unit}</span>}
+                    </span>
+                  )}
                 </div>
                 <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--text-muted)', textWrap: 'pretty' }}>{a.desc}</p>
               </div>
@@ -459,7 +411,49 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 10. FINAL CTA */}
+      {/* 9. FROM IT CLIENTS */}
+      <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '92px 32px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
+            <span className={eyebrow}>From IT Clients</span>
+            <blockquote style={{ margin: 0, fontSize: 24, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;We passed Cyber Essentials first time. Our biggest client noticed before we&rsquo;d even told them.&rdquo;</blockquote>
+            <p style={{ margin: 0, fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Managing Director</strong> · PR agency, Bath <span style={{ opacity: 0.6 }}>(placeholder quote)</span></p>
+            <Link href={dcHref('IT Case Studies.dc.html')} data-hover="gap: 10px" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginTop: 4, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Read more case studies <Icon name="arrow-right" size={16} /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. GO DEEPER */}
+      <section style={{ background: '#fff' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
+            <span className={eyebrow}>Go Deeper</span>
+            <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Three Places to Look Next</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+            <Link href={dcHref('Phishing Simulations.dc.html')} data-reveal data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
+              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="fish" size={22} /></span>
+              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>Phishing Simulations</span>
+              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>The service with our strongest case-study results. See how a simulated attack changes a team.</span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+            </Link>
+            <Link href={dcHref('ITAD.dc.html')} data-reveal data-reveal-delay={90} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
+              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="recycle" size={22} /></span>
+              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>IT Recycling</span>
+              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>IT asset disposal done properly — secure collection, certified data destruction, resale and recycling.</span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+            </Link>
+            <Link href={dcHref('IT Case Studies.dc.html')} data-reveal data-reveal-delay={180} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
+              <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="file-text" size={22} /></span>
+              <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>IT Case Studies</span>
+              <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>Real problems, measured outcomes — what working with us actually looks like for agencies.</span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. FINAL CTA */}
       <section id="contact" style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '100px 32px 108px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>

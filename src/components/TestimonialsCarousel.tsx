@@ -14,12 +14,15 @@ export default function TestimonialsCarousel({
   eyebrow,
   heading,
   cardBg = 'var(--surface-card)',
+  theme = 'light',
 }: {
   items: Testimonial[];
-  eyebrow: string;
+  eyebrow?: string;
   heading?: string;
   cardBg?: string;
+  theme?: 'light' | 'dark';
 }) {
+  const onDark = theme === 'dark';
   const trackRef = useRef<HTMLDivElement>(null);
   const [overflowing, setOverflowing] = useState(true);
 
@@ -59,10 +62,12 @@ export default function TestimonialsCarousel({
   return (
     <>
       <div className="at-tstc-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap', marginBottom: 40 }}>
-        <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 560 }}>
-          <span className="at-eyebrow">{eyebrow}</span>
+        <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640 }}>
+          {eyebrow && (
+            <span className="at-eyebrow" style={onDark ? { color: 'var(--at-turquoise-light)' } : undefined}>{eyebrow}</span>
+          )}
           {heading && (
-            <h2 style={{ margin: 0, fontSize: 34, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>{heading}</h2>
+            <h2 style={{ margin: 0, fontSize: onDark ? 44 : 34, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: onDark ? 800 : 700, color: onDark ? '#fff' : 'var(--text-heading)' }}>{heading}</h2>
           )}
         </div>
         {overflowing && (
