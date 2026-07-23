@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import CaseStudiesExplorer, { type CaseCategory, type CaseDef } from '@/components/CaseStudiesExplorer';
-import ImageSlot from '@/components/ImageSlot';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import Icon from '@/components/Icon';
+import { testimonials } from '@/lib/testimonials';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
@@ -31,19 +32,6 @@ function toCategory(raw?: string | string[]): CaseCategory {
   return 'all';
 }
 
-const moreQuotesDefs = [
-  { tag: 'IT Support', delay: 0, hasLogo: true, logoPlaceholder: 'Logo — Synergy Group', quote: "We've used AgencyTech for upgrades and ongoing support with our IT fleet. Their service was quick, well priced and very convenient, offering us a full range of options and their key recommendations, for issues that could have caused great expense. The team was professional, communicative and attentive. We're looking forward to working with them in the future.", name: 'Adam Nor', role: 'IT Manager · Synergy Group' },
-  { tag: 'IT Support & FPP', delay: 90, hasLogo: false, logoPlaceholder: '', quote: 'Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems, and the integrated approach to technology and AI has helped us strengthen our operations, bring structure to how we use our tools, automate admin, and start using AI confidently across the team.', name: 'Charlotte Laing', role: 'CEO · The Content Emporium' },
-  { tag: 'IT Support', delay: 180, hasLogo: true, logoPlaceholder: 'Logo — UWE Bristol', quote: 'Casey and the AgencyTech team have been great to work with and have filled a gap in our service, providing support to personally owned devices of our staff and students. We look forward to continue working with them in the future.', name: 'Joanna Dainton', role: 'Head of Circular Economy · UWE Bristol' },
-  { tag: 'IT Support', delay: 0, hasLogo: true, logoPlaceholder: 'Logo — University of Bristol', quote: 'AgencyTech delivers fantastic customer service for students and staff. Servicing electrical devices reduces costs for students who don’t have to buy new, as well as contributing to UoB’s circular economy goals.', name: 'Richard Abraham', role: 'IT Engagement Manager · University of Bristol' },
-  { tag: 'IT Support', delay: 90, hasLogo: false, logoPlaceholder: '', quote: 'This tech agency provides five-star service. I wholeheartedly endorse their excellent service.', name: 'Cllr Asher Craig', role: 'Ex Deputy Mayor · CEO, Pathway Fund' },
-  { tag: 'IT Support', delay: 180, hasLogo: false, logoPlaceholder: '', quote: 'AgencyTech have been a reliable and professional partner throughout our work together. We’ve found them responsive, flexible, and able to handle complex needs at scale, and we’d confidently recommend them to other institutions or businesses.', name: 'Van Pham', role: 'IT Technician · University of Southampton' },
-];
-
-const moreQuotesLoop = moreQuotesDefs.concat(moreQuotesDefs);
-
-const eyebrow = 'at-eyebrow';
-
 export default async function CaseStudiesPage({
   searchParams,
 }: {
@@ -61,25 +49,7 @@ export default async function CaseStudiesPage({
       {/* MORE CLIENT QUOTES */}
       <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 560, marginBottom: 48 }}>
-            <span className={eyebrow}>More From Our Clients</span>
-            <h2 style={{ margin: 0, fontSize: 34, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Trusted Across Agencies, Charities and Universities</h2>
-          </div>
-          <div data-loop-carousel style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 10, margin: '0 -32px', paddingLeft: 32, paddingRight: 32 }}>
-            {moreQuotesLoop.map((mq, i) => (
-              <div key={`${mq.name}-${i}`} style={{ flex: 'none', width: 'calc((100% - 60px) / 4)', display: 'flex', flexDirection: 'column', gap: 16, background: '#fff', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '28px 26px' }}>
-                <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)', background: 'rgba(6,154,152,0.08)', borderRadius: 'var(--radius-pill)', padding: '5px 12px' }}>{mq.tag}</span>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-body)', textWrap: 'pretty', flex: 1 }}>&quot;{mq.quote}&quot;</p>
-                {mq.hasLogo && (
-                  <ImageSlot placeholder={mq.logoPlaceholder} style={{ width: '100%', height: 32, display: 'block' }} />
-                )}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 1, paddingTop: 4, borderTop: '1px solid var(--border-default)' }}>
-                  <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-heading)', marginTop: 10 }}>{mq.name}</span>
-                  <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>{mq.role}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsCarousel items={testimonials} eyebrow="More From Our Clients" heading="Trusted Across Agencies, Charities and Universities" cardBg="#fff" />
         </div>
       </section>
 

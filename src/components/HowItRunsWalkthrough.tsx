@@ -59,6 +59,22 @@ function Header() {
   );
 }
 
+/* Closing beat for P1 — the Review's outputs are the client's to keep, with no
+   obligation to continue into Phase 2. Sits after Step 5, before the section ends. */
+function Closing() {
+  return (
+    <div style={{ position: 'relative', maxWidth: 820, margin: '0 auto', padding: '0 32px 96px' }}>
+      <div data-reveal style={{ display: 'flex', gap: 20, alignItems: 'flex-start', background: 'var(--at-cyprus-light)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-md)', padding: '32px 34px' }}>
+        <span style={{ flex: 'none', width: 48, height: 48, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.16)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="file-check" size={22} /></span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)' }}>Yours to keep — no obligation</span>
+          <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.82)', textWrap: 'pretty' }}>Everything from the Review — the roadmap, the reports, the governance policy — belongs to you. You’re free to take it and resource it internally, with no obligation to go further. Most clients have chosen to bring AgencyTech in for the next stage, but that choice is entirely optional.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HowItRunsWalkthrough() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [scroll, setScroll] = useState(false);
@@ -104,7 +120,8 @@ export default function HowItRunsWalkthrough() {
   // ---- Static / reduced-motion fallback -----------------------------------
   if (!scroll) {
     return (
-      <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '104px 32px 88px' }}>
+      <>
+      <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '104px 32px 56px' }}>
         <div data-reveal style={{ marginBottom: 48 }}><Header /></div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {STEPS.map((s, i) => (
@@ -124,6 +141,8 @@ export default function HowItRunsWalkthrough() {
           ))}
         </div>
       </div>
+      <Closing />
+      </>
     );
   }
 
@@ -142,6 +161,7 @@ export default function HowItRunsWalkthrough() {
   };
 
   return (
+    <>
     <div ref={wrapperRef} style={{ position: 'relative', height: `${(1 + STEPS.length * STEP_VH) * 100}vh` }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', width: '100%' }}>
@@ -190,5 +210,7 @@ export default function HowItRunsWalkthrough() {
         </div>
       </div>
     </div>
+    <Closing />
+    </>
   );
 }

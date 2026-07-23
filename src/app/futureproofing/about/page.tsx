@@ -7,6 +7,8 @@ import Icon from '@/components/Icon';
 import ReviewToTrainingReveal from '@/components/ReviewToTrainingReveal';
 import HowItRunsWalkthrough from '@/components/HowItRunsWalkthrough';
 import TierScoreReveal from '@/components/TierScoreReveal';
+import FpAnchorNav from '@/components/FpAnchorNav';
+import FpOngoingWork from '@/components/FpOngoingWork';
 import { dataUri } from '@/lib/blobscene';
 import { dcHref } from '@/lib/routes';
 
@@ -64,15 +66,19 @@ export default function FutureproofingAboutPage() {
         </div>
       </section>
 
+      {/* SECTION ANCHOR NAV — inline here, sticks under the site navbar on scroll */}
+      <FpAnchorNav />
+
       {/* HOW THE PROGRAM WORKS — review > implementation > training animation */}
       <section style={{ position: 'relative', zIndex: 1 }}>
         <ReviewToTrainingReveal />
       </section>
 
-      {/* HOW IT RUNS — scroll-driven walkthrough, one large step at a time.
+      {/* HOW IT RUNS (P1 — "Review" anchor) — scroll-driven walkthrough, one large
+          step at a time, closing on the "yours to keep" beat.
           No overflow:hidden here — it would create a scroll container and break
           the component's internal position:sticky pin. */}
-      <section style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
+      <section id="review" style={{ position: 'relative', zIndex: 1, background: 'transparent', scrollMarginTop: 'var(--fp-anchor-offset, 170px)' }}>
         <HowItRunsWalkthrough />
       </section>
 
@@ -81,6 +87,9 @@ export default function FutureproofingAboutPage() {
       <section style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
         <TierScoreReveal />
       </section>
+
+      {/* P2 "Ongoing Work" + What Gets Built + proof + pricing summary */}
+      <FpOngoingWork />
 
       {/* FINAL CTA */}
       <section id="contact" style={{ position: 'relative', zIndex: 1, background: '#fff', borderTop: '1px solid var(--border-default)' }}>

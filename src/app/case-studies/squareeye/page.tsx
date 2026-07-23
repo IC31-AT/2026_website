@@ -152,7 +152,7 @@ export default function SquareEyeCaseStudyPage() {
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '80px 32px 8px', display: 'flex', flexDirection: 'column', gap: 18 }}>
           <Icon name="quote" size={34} style={{ color: 'var(--at-turquoise)', opacity: 0.5 }} />
           <blockquote style={{ margin: 0, fontSize: 26, lineHeight: 1.4, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>“A lot of what we talked about today made sense — and we knew we should be doing these things. But we hadn't been joining it up, and we hadn't been thinking about a proper implementation plan. Having a definite roadmap, with some outside accountability, would be good.”</blockquote>
-          <span style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Trevor S</strong> · Founder & CEO, SquareEye</span>
+          <span style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Katharine Horsman</strong> · Sales and Marketing Director, SquareEye</span>
         </div>
       </section>
 
@@ -226,7 +226,7 @@ export default function SquareEyeCaseStudyPage() {
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '80px 32px', display: 'flex', flexDirection: 'column', gap: 18 }}>
           <Icon name="quote" size={30} style={{ color: 'var(--at-turquoise)', opacity: 0.5 }} />
           <blockquote style={{ margin: 0, fontSize: 23, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>“The business we've had in the past — nothing would break if we ignored it for six months. This is different. I feel if we ignore this, we could be out of business very quickly. Having a definite plan, and something to be accountable to, changes that.”</blockquote>
-          <span style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Trevor S</strong> · Founder & CEO, SquareEye</span>
+          <span style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Katharine Horsman</strong> · Sales and Marketing Director, SquareEye</span>
         </div>
       </section>
 

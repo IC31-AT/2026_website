@@ -5,6 +5,8 @@ import FaqAccordion from '@/components/FaqAccordion';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import IntroOverlay from '@/components/IntroOverlay';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
+import { testimonials } from '@/lib/testimonials';
 import { dcHref } from '@/lib/routes';
 
 const logos = [
@@ -22,68 +24,6 @@ const logos = [
   { name: 'HP', src: '/assets/partner-logos/hp.png' },
 ];
 const marqueeLogos = logos.concat(logos);
-
-const moreQuotes = [
-  {
-    tag: 'IT Support', delay: 0, logo: '/assets/client-logos/synergy-group.png',
-    quote: "We've used AgencyTech for upgrades and ongoing support with our IT fleet. Their service was quick, well priced and very convenient, offering us a full range of options and their key recommendations, for issues that could have caused great expense. The team was professional, communicative and attentive. We're looking forward to working with them in the future.",
-    name: 'Adam Nor', role: 'IT Manager · Synergy Group',
-  },
-  {
-    tag: 'IT Support & FPP', delay: 90, logo: '/assets/client-logos/content-emporium.png',
-    quote: 'Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems, and the integrated approach to technology and AI has helped us strengthen our operations, bring structure to how we use our tools, automate admin, and start using AI confidently across the team.',
-    name: 'Charlotte Laing', role: 'CEO · The Content Emporium',
-  },
-  {
-    tag: 'IT Support', delay: 180, logo: '/assets/client-logos/uwe-bristol.webp',
-    quote: 'Casey and the AgencyTech team have been great to work with and have filled a gap in our service, providing support to personally owned devices of our staff and students. We look forward to continue working with them in the future.',
-    name: 'Joanna Dainton', role: 'Head of Circular Economy · UWE Bristol',
-  },
-  {
-    tag: 'Futureproofing', delay: 0, logo: '/assets/client-logos/brand-point-zero.png',
-    quote: 'Within two and a half weeks they’d spoken to the whole team, mapped every tool we used, and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.',
-    name: 'Mark Beavan', role: 'Managing Director · PointZeroGroup',
-  },
-  {
-    tag: 'IT Support', delay: 0, logo: '/assets/client-logos/university-of-bristol.png',
-    quote: 'AgencyTech delivers fantastic customer service for students and staff. Servicing electrical devices reduces costs for students who don’t have to buy new, as well as contributing to UoB’s circular economy goals.',
-    name: 'Richard Abraham', role: 'IT Engagement Manager · University of Bristol',
-  },
-  {
-    tag: 'IT Support', delay: 90, logo: '/assets/client-logos/pathway-fund.webp',
-    quote: 'This tech agency provides five-star service. I wholeheartedly endorse their excellent service.',
-    name: 'Cllr Asher Craig', role: 'Ex Deputy Mayor · CEO, Pathway Fund',
-  },
-  {
-    tag: 'IT Support', delay: 180, logo: '/assets/client-logos/university-of-southampton.png',
-    quote: 'AgencyTech have been a reliable and professional partner throughout our work together. We’ve found them responsive, flexible, and able to handle complex needs at scale, and we’d confidently recommend them to other institutions or businesses.',
-    name: 'Van Pham', role: 'IT Technician · University of Southampton',
-  },
-];
-const moreQuotesLoop = moreQuotes.concat(moreQuotes);
-
-const testimonials = [
-  {
-    quote: 'AgencyTech has taken real pressure off our leadership team and given us genuine peace of mind on cybersecurity. Support is fast and proactive — issues get solved before they become problems — and their integrated approach has us using AI confidently across the team.',
-    name: 'Charlotte Laing', title: 'Founder & Director', company: 'The Content Emporium',
-    logo: '/assets/client-logos/content-emporium.png',
-  },
-  {
-    quote: 'Within two and a half weeks they’d mapped every tool we used and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.',
-    name: 'Mark Beavan', title: 'Managing Director', company: 'PointZeroGroup',
-    logo: '/assets/client-logos/brand-point-zero.png',
-  },
-  {
-    quote: 'AgencyTech handled upgrades and ongoing support across our IT fleet — quick, well-priced and convenient, with clear recommendations on issues that could have cost us dearly. Professional, communicative and attentive throughout.',
-    name: 'Adam Nor', title: 'IT Manager', company: 'Synergy Group',
-    logo: '/assets/client-logos/synergy-group.png',
-  },
-  {
-    quote: 'A reliable, professional partner throughout — responsive, flexible, and able to handle complex needs at scale. We’d confidently recommend them to other institutions or businesses.',
-    name: 'Van Pham', title: 'IT Technician', company: 'University of Southampton',
-    logo: '/assets/client-logos/university-of-southampton.png',
-  },
-];
 
 const newsCards = [
   { delay: 0, icon: 'brain-circuit', tag: 'Futureproofing', date: 'June 2026', title: 'AI Readiness Is a Leadership Question, Not a Technical One', excerpt: 'Why most adoption efforts stall on strategy and culture long before the technology gets a say.' },
@@ -185,55 +125,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. TESTIMONIALS — 2×2 card grid */}
+      {/* 5. TESTIMONIALS — one carousel of client cards */}
       <section style={{ background: 'var(--at-grey)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
-          <span className={eyebrow} style={{ display: 'block', color: 'var(--text-muted)', marginBottom: 48 }}>What Agencies Say</span>
-          <div className="at-tst-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-            {testimonials.map((t) => (
-              <article key={t.name} className="at-tst-card" data-reveal style={{ display: 'flex', gap: 28, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '34px 36px' }}>
-                {/* PERSON — far left */}
-                <div className="at-tst-person" style={{ flex: '0 0 158px', display: 'flex', flexDirection: 'column', gap: 3, borderRight: '1px solid var(--border-default)', paddingRight: 26 }}>
-                  {t.logo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={t.logo} alt={t.company} style={{ height: 30, width: 'auto', maxWidth: '100%', objectFit: 'contain', objectPosition: 'left', alignSelf: 'flex-start', marginBottom: 14 }} />
-                  ) : (
-                    <Icon name="quote" size={26} color="var(--at-turquoise)" style={{ opacity: 0.45, marginBottom: 10 }} />
-                  )}
-                  <span style={{ fontSize: 15.5, fontWeight: 700, color: 'var(--text-heading)', letterSpacing: '-0.01em' }}>{t.name}</span>
-                  <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{t.title}</span>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--at-turquoise)' }}>{t.company}</span>
-                </div>
-                {/* QUOTE — far right */}
-                <blockquote className="at-tst-body" style={{ margin: 0, alignSelf: 'center', fontSize: 15.5, lineHeight: 1.65, fontWeight: 500, color: 'var(--text-body)', textWrap: 'pretty' }}>{t.quote}</blockquote>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5b. MORE CLIENT QUOTES */}
-      <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 560, marginBottom: 48 }}>
-            <span className={eyebrow}>More From Our Clients</span>
-          </div>
-          <div data-loop-carousel className="at-mq-carousel" style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 10, margin: '0 -32px', paddingLeft: 32, paddingRight: 32, scrollbarWidth: 'none' }}>
-            {moreQuotesLoop.map((mq, i) => (
-              <div key={`${mq.name}-${i}`} className="at-mq-card" style={{ flex: 'none', width: 'calc((100% - 60px) / 4)', display: 'flex', flexDirection: 'column', gap: 16, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '28px 26px' }}>
-                <span style={{ alignSelf: 'flex-start', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)', background: 'rgba(6,154,152,0.08)', borderRadius: 'var(--radius-pill)', padding: '5px 12px' }}>{mq.tag}</span>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-body)', textWrap: 'pretty', flex: 1 }}>&quot;{mq.quote}&quot;</p>
-                {mq.logo && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={mq.logo} alt={mq.role.split(' · ')[1] || mq.name} style={{ height: 30, width: 'auto', maxWidth: '70%', objectFit: 'contain', objectPosition: 'left', display: 'block' }} />
-                )}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 1, paddingTop: 4, borderTop: '1px solid var(--border-default)' }}>
-                  <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-heading)', marginTop: 10 }}>{mq.name}</span>
-                  <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>{mq.role}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsCarousel items={testimonials} eyebrow="What Agencies Say" cardBg="var(--surface-card)" />
         </div>
       </section>
 

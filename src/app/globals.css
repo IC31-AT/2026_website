@@ -110,50 +110,45 @@ img, video { max-width: 100%; }
   .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
 }
 
-/* Testimonial cards: 2×2 grid on desktop. As it narrows, rather than
-   collapsing into one tall vertical column of text, the whole set becomes a
-   horizontal swipe carousel — fixed-width cards you scroll left/right, one
-   snapping into place at a time. Keeps the card shape instead of letting
-   the quote run tall down the page. */
-@media (max-width: 900px) {
-  .at-tst-grid {
-    display: flex !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px !important;
-    margin: 0 -32px !important;
-    padding: 4px 32px 12px !important;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .at-tst-grid::-webkit-scrollbar { display: none; }
-  .at-tst-card {
-    flex: 0 0 auto !important;
-    width: min(85vw, 440px);
-    scroll-snap-align: start;
-  }
+/* Testimonials carousel (<TestimonialsCarousel>): a 2-row grid that scrolls
+   left/right, so a 2×2 block of cards is always in view and you page through
+   the rest with the arrow buttons or a swipe. Cards never collapse into a
+   tall vertical column of text. Column-major flow: cards fill top-to-bottom,
+   then the next column. Two columns (a 2×2 block) are visible on desktop. */
+.at-tstc-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  grid-auto-columns: calc((100% - 20px) / 2);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Bleed to the section edges so cards can scroll flush to the viewport. */
+  margin: 0 -32px;
+  padding: 4px 32px 12px;
 }
-/* Phone width: the person/quote horizontal split leaves the quote too narrow,
-   so stack it inside the card — person on top, quote below. Card stays a
-   fixed-width slide in the carousel, not a full-width vertical column. */
+.at-tstc-track::-webkit-scrollbar { display: none; }
+.at-tstc-card { scroll-snap-align: start; }
+
+/* Tablet: one full-width card column in view (two stacked), swipe for more. */
+@media (max-width: 900px) {
+  .at-tstc-track { grid-auto-columns: min(90vw, 560px); }
+}
+/* Phone: drop to a single row — one card per view — so nothing stacks tall.
+   Inside each card the person/quote split stacks (person on top, quote below). */
 @media (max-width: 640px) {
-  .at-tst-card { flex-direction: column !important; gap: 16px !important; }
-  .at-tst-person {
+  .at-tstc-track { grid-template-rows: auto; grid-auto-columns: 84vw; }
+  .at-tstc-main { flex-direction: column !important; gap: 16px !important; }
+  .at-tstc-person {
     flex-basis: auto !important;
     border-right: none !important;
     border-bottom: 1px solid var(--border-default) !important;
     padding-right: 0 !important;
-    padding-bottom: 16px !important;
+    padding-bottom: 14px !important;
   }
-}
-
-/* "More From Our Clients" carousel: on desktop each card is a quarter of the
-   row (4 up). Once that width would start squeezing the quotes into narrow
-   strips, page it 2-up — two cards in view, swipe left/right through the set,
-   snapping a fresh pair into place each page. Stays a horizontal carousel. */
-@media (max-width: 900px) {
-  .at-mq-carousel { scroll-snap-type: x mandatory; }
-  .at-mq-card { width: calc((100% - 20px) / 2) !important; scroll-snap-align: start; }
 }
 
 /* AI-readiness ROI calculator: the two input fields and the two result tiles
