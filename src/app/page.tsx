@@ -47,9 +47,9 @@ const fppResults: StatTile[] = [
   { num: 4, unit: 'hrs / person / week', label: 'Saved after an AI training session' },
 ];
 
-const resultGroups: { label: string; items: StatTile[] }[] = [
-  { label: 'IT Managed Services', items: itResults },
-  { label: 'The Futureproofing Program', items: fppResults },
+const resultGroups: { label: string; href: string; items: StatTile[] }[] = [
+  { label: 'IT Managed Services', href: dcHref('IT Services.dc.html'), items: itResults },
+  { label: 'The Futureproofing Program', href: dcHref('Futureproofing.dc.html'), items: fppResults },
 ];
 
 const eyebrow = 'at-eyebrow';
@@ -67,8 +67,8 @@ export default function HomePage() {
             <h1 style={{ margin: 0, fontSize: 'clamp(34px, 8.6vw, 58px)', lineHeight: 1.06, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Running Today. Ready for Tomorrow.</h1>
             <p style={{ margin: 0, fontSize: 'clamp(16px, 4.4vw, 18px)', lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 480, textWrap: 'pretty' }}>We manage the IT that shouldn&apos;t be a distraction — and prepare your agency for the AI-driven shift that&apos;s already underway.</p>
             <div className="at-hero-cta" style={{ display: 'flex', gap: 14, marginTop: 6 }}>
-              <Link href={dcHref('IT Services.dc.html')} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore IT Services</Link>
-              <Link href={dcHref('Futureproofing.dc.html')} data-hover="background: var(--at-cyprus-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 28px', background: 'var(--at-cyprus)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore Futureproofing</Link>
+              <Link href={dcHref('IT Services.dc.html')} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '0 28px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, lineHeight: 1.2, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore IT Services</Link>
+              <Link href={dcHref('Futureproofing.dc.html')} data-hover="background: var(--at-cyprus-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 56, padding: '0 28px', background: 'var(--at-cyprus)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, lineHeight: 1.2, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Explore Futureproofing</Link>
             </div>
           </div>
           <div className="at-hero-media" style={{ position: 'relative', height: '100%', minHeight: 460 }}>
@@ -153,14 +153,13 @@ export default function HomePage() {
       <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, maxWidth: 640, margin: '0 auto 52px' }}>
-            <span className={eyebrow}>Results</span>
             <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>The Numbers Behind It</h2>
           </div>
           <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 40 }}>
             {resultGroups.map((group, gi) => (
               <div key={group.label} data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 22, paddingTop: gi > 0 ? 40 : 0, borderTop: gi > 0 ? '1px solid var(--border-default)' : 'none' }}>
-                <span className={eyebrow} style={{ textAlign: 'center' }}>{group.label}</span>
-                <div className="at-keep-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+                <h3 style={{ margin: 0, textAlign: 'center', fontSize: 'clamp(24px, 2.6vw, 30px)', lineHeight: 1.2, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)' }}>{group.label}</h3>
+                <div className="at-results-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
                   {group.items.map((r, i) => (
                     <div key={i} data-reveal data-reveal-delay={i * 90} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '32px 30px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', minHeight: 168 }}>
                       {'from' in r ? (
@@ -184,6 +183,9 @@ export default function HomePage() {
                       )}
                     </div>
                   ))}
+                  <Link href={group.href} data-hover="border-color: var(--at-turquoise); background: rgba(6,154,152,0.06)" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '32px 24px', minHeight: 168, background: '#fff', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', color: 'var(--at-turquoise)', fontSize: 16, fontWeight: 700, textAlign: 'center', textDecoration: 'none', transition: 'border-color 200ms ease, background 200ms ease' }}>
+                    Find Out More <Icon name="arrow-right" size={19} />
+                  </Link>
                 </div>
               </div>
             ))}

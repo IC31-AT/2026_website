@@ -203,11 +203,11 @@ export default function ITServicesPage() {
       {/* 2. PROOF */}
       <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 32px' }}>
-          <figure data-reveal style={{ margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch', gap: 56 }}>
-            <div aria-label="Charlotte Laing video testimonial" style={{ minHeight: 340, borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--at-cyprus)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-              <span style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="play" size={26} /></span>
+          <figure style={{ margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch', gap: 56 }}>
+            <div data-reveal data-reveal-from="left" data-reveal-scale aria-label="Charlotte Laing video testimonial" style={{ minHeight: 340, borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--at-cyprus)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+              <span style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.25)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)', animation: 'at-pulse 1.8s ease-in-out 900ms 2' }}><Icon name="play" size={26} /></span>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 22 }}>
+            <div data-reveal data-reveal-from="right" data-reveal-delay={100} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 22 }}>
               <Icon name="quote" size={32} color="var(--at-turquoise)" style={{ opacity: 0.65 }} />
               <blockquote style={{ margin: 0, fontSize: 25, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;Working with AgencyTech has taken a huge amount of pressure off our leadership team and given us real peace of mind around our cybersecurity standards. The support is fast and proactive, issues get solved before they become problems.&rdquo;</blockquote>
               <figcaption style={{ fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Charlotte Laing</strong> · The Content Emporium</figcaption>
@@ -227,8 +227,8 @@ export default function ITServicesPage() {
         </div>
         <div style={{ maxWidth: 840, margin: '0 auto', padding: '18px 32px 72px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
           {/* Compact service list — capability tags retain the established marquee treatment. */}
-            {categories.map((c) => (
-              <div key={c.id} id={c.id} data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '34px 0', scrollMarginTop: 100, position: 'relative', borderBottom: '1px solid var(--border-default)' }}>
+            {categories.map((c, i) => (
+              <div key={c.id} id={c.id} data-reveal data-reveal-delay={i * 80} style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '34px 0', scrollMarginTop: 100, position: 'relative', borderBottom: '1px solid var(--border-default)' }}>
                 {c.anchors.map((a) => (
                   <span key={a} id={a} style={{ position: 'absolute', top: 60 }} />
                 ))}
@@ -282,8 +282,8 @@ export default function ITServicesPage() {
             </div>
             <p style={{ margin: '12px 0 0', fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 440, textWrap: 'balance' }}>Average response time across all tickets — a named account manager, not a ticket queue.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginTop: 48, width: '100%', maxWidth: 760 }}>
-              {slaTiers.map((t) => (
-                <div key={t.label} style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 16px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', textAlign: 'left' }}>
+              {slaTiers.map((t, i) => (
+                <div key={t.label} data-reveal data-reveal-delay={i * 80} style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 16px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', textAlign: 'left' }}>
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{t.label}</span>
                   <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-heading)' }}>{t.response}</span>
                   <span style={{ fontSize: 12.5, lineHeight: 1.4, color: 'var(--text-muted)' }}>{t.example}</span>
@@ -343,9 +343,9 @@ export default function ITServicesPage() {
             <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Exactly What&rsquo;s in the Package</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Everything below is in the base price — no per-ticket charges, no surprise line items. Delivered identically whether you run Microsoft 365 or Google Workspace.</p>
           </div>
-          <div data-reveal data-reveal-delay={90} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 40px' }}>
-            {baseIncludes.map((f) => (
-              <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-body)' }}><Icon name="check" size={16} style={{ color: 'var(--at-turquoise)', flex: 'none', marginTop: 2 }} />{f}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 40px' }}>
+            {baseIncludes.map((f, i) => (
+              <span key={f} data-reveal data-reveal-delay={Math.min(i * 45, 360)} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-body)' }}><Icon name="check" size={16} style={{ color: 'var(--at-turquoise)', flex: 'none', marginTop: 2 }} />{f}</span>
             ))}
           </div>
         </div>
@@ -356,9 +356,9 @@ export default function ITServicesPage() {
             <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: 'var(--text-heading)' }}>Available as Add-ons</h3>
             <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-muted)' }}>Optional extras that sit outside the base package — add them when you need them.</p>
           </div>
-          <div data-reveal data-reveal-delay={90} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
-            {addOns.map((a) => (
-              <div key={a.name} style={{ display: 'flex', flexDirection: 'column', gap: 8, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '24px 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+            {addOns.map((a, i) => (
+              <div key={a.name} data-reveal data-reveal-delay={Math.min(i * 60, 360)} style={{ display: 'flex', flexDirection: 'column', gap: 8, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '24px 24px' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>{a.name}</span>
                   {a.price && (

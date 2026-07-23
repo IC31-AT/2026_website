@@ -64,9 +64,11 @@ function initReveals(root: Document | HTMLElement, signal: AbortSignal) {
     // data-reveal-scale opts into a fade + slight scale-in (0.95 -> 1). A
     // data-reveal-from value of left/right provides a restrained horizontal
     // entrance for paired content. Reduced motion is handled in globals.css.
-    el.style.opacity = '0';
     const from = el.getAttribute('data-reveal-from');
-    el.style.transform = el.hasAttribute('data-reveal-scale') ? 'scale(0.95)' : from === 'left' ? 'translateX(-28px)' : from === 'right' ? 'translateX(28px)' : 'translateY(24px)';
+    const scale = el.hasAttribute('data-reveal-scale');
+    const translate = from === 'left' ? 'translateX(-28px)' : from === 'right' ? 'translateX(28px)' : 'translateY(24px)';
+    el.style.opacity = '0';
+    el.style.transform = scale ? translate + ' scale(0.95)' : translate;
     pending.push(el);
   });
   if (!pending.length) return;
