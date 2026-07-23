@@ -26,7 +26,8 @@ export default function BookCallBar() {
       data-hover="background: var(--at-cyprus-light); box-shadow: 0 18px 42px rgba(0,43,43,0.30)"
       style={{
         position: 'fixed',
-        right: 'clamp(16px, 3vw, 28px)',
+        left: '50%',
+        transform: 'translateX(-50%)',
         bottom: 'clamp(16px, 3vw, 28px)',
         zIndex: 80,
         display: 'inline-flex',
@@ -35,7 +36,7 @@ export default function BookCallBar() {
         padding: '9px 9px 9px 22px',
         background: 'var(--at-cyprus)',
         border: '1px solid var(--at-cyprus-light)',
-        borderRadius: 'var(--radius-pill)',
+        borderRadius: 'var(--radius-md)',
         boxShadow: 'var(--shadow-lg)',
         textDecoration: 'none',
         animation: 'at-bookbar-in 520ms cubic-bezier(0.16,1,0.3,1) 400ms both',

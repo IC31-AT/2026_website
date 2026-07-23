@@ -17,7 +17,7 @@ body { margin: 0; background: var(--at-white); }
 @keyframes at-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 @keyframes at-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.82); } }
 @keyframes at-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes at-bookbar-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes at-bookbar-in { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
 /* Loop carousel — horizontal scroll track with hidden scrollbar. */
 [data-loop-carousel] { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
@@ -136,4 +136,11 @@ img, video { max-width: 100%; }
 @media (max-width: 900px) {
   .at-mq-carousel { scroll-snap-type: x mandatory; }
   .at-mq-card { width: calc((100% - 20px) / 2) !important; scroll-snap-align: start; }
+}
+
+/* AI-readiness ROI calculator: the two input fields and the two result tiles
+   sit side-by-side on desktop; stack them on narrow phones so nothing squashes. */
+@media (max-width: 560px) {
+  .at-roi-inputs { grid-template-columns: 1fr !important; }
+  .at-roi-tiles { grid-template-columns: 1fr !important; }
 }

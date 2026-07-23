@@ -21,7 +21,7 @@ type Dimension = { id: string; title: string; number: number; questions: Questio
 
 type FlatQuestion = Question & { dimId: string; dimTitle: string; dimNumber: number };
 
-type Level = { min: number; max: number; label: string; summary: string; detail: string[] };
+type Level = { min: number; max: number; label: string; summary: string; detail: string[]; hoursPerWeek?: number };
 
 type Answers = Record<string, Set<number> | number>;
 
@@ -207,7 +207,7 @@ const DIMENSIONS: Dimension[] = [
 
 const LEVELS: Level[] = [
   {
-    min: 0, max: 29, label: 'Early Stage',
+    min: 0, max: 29, label: 'Early Stage', hoursPerWeek: 10,
     summary: 'Your agency is in the early stages of AI readiness. There are significant opportunities to improve your systems, processes and team capability — and getting structured now will put you ahead of most agencies.',
     detail: [
       'Your tech stack and processes likely need a review before AI can be layered in effectively.',
@@ -216,7 +216,7 @@ const LEVELS: Level[] = [
     ],
   },
   {
-    min: 30, max: 54, label: 'Developing',
+    min: 30, max: 54, label: 'Developing', hoursPerWeek: 8,
     summary: "You've made a start — there are pockets of good practice across your agency. But adoption is patchy, governance is thin, and the potential is largely untapped.",
     detail: [
       "Some of your team are getting value from AI tools, but it's not consistent or strategic.",
@@ -225,7 +225,7 @@ const LEVELS: Level[] = [
     ],
   },
   {
-    min: 55, max: 74, label: 'Capable',
+    min: 55, max: 74, label: 'Capable', hoursPerWeek: 4,
     summary: 'Your agency has solid foundations. AI tools are in use, some processes are documented, and your team has reasonable capability. The opportunity now is to go further — faster.',
     detail: [
       "You're likely leaving efficiency gains on the table through inconsistent automation and ad-hoc training.",
@@ -242,6 +242,14 @@ const LEVELS: Level[] = [
     ],
   },
 ];
+
+/* ROI calculator: recovered hours are valued over a conservative working year
+   (52 weeks minus holiday / bank holidays). £122 = BenchPress 2026 average UK
+   agency billing rate, used as the default the user can override. */
+const WORKING_WEEKS = 46;
+const DEFAULT_BILLING_RATE = '122';
+const gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+const num0 = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
 
 const ALL_QUESTIONS: FlatQuestion[] = DIMENSIONS.flatMap((d) =>
   d.questions.map((q) => ({ ...q, dimId: d.id, dimTitle: d.title, dimNumber: d.number }))
@@ -294,6 +302,8 @@ export default function AiReadinessAuditPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
+  const [billingRate, setBillingRate] = useState(DEFAULT_BILLING_RATE);
+  const [teamSize, setTeamSize] = useState('');
 
   const total = ALL_QUESTIONS.length;
   const isIntro = step === -1;
@@ -320,6 +330,18 @@ export default function AiReadinessAuditPage() {
       return { title: d.title, pctStr: `${dpct}%` };
     });
     result = { pct, level, dimScores };
+  }
+
+  // ROI figures — only for levels with an hours-per-week value (Stage 1–3).
+  // Stage 4 (Advanced) has none and shows the new-revenue panel instead.
+  let roi: { hoursPerWeek: number; size: number; teamHoursPerYear: number; teamValuePerYear: number } | null = null;
+  if (result && result.level.hoursPerWeek != null) {
+    const rate = parseFloat(billingRate) || 0;
+    const size = Math.max(0, Math.floor(parseFloat(teamSize) || 0));
+    const hoursPerWeek = result.level.hoursPerWeek;
+    const teamHoursPerYear = hoursPerWeek * WORKING_WEEKS * size;
+    const teamValuePerYear = teamHoursPerYear * rate;
+    roi = { hoursPerWeek, size, teamHoursPerYear, teamValuePerYear };
   }
 
   function toggleOption(q: Question, idx: number) {
@@ -359,6 +381,8 @@ export default function AiReadinessAuditPage() {
     setName('');
     setEmail('');
     setCompany('');
+    setBillingRate(DEFAULT_BILLING_RATE);
+    setTeamSize('');
   }
 
   return (
@@ -514,6 +538,87 @@ export default function AiReadinessAuditPage() {
                   </div>
                 ))}
               </div>
+              <div style={{ height: 1, background: 'var(--border-default)', margin: '4px 0' }} />
+
+              {/* --- Return-on-investment calculator ------------------------ */}
+              {roi ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Your Return On Investment</span>
+                    <h3 style={{ margin: 0, fontSize: 19, lineHeight: 1.3, fontWeight: 800, color: 'var(--text-heading)', letterSpacing: '-0.01em' }}>Realise the time you could get back</h3>
+                    <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>
+                      Agencies at your level typically unlock around <strong style={{ color: 'var(--text-heading)' }}>{roi.hoursPerWeek} hours per person, per week*</strong>. Add your numbers to see what that&apos;s worth across your team.
+                    </p>
+                  </div>
+
+                  <div className="at-roi-inputs" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <label htmlFor="at-roi-rate" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-heading)' }}>Blended billing rate <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>(£ per hour you charge clients)</span></label>
+                      <input
+                        id="at-roi-rate"
+                        type="number"
+                        inputMode="numeric"
+                        min={0}
+                        value={billingRate}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setBillingRate(e.target.value)}
+                        placeholder="122"
+                        style={{ height: 48, padding: '0 16px', border: '1.5px solid var(--border-default)', borderRadius: 'var(--radius-sm)', fontSize: 14.5, fontFamily: 'var(--font-sans)', color: 'var(--text-heading)', background: '#fff' }}
+                      />
+                      <button
+                        onClick={() => setBillingRate(DEFAULT_BILLING_RATE)}
+                        style={{ alignSelf: 'flex-start', background: 'none', border: 'none', padding: 0, fontSize: 12, color: 'var(--at-turquoise)', textDecoration: 'underline', cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
+                      >
+                        I don&apos;t know my rate — use the UK average
+                      </button>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <label htmlFor="at-roi-team" style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-heading)' }}>Team size <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>(people using AI)</span></label>
+                      <input
+                        id="at-roi-team"
+                        type="number"
+                        inputMode="numeric"
+                        min={0}
+                        value={teamSize}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTeamSize(e.target.value)}
+                        placeholder="e.g. 10"
+                        style={{ height: 48, padding: '0 16px', border: '1.5px solid var(--border-default)', borderRadius: 'var(--radius-sm)', fontSize: 14.5, fontFamily: 'var(--font-sans)', color: 'var(--text-heading)', background: '#fff' }}
+                      />
+                      <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>£122 default sourced from BenchPress 2026.</span>
+                    </div>
+                  </div>
+
+                  <div className="at-roi-tiles" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                    <div style={{ background: '#f7ddf1', border: '1px solid #edc6e5', borderRadius: 'var(--radius-sm)', padding: '20px', display: 'flex', flexDirection: 'column', gap: 5 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.02em', color: '#8f3f7d' }}>Hours recovered</div>
+                      <div style={{ fontSize: 30, fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--text-heading)' }}>{roi.size > 0 ? num0.format(roi.teamHoursPerYear) : '—'}</div>
+                      <div style={{ fontSize: 12, lineHeight: 1.45, color: 'var(--text-muted)' }}>hours across your team, per year</div>
+                    </div>
+                    <div style={{ background: '#f7ddf1', border: '1px solid #edc6e5', borderRadius: 'var(--radius-sm)', padding: '20px', display: 'flex', flexDirection: 'column', gap: 5 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.02em', color: '#8f3f7d' }}>Value unlocked</div>
+                      <div style={{ fontSize: 30, fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--text-heading)' }}>{roi.size > 0 ? gbp.format(roi.teamValuePerYear) : '—'}</div>
+                      <div style={{ fontSize: 12, lineHeight: 1.45, color: 'var(--text-muted)' }}>capacity, ready to reinvest, per year</div>
+                    </div>
+                  </div>
+
+                  {roi.size === 0 && (
+                    <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>Enter your team size to see your numbers.</span>
+                  )}
+                  <span style={{ fontSize: 11.5, lineHeight: 1.5, color: 'var(--at-faint)' }}>*Typical result for agencies at your level, based on {WORKING_WEEKS} working weeks a year. Guarantee terms discussed in The Review.</span>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Your Return On Investment</span>
+                  <h3 style={{ margin: 0, fontSize: 19, lineHeight: 1.3, fontWeight: 800, color: 'var(--text-heading)', letterSpacing: '-0.01em' }}>At your level, the biggest wins aren&apos;t time — they&apos;re new revenue</h3>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>
+                    You&apos;ve already banked most of the easy time savings. The opportunity now is turning your systems and IP into AI-powered services and products you can sell — new revenue no competitor can copy.
+                  </p>
+                  <div style={{ background: '#f7ddf1', border: '1px solid #edc6e5', borderRadius: 'var(--radius-sm)', padding: '20px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.02em', color: '#8f3f7d' }}>What&apos;s possible from here</div>
+                    <div style={{ fontSize: 15, lineHeight: 1.55, fontWeight: 600, color: 'var(--text-heading)' }}>New, sellable AI products built on your own IP — a revenue line competitors can&apos;t copy.</div>
+                  </div>
+                </div>
+              )}
+
               <div style={{ height: 1, background: 'var(--border-default)', margin: '4px 0' }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>By Dimension</span>
