@@ -245,7 +245,7 @@ img, video { max-width: 100%; }
   .at-home-testimonials .at-tstc-head { margin-bottom: 18px !important; }
   .at-home-testimonials .at-tstc-head > div:last-child { display: none !important; }
   .at-home-testimonials .at-tstc-track {
-    grid-template-rows: auto !important;
+    grid-template-rows: auto auto !important;
     grid-auto-columns: calc((100% - 12px) / 2) !important;
     gap: 12px !important;
     margin: 0 !important;
