@@ -23,32 +23,25 @@ type Member = {
 
 const TEAM: Member[] = [
   {
-    name: '[Team member name]',
+    name: 'Ishaan',
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — [team member name]',
+    photo: 'Photo — Ishaan',
   },
   {
-    name: '[Team member name]',
+    name: 'Casey',
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — [team member name]',
+    photo: 'Photo — Casey',
   },
   {
-    name: '[Team member name]',
+    name: 'Ben',
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — [team member name]',
-  },
-  {
-    name: '[Team member name]',
-    role: '[Role / title]',
-    snapshot: '[One-line personality snapshot]',
-    bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — [team member name]',
+    photo: 'Photo — Ben',
   },
 ];
 
