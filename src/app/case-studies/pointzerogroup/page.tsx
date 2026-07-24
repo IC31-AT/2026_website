@@ -5,6 +5,7 @@ import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
 import BrandArrow from '@/components/BrandArrow';
 import { ROUTES, dcHref } from '@/lib/routes';
+import { photoUrl } from '@/lib/media';
 
 export const metadata: Metadata = {
   title: 'PointZeroGroup — Case Study',
@@ -128,31 +129,28 @@ export default function PointZeroGroupCaseStudyPage() {
     <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
       <SiteNav active="case-studies" theme="light" />
 
-      {/* HERO */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
+      {/* HERO — frosted case-study photo behind the headline and the numbers */}
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--at-cyprus)', borderBottom: '1px solid var(--border-on-dark)' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4, pointerEvents: 'none' }} />
-        <div style={{ position: 'relative', maxWidth: 900, margin: '0 auto', padding: '152px 32px 72px', display: 'flex', flexDirection: 'column', gap: 22 }}>
+        <img src={photoUrl('heros/pointzerogroup.jpg')} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(10px)', transform: 'scale(1.1)', opacity: 0.55, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,34,34,0.72) 0%, rgba(0,34,34,0.9) 100%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', maxWidth: 900, margin: '0 auto', padding: '152px 32px 0', display: 'flex', flexDirection: 'column', gap: 22 }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12.5, fontWeight: 600, color: 'rgba(255,255,255,0.6)' }}>
             <Link href={dcHref('Futureproofing Case Studies.dc.html')} style={{ color: 'var(--at-turquoise-light)', textDecoration: 'none' }}>Case Studies</Link> <Icon name="chevron-right" size={13} /> PointZeroGroup
           </span>
           <span style={{ display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)', background: 'rgba(43,188,186,0.16)', padding: '5px 12px', borderRadius: 'var(--radius-pill)' }}>Futureproofing · The Review</span>
           <h1 style={{ margin: 0, fontSize: 46, lineHeight: 1.08, letterSpacing: '-0.025em', fontWeight: 800, color: '#fff', maxWidth: 760, textWrap: 'balance' }}>How AgencyTech Helped PointZeroGroup Understand Exactly What Was Holding Them Back</h1>
           <p style={{ margin: 0, fontSize: 17.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.78)', maxWidth: 620, textWrap: 'pretty' }}>A specialist employer communications group of three agencies, ~35 staff — and a clear vision the operational foundations hadn’t yet caught up with.</p>
-        </div>
-      </section>
-
-      {/* METRIC STRIP */}
-      <section style={{ background: 'var(--at-cyprus-light)', borderBottom: '1px solid var(--border-on-dark)' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
-            {stats.map((s) => (
-              <div key={s.label} style={{ padding: '34px 20px', display: 'flex', flexDirection: 'column', gap: 6, borderRight: '1px solid var(--border-on-dark)' }}>
+          {/* Numbers, over the frosted photo */}
+          <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid rgba(255,255,255,0.18)' }}>
+            {stats.map((s, i) => (
+              <div key={s.label} style={{ padding: '28px 20px 4px', display: 'flex', flexDirection: 'column', gap: 6, borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.18)' : 'none' }}>
                 <span style={{ fontSize: 40, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise-light)' }}>{s.value}</span>
                 <span style={{ fontSize: 13, lineHeight: 1.45, color: 'rgba(255,255,255,0.72)' }}>{s.label}</span>
               </div>
             ))}
           </div>
+          <div style={{ height: 56 }} />
         </div>
       </section>
 

@@ -8,6 +8,7 @@ import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import BrandArrow from '@/components/BrandArrow';
 import { ROUTES } from '@/lib/routes';
+import { photoUrl } from '@/lib/media';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -112,7 +113,7 @@ export default function AboutPage() {
       <section style={{ position: 'relative', background: 'var(--at-white)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 32px 96px' }}>
           <div data-reveal style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
-            <ImageSlot placeholder="Photo — the AgencyTech team in the shop" style={{ width: '100%', minHeight: 460, display: 'block' }} />
+            <ImageSlot src={photoUrl('heros/about-team.jpg')} alt="The AgencyTech team in the shop" sizes="(max-width: 1100px) 100vw, 1036px" placeholder="Photo — the AgencyTech team in the shop" style={{ width: '100%', minHeight: 460, display: 'block' }} />
           </div>
         </div>
       </section>

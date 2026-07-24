@@ -16,3 +16,17 @@ export function storageUrl(bucketPath: string): string {
   const clean = bucketPath.replace(/^\/+/, '');
   return `${SUPABASE_URL}/storage/v1/object/public/${clean}`;
 }
+
+/* Public URL for a site photo in the `media` bucket.
+
+   Pass a path relative to the photo root, e.g. photoUrl('heros/home.jpg').
+   Objects are currently nested under an extra `media/` folder inside the
+   `media` bucket, so the effective key is `media/media/<path>`. If that inner
+   folder is ever removed, set MEDIA_INNER to '' — the only place this needs
+   changing. */
+const MEDIA_BUCKET = 'media';
+const MEDIA_INNER = 'media/';
+
+export function photoUrl(path: string): string {
+  return storageUrl(`${MEDIA_BUCKET}/${MEDIA_INNER}${path.replace(/^\/+/, '')}`);
+}

@@ -5,6 +5,7 @@ import SiteFooter from '@/components/SiteFooter';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
 import BrandArrow from '@/components/BrandArrow';
+import { photoUrl } from '@/lib/media';
 import ReviewToTrainingReveal from '@/components/ReviewToTrainingReveal';
 import HowItRunsWalkthrough from '@/components/HowItRunsWalkthrough';
 import TierScoreReveal from '@/components/TierScoreReveal';
@@ -54,7 +55,7 @@ export default function FutureproofingAboutPage() {
       <section style={{ position: 'relative', zIndex: 1, background: 'transparent', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: 1100, margin: '0 auto', padding: '88px 32px 96px' }}>
           <div data-reveal style={{ display: 'grid', gridTemplateColumns: '0.82fr 1.18fr', gap: 0, borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', background: 'var(--at-cyprus)', minHeight: 420 }}>
-            <ImageSlot placeholder="Photo — Mark, Point Zero Group" style={{ width: '100%', height: '100%', minHeight: 320, display: 'block' }} />
+            <ImageSlot src={photoUrl('clients/mark-pzg.png')} alt="Mark, Point Zero Group" sizes="(max-width: 900px) 100vw, 400px" placeholder="Photo — Mark, Point Zero Group" style={{ width: '100%', height: '100%', minHeight: 320, display: 'block' }} />
             <div style={{ padding: '56px 56px', display: 'flex', flexDirection: 'column', gap: 22, justifyContent: 'center', background: '#fff' }}>
               <Icon name="quote" size={36} style={{ color: 'var(--at-turquoise)', opacity: 0.8 }} />
               <blockquote style={{ margin: 0, fontSize: 26, lineHeight: 1.45, fontWeight: 600, color: 'var(--at-cyprus)', letterSpacing: '-0.01em', textWrap: 'pretty' }}>“Within two and a half weeks they’d spoken to the whole team, mapped every tool we used, and handed us a sequenced 12-month plan we could actually act on. For the first time, we have real clarity on where the business is and what needs to happen next.”</blockquote>

@@ -9,6 +9,7 @@ import IntroOverlay from '@/components/IntroOverlay';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import { testimonials } from '@/lib/testimonials';
 import { dcHref } from '@/lib/routes';
+import { photoUrl } from '@/lib/media';
 
 const logos = [
   { name: 'Bristol Creative Industries', src: '/assets/partner-logos/bristol-creative-industries.png' },
@@ -74,7 +75,7 @@ export default function HomePage() {
           </div>
           <div className="at-hero-media" style={{ position: 'relative', height: '100%', minHeight: 460 }}>
             <div data-parallax="0.12" style={{ willChange: 'transform', height: '100%' }}>
-              <ImageSlot placeholder="Team photo — real people, real office" radius={6} style={{ width: '100%', height: '100%', display: 'block' }} />
+              <ImageSlot src={photoUrl('heros/home.jpg')} alt="The AgencyTech team at work" priority sizes="(max-width: 900px) 100vw, 560px" placeholder="Team photo — real people, real office" radius={6} style={{ width: '100%', height: '100%', display: 'block' }} />
             </div>
             <div className="at-hero-badge at-hero-badge-l" style={{ position: 'absolute', left: -36, bottom: 44, animation: 'at-float 5s ease-in-out infinite', background: 'var(--at-cyprus)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, minWidth: 210 }}>
               <span style={{ width: 34, height: 34, borderRadius: 'var(--radius-sm)', background: 'rgba(43,188,186,0.16)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise-light)' }}><Icon name="shield-check" size={18} /></span>

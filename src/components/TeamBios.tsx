@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ImageSlot from './ImageSlot';
+import { photoUrl } from '@/lib/media';
 
 /* Meet the Team — a grid of member cards. Photo, name, role and a one-line
    personality snapshot are always visible; "Read Bio" expands the full bio
@@ -27,21 +28,21 @@ const TEAM: Member[] = [
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — Ishaan',
+    photo: photoUrl('team/ishaan.jpg'),
   },
   {
     name: 'Casey',
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — Casey',
+    photo: photoUrl('team/casey.jpg'),
   },
   {
     name: 'Ben',
     role: '[Role / title]',
     snapshot: '[One-line personality snapshot]',
     bio: '[Full bio — a short paragraph on background, what they do at AgencyTech, and something human. Replace before launch.]',
-    photo: 'Photo — Ben',
+    photo: photoUrl('team/ben.jpg'),
   },
 ];
 
@@ -68,7 +69,7 @@ export default function TeamBios() {
                 data-reveal-delay={i * 90}
                 style={{ display: 'flex', flexDirection: 'column', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--surface-card)', boxShadow: 'var(--shadow-sm)' }}
               >
-                <ImageSlot placeholder={m.photo} radius={0} style={{ width: '100%', aspectRatio: '4 / 3', minHeight: 0, borderRadius: 0, border: 'none', borderBottom: '1px solid var(--border-default)' }} />
+                <ImageSlot src={m.photo} alt={m.name} placeholder={`Photo — ${m.name}`} sizes="(max-width: 900px) 100vw, 340px" radius={0} style={{ width: '100%', aspectRatio: '4 / 3', minHeight: 0, borderRadius: 0, border: 'none', borderBottom: '1px solid var(--border-default)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 20px 4px' }}>
                   <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: 'var(--text-heading)' }}>{m.name}</h3>
                   <span style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{m.role}</span>

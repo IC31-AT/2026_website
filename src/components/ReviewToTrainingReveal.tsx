@@ -2,14 +2,17 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import ImageSlot from './ImageSlot';
+import { photoUrl } from '@/lib/media';
 
 /* Scroll-driven "From review → to implementation → and training" reveal. A tall
    wrapper pins a full-viewport stage; scroll progress swaps the headline phrase
    and floats case-study cards up. Ported from the ReviewToTrainingReveal prototype. */
-const CARDS = [
+// `img` is a path in the media bucket (via photoUrl). Cards without one show
+// the placeholder — populate as real card images are uploaded (card-1..6).
+const CARDS: { left: number; top: number; w: number; h: number; rot: number; img?: string }[] = [
   { left: 4, top: 66, w: 299, h: 390, rot: -4 },
-  { left: 23, top: 61, w: 325, h: 299, rot: 3 },
-  { left: 42, top: 69, w: 273, h: 351, rot: -3 },
+  { left: 23, top: 61, w: 325, h: 299, rot: 3, img: 'fpp-cards/card-2.jpg' },
+  { left: 42, top: 69, w: 273, h: 351, rot: -3, img: 'fpp-cards/card-3.jpg' },
   { left: 60, top: 60, w: 338, h: 273, rot: 5 },
   { left: 79, top: 68, w: 286, h: 377, rot: -5 },
   { left: 97, top: 62, w: 260, h: 338, rot: 4 },
@@ -77,9 +80,9 @@ export default function ReviewToTrainingReveal() {
   return (
     <div ref={wrapperRef} style={{ position: 'relative', height: '300vh', fontFamily: 'var(--font-sans)' }}>
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
-        {CARDS.map((_, i) => (
+        {CARDS.map((c, i) => (
           <div key={i} style={cardStyle(i)}>
-            <ImageSlot placeholder={`Case study ${i + 1}`} radius={6} style={{ width: '100%', height: '100%' }} />
+            <ImageSlot src={c.img ? photoUrl(c.img) : undefined} placeholder={`Case study ${i + 1}`} radius={6} style={{ width: '100%', height: '100%' }} />
           </div>
         ))}
 
