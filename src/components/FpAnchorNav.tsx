@@ -33,9 +33,14 @@ export default function FpAnchorNav() {
   // header/anchor-bar height as a scroll-margin offset for the targets.
   useEffect(() => {
     const measure = () => {
+      // On mobile the site nav collapses to a floating burger that takes no
+      // layout space above the content, so the bar pins to the very top of the
+      // screen (top: 0) and sits behind the burger. On desktop it pins beneath
+      // the fixed navbar, whose height we measure at runtime.
+      const mobile = window.matchMedia('(max-width: 900px)').matches;
       const audit = document.querySelector('.at-audit-bar');
       const header = (audit?.parentElement as HTMLElement | null);
-      const hh = header ? Math.round(header.getBoundingClientRect().height) : 116;
+      const hh = mobile ? 0 : (header ? Math.round(header.getBoundingClientRect().height) : 116);
       const bh = barRef.current ? Math.round(barRef.current.getBoundingClientRect().height) : 52;
       setHeaderH(hh);
       document.documentElement.style.setProperty('--fp-anchor-offset', `${hh + bh + 8}px`);
@@ -70,6 +75,7 @@ export default function FpAnchorNav() {
   return (
     <div
       ref={barRef}
+      className="at-fp-anchor"
       style={{
         position: 'sticky', top: headerH, zIndex: 500,
         background: 'rgba(2,42,42,0.86)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',

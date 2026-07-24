@@ -137,6 +137,15 @@ img, video { max-width: 100%; }
   }
 }
 
+@media (max-width: 900px) {
+  /* Futureproofing section nav: pin to the very top of the screen, behind the
+     floating burger (which takes no layout space on mobile). top:0 also guards
+     against a flash of the desktop offset before FpAnchorNav measures. The
+     extra right padding keeps the last link clear of the burger pill. */
+  .at-fp-anchor { top: 0 !important; }
+  .at-fp-anchor nav { padding-right: 60px !important; }
+}
+
 @media (max-width: 600px) {
   .at-audit-bar { font-size: 12px !important; }
 }
