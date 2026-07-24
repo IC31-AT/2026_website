@@ -70,40 +70,64 @@ img, video { max-width: 100%; }
 }
 
 @media (max-width: 640px) {
+  /* On phones navigation is an unobtrusive floating control, not a full
+     branded header. The drawer retains the complete logo and navigation once
+     opened, while the page gets its vertical space back. */
+  .at-site-nav {
+    left: auto !important;
+    width: auto !important;
+    right: 12px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .at-nav-inner { height: auto !important; padding: 12px 0 !important; }
+  .at-nav-inner > a:first-child, .at-audit-bar { display: none !important; }
+  .at-nav-burger {
+    width: 42px !important;
+    height: 42px !important;
+    background: var(--at-cyprus) !important;
+    color: #fff !important;
+    border: 1px solid var(--at-cyprus-light) !important;
+    border-radius: var(--radius-pill) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
   /* Mobile type and spacing rhythm.
      Most page templates deliberately carry their desktop values inline. Those
      values are useful on large screens, but a 38–56px heading and 96–176px
      section gutters make every route feel like it is zoomed in on a phone.
      Apply the compact scale at the document level so new pages inherit a
      sensible mobile layout without requiring one-off overrides. */
-  main h1 { font-size: clamp(2.15rem, 10vw, 2.65rem) !important; line-height: 1.08 !important; }
-  main h2 { font-size: clamp(1.7rem, 7.5vw, 2rem) !important; line-height: 1.14 !important; }
-  main h3 { font-size: clamp(1.2rem, 5.6vw, 1.4rem) !important; line-height: 1.2 !important; }
-  main h4 { font-size: 1.05rem !important; }
+  section h1 { font-size: clamp(2.15rem, 10vw, 2.65rem) !important; line-height: 1.08 !important; }
+  section h2 { font-size: clamp(1.7rem, 7.5vw, 2rem) !important; line-height: 1.14 !important; }
+  section h3 { font-size: clamp(1.2rem, 5.6vw, 1.4rem) !important; line-height: 1.2 !important; }
+  section h4 { font-size: 1.05rem !important; }
 
   /* Keep the reading measure comfortable, but stop individual long-form
      callouts from inheriting desktop display-copy sizes. */
-  main p { font-size: 0.9375rem !important; line-height: 1.58 !important; }
+  section p { font-size: 0.9375rem !important; line-height: 1.58 !important; }
 
   /* The direct child of a section is the page-width container in the route
      templates. Horizontal gutters are consistently 20px; vertical section
      space is reduced from the desktop 96–176px range to 56–72px. */
-  main > section > div {
+  section > div {
     padding-inline: 20px !important;
     padding-block: clamp(56px, 15vw, 72px) !important;
   }
 
   /* First sections need enough room for the fixed navigation, but should not
      carry the 168–176px desktop hero offset. */
-  main > section:first-of-type > div {
-    padding-top: 124px !important;
+  section:first-of-type > div {
+    padding-top: 76px !important;
     padding-bottom: 56px !important;
   }
 
   /* Cards and large interactive elements retain their hierarchy with a more
      compact phone footprint. */
-  main [style*="border-radius"] { border-radius: var(--radius-md) !important; }
-  main a[style*="height"] { min-height: 48px; }
+  section [style*="border-radius"] { border-radius: var(--radius-md) !important; }
+  section a[style*="height"] { min-height: 48px; }
 
   /* Collapse inline multi-column grids to a single column.
      Opt a grid out with class "at-keep-grid". */
@@ -133,7 +157,7 @@ img, video { max-width: 100%; }
     display: flex !important;
     flex-direction: column !important;
     min-height: 100svh;
-    padding-top: 130px !important;   /* clear the fixed nav + audit bar */
+    padding-top: 78px !important;    /* clear the compact floating menu */
     padding-bottom: 18px !important;
     gap: 16px !important;
   }
@@ -149,6 +173,17 @@ img, video { max-width: 100%; }
   /* Pull the floating stat badges back inside the image bounds. */
   .at-hero-badge-l { left: 12px !important; bottom: 12px !important; min-width: 0 !important; }
   .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
+}
+
+/* The homepage is designed as a sequence of phone-sized scenes. Snap only
+   this page: longer service and case-study routes remain free-scrolling. */
+@media (max-width: 640px) {
+  html:has(.at-home-page) { scroll-snap-type: y mandatory; }
+  .at-home-page > section {
+    min-height: 100svh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 /* Testimonials carousel (<TestimonialsCarousel>): a 2-row grid that scrolls
@@ -190,7 +225,49 @@ img, video { max-width: 100%; }
     padding-right: 0 !important;
     padding-bottom: 14px !important;
   }
-  .at-results-grid { grid-template-columns: 1fr !important; }
+  /* The home social-proof panel is intentionally a contained snapshot on a
+     phone: title plus two compact cards, without the desktop carousel bleed. */
+  .at-home-testimonials > div { padding-block: 48px !important; }
+  .at-home-testimonials .at-tstc-head { margin-bottom: 18px !important; }
+  .at-home-testimonials .at-tstc-head > div:last-child { display: none !important; }
+  .at-home-testimonials .at-tstc-track {
+    grid-template-rows: auto !important;
+    grid-auto-columns: calc((100% - 12px) / 2) !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .at-home-testimonials .at-tstc-card { gap: 10px !important; padding: 14px !important; }
+  .at-home-testimonials .at-tstc-main { gap: 8px !important; }
+  .at-home-testimonials .at-tstc-person { gap: 1px !important; padding-bottom: 8px !important; }
+  .at-home-testimonials .at-tstc-person img { height: 18px !important; margin-bottom: 6px !important; }
+  .at-home-testimonials .at-tstc-body {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    font-size: 12px !important;
+    line-height: 1.42 !important;
+  }
+  .at-home-testimonials .at-tstc-card > div:last-child { display: none !important; }
+  .at-home-testimonials .at-tstc-person span { font-size: 11px !important; line-height: 1.25 !important; }
+
+  /* Four number cards form a clear 2 × 2 grid; each service link spans its
+     row beneath the matching pair instead of creating a third narrow tile. */
+  .at-results-section > div { padding-block: 52px !important; }
+  .at-results-section > div > div:first-child { margin-bottom: 28px !important; }
+  .at-results-section > div > div:nth-child(2) { gap: 24px !important; }
+  .at-results-section > div > div:nth-child(2) > div { gap: 12px !important; padding-top: 24px !important; }
+  .at-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+  .at-results-grid > div { min-height: 118px !important; padding: 16px 12px !important; gap: 6px !important; }
+  .at-results-grid > div > span:first-child { font-size: clamp(1.7rem, 9vw, 2.2rem) !important; gap: 5px !important; }
+  .at-results-grid > a { grid-column: 1 / -1; min-height: 40px !important; padding: 8px 14px !important; flex-direction: row !important; font-size: 13px !important; }
+
+  .at-bookbar { bottom: 12px !important; gap: 0 !important; padding: 9px 14px !important; border-radius: var(--radius-pill) !important; }
+  .at-bookbar-copy { flex-direction: row !important; align-items: center !important; gap: 5px !important; white-space: nowrap; }
+  .at-bookbar-kicker { font-size: 11px !important; letter-spacing: 0 !important; text-transform: none !important; color: rgba(255,255,255,0.72) !important; }
+  .at-bookbar-avatar, .at-bookbar-status { display: none !important; }
 }
 
 /* AI-readiness ROI calculator: the two input fields and the two result tiles

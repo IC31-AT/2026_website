@@ -43,8 +43,9 @@ export default function BookCallBar() {
         transition: 'background 200ms ease, box-shadow 220ms ease',
       }}
     >
-      <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+      <span className="at-bookbar-copy" style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
         <span
+          className="at-bookbar-kicker"
           style={{
             fontSize: 10.5,
             fontWeight: 700,
@@ -63,6 +64,7 @@ export default function BookCallBar() {
       {/* Avatar — placeholder for Casey. Replace the inner content with a
           <next/image> (rounded, object-fit cover) when the photo is ready. */}
       <span
+        className="at-bookbar-avatar"
         aria-hidden
         style={{
           position: 'relative',
@@ -84,6 +86,7 @@ export default function BookCallBar() {
 
       {/* Available dot */}
       <span
+        className="at-bookbar-status"
         aria-hidden
         style={{
           position: 'absolute',

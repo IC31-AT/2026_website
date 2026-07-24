@@ -79,7 +79,7 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
   const mSubHead = { fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--at-turquoise-light)', margin: '10px 0 4px' } as const;
 
   return (
-    <div style={{
+    <div className="at-site-nav" style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
       background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
       boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
@@ -87,7 +87,7 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
       WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
       transition: 'background 350ms ease, box-shadow 350ms ease', fontFamily: 'var(--font-sans)',
     }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(18px, 5vw, 32px)', height: 76, display: 'flex', alignItems: 'center', gap: 40 }}>
+      <div className="at-nav-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(18px, 5vw, 32px)', height: 76, display: 'flex', alignItems: 'center', gap: 40 }}>
         <Link href={ROUTES.home} data-cursor style={{ display: 'flex', alignItems: 'center', flex: 'none' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={dark ? '/assets/logo_linear_dark.png' : '/assets/logo_linear_light.png'} alt="AgencyTech" style={{ height: 24, display: 'block' }} />

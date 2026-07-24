@@ -56,7 +56,7 @@ const eyebrow = 'at-eyebrow';
 
 export default function HomePage() {
   return (
-    <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
+    <div className="at-home-page" style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
       <SiteNav active="home" theme="light" />
 
       {/* 1. HERO */}
@@ -140,7 +140,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. TESTIMONIALS — one carousel of client cards */}
-      <section style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
+      <section className="at-home-testimonials" style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
@@ -150,7 +150,7 @@ export default function HomePage() {
 
       {/* 5. RESULTS — count-up stats. Reuses the existing data-countup pattern
           (reduced-motion + formatting handled in siteMotion.ts). */}
-      <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
+      <section className="at-results-section" style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, maxWidth: 640, margin: '0 auto 52px' }}>
             <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>The Numbers Behind It</h2>
