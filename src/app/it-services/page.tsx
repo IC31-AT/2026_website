@@ -109,17 +109,6 @@ const whyPointDefs = [
 ];
 const whyPoints = whyPointDefs.map((p, i) => ({ ...p, delay: (i % 3) * 90 }));
 
-const pricingFeatures = [
-  'Unlimited helpdesk support',
-  'Full Microsoft 365 / Google Workspace management',
-  'Endpoint protection & backup',
-  'Password & credential management',
-  'Unlimited onboarding & offboarding',
-  'MDM & BYOD management',
-  'Dedicated account manager',
-  'Quarterly business reviews',
-];
-
 /* Full base-package inclusions, shown in the "What's Included" section. */
 const baseIncludes = [
   'Password manager (2FA-enabled)',
@@ -154,6 +143,9 @@ const addOns = [
 const eyebrow = 'at-eyebrow';
 
 export default function ITServicesPage() {
+  // Managed IT & Helpdesk is the lead card; the rest sit in a two-column grid.
+  const [managed, ...otherCats] = categories;
+
   return (
     <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-body)', background: 'var(--at-white)' }}>
       <style>{`#it-hero-photo { width: 100% !important; height: 100% !important; display: block !important; }`}</style>
@@ -201,8 +193,23 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 2. PROOF */}
-      <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
+      {/* 2. TECHNOLOGY PARTNERS — moved to the top, directly above the testimonial */}
+      <section style={{ borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)', background: 'var(--surface-subtle)', padding: '30px 0' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', gap: 40 }}>
+          <span style={{ flex: 'none', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Technology Partners</span>
+          <div style={{ flex: 1, minWidth: 0, overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 48, width: 'max-content', animation: 'at-marquee 32s linear infinite' }}>
+              {partnerLogos.concat(partnerLogos).map((logo, i) => (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img key={`${logo.name}-${i}`} src={logo.src} alt={logo.name} data-hover="opacity: 1; filter: grayscale(0)" style={{ height: 24, width: 'auto', objectFit: 'contain', filter: 'grayscale(1)', opacity: 0.5, transition: 'opacity 200ms ease, filter 200ms ease' }} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. PROOF */}
+      <section style={{ background: 'var(--surface-subtle)', borderBottom: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 32px' }}>
           <figure style={{ margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch', gap: 56 }}>
             <div data-reveal data-reveal-from="left" data-reveal-scale aria-label="Charlotte Laing video testimonial" style={{ minHeight: 340, borderRadius: 'var(--radius-md)', overflow: 'hidden', background: 'var(--at-cyprus)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
@@ -217,34 +224,89 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 3. SERVICES & SOFTWARE RANGE */}
+      {/* 4. SERVICES — lead card + two-column grid */}
       <section id="services" style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 8px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 620 }}>
+        <div style={{ maxWidth: 1160, margin: '0 auto', padding: '104px 32px 96px' }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640, marginBottom: 44 }}>
             <span className={eyebrow}>What We Do</span>
             <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Everything Your Agency Runs On, Today and Tomorrow</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>One partner across the whole stack — from the helpdesk your team calls to the broadband your studio runs on. Five areas, each with everything included.</p>
           </div>
-        </div>
-        <div style={{ maxWidth: 840, margin: '0 auto', padding: '18px 32px 72px', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-          {/* Compact service list — capability tags retain the established marquee treatment. */}
-            {categories.map((c, i) => (
-              <div key={c.id} id={c.id} data-reveal data-reveal-delay={i * 80} style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '34px 0', scrollMarginTop: 100, position: 'relative', borderBottom: '1px solid var(--border-default)' }}>
+
+          {/* Lead card — Managed IT & Helpdesk, spanning both columns, with the
+              response & priority levels absorbed into the right-hand panel. */}
+          <div id={managed.id} data-reveal style={{ position: 'relative', scrollMarginTop: 100, background: '#fff', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1.15fr 0.85fr' }}>
+            {managed.anchors.map((a) => (
+              <span key={a} id={a} style={{ position: 'absolute', top: 60 }} />
+            ))}
+            {/* LEFT — overview + includes */}
+            <div style={{ padding: '36px 36px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <span style={{ width: 44, height: 44, flex: 'none', borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name={managed.icon} size={22} /></span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{managed.kicker}</span>
+                  <h3 style={{ margin: 0, fontSize: 26, lineHeight: 1.2, letterSpacing: '-0.01em', fontWeight: 700, color: 'var(--text-heading)' }}>{managed.title}</h3>
+                </div>
+              </div>
+              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>{managed.desc}</p>
+              <div style={{ marginTop: 2 }}>
+                <span style={{ display: 'block', marginBottom: 10, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Includes</span>
+                <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px 18px', margin: 0, padding: 0, listStyle: 'none' }}>
+                  {managed.items.map((item) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 13, lineHeight: 1.45, color: 'var(--text-muted)' }}>
+                      <span aria-hidden="true" style={{ width: 5, height: 5, flex: 'none', marginTop: 6, borderRadius: '50%', background: 'var(--at-turquoise)' }} />{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {/* RIGHT — response & priority levels */}
+            <div style={{ padding: '34px 32px', background: 'var(--surface-subtle)', borderLeft: '1px solid var(--border-default)', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Response &amp; priority levels</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span data-countup={8} style={{ fontSize: 46, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--at-turquoise)' }}>8</span>
+                  <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-heading)' }}>min avg response</span>
+                </div>
+                <span style={{ fontSize: 12.5, lineHeight: 1.5, color: 'var(--text-muted)' }}>Across all tickets — a named account manager, not a ticket queue.</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {slaTiers.map((t) => (
+                  <div key={t.label} style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '11px 0', borderTop: '1px solid var(--border-default)' }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{t.label}</span>
+                      <span style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-heading)', whiteSpace: 'nowrap' }}>{t.response}</span>
+                    </div>
+                    <span style={{ fontSize: 12, lineHeight: 1.4, color: 'var(--text-muted)' }}>{t.example}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ margin: 0, fontSize: 11.5, color: 'var(--at-faint)' }}>Target response times by priority — published per client in the SOW.</p>
+            </div>
+          </div>
+
+          {/* The remaining four areas, two per row. */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 24 }}>
+            {otherCats.map((c, i) => (
+              <div key={c.id} id={c.id} data-reveal data-reveal-delay={i * 80} style={{ position: 'relative', scrollMarginTop: 100, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '30px 30px', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {c.anchors.map((a) => (
                   <span key={a} id={a} style={{ position: 'absolute', top: 60 }} />
                 ))}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ width: 38, height: 38, flex: 'none', borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name={c.icon} size={19} /></span>
-                  <h3 style={{ margin: 0, fontSize: 27, lineHeight: 1.2, letterSpacing: '-0.01em', fontWeight: 700, color: 'var(--text-heading)' }}>{c.title}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ width: 40, height: 40, flex: 'none', borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name={c.icon} size={20} /></span>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{c.kicker}</span>
+                    <h3 style={{ margin: 0, fontSize: 21, lineHeight: 1.2, letterSpacing: '-0.01em', fontWeight: 700, color: 'var(--text-heading)' }}>{c.title}</h3>
+                  </div>
                 </div>
                 {c.id === 'cloud' ? (
-                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Full management of the platforms your agency lives in — Microsoft 365 or Google Workspace tenancies, plus <strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>operational job-management apps like Synergist</strong> that keep projects and time moving.</p>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>Full management of the platforms your agency lives in — Microsoft 365 or Google Workspace tenancies, plus <strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>operational job-management apps like Synergist</strong> that keep projects and time moving.</p>
                 ) : (
-                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>{c.desc}</p>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--text-muted)', textWrap: 'pretty' }}>{c.desc}</p>
                 )}
-                <div style={{ marginTop: 2 }}>
+                <div style={{ marginTop: 'auto', paddingTop: 4 }}>
                   <span style={{ display: 'block', marginBottom: 10, fontSize: 10.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Includes</span>
-                  <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(155px, 1fr))', gap: '8px 18px', margin: 0, padding: 0, listStyle: 'none' }}>
+                  <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px 18px', margin: 0, padding: 0, listStyle: 'none' }}>
                     {c.items.map((item) => (
                       <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 7, fontSize: 12.5, lineHeight: 1.45, color: 'var(--text-muted)' }}>
                         <span aria-hidden="true" style={{ width: 5, height: 5, flex: 'none', marginTop: 6, borderRadius: '50%', background: 'var(--at-turquoise)' }} />{item}
@@ -254,44 +316,6 @@ export default function ITServicesPage() {
                 </div>
               </div>
             ))}
-        </div>
-      </section>
-
-      {/* 3. TECHNOLOGY PARTNERS */}
-      <section style={{ marginTop: 64, borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)', background: 'var(--surface-subtle)', padding: '30px 0' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', gap: 40 }}>
-          <span style={{ flex: 'none', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Technology Partners</span>
-          <div style={{ flex: 1, minWidth: 0, overflow: 'hidden', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 48, width: 'max-content', animation: 'at-marquee 32s linear infinite' }}>
-              {partnerLogos.concat(partnerLogos).map((logo, i) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img key={`${logo.name}-${i}`} src={logo.src} alt={logo.name} data-hover="opacity: 1; filter: grayscale(0)" style={{ height: 24, width: 'auto', objectFit: 'contain', filter: 'grayscale(1)', opacity: 0.5, transition: 'opacity 200ms ease, filter 200ms ease' }} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SLA / RESPONSE TIME STAT */}
-      <section style={{ background: '#fff' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', padding: '128px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 10 }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
-            <span className={eyebrow}>When Something Breaks</span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginTop: 10 }}>
-              <span data-countup={8} style={{ fontSize: 176, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.05em', color: 'var(--at-turquoise)' }}>8</span>
-              <span style={{ fontSize: 40, lineHeight: 1, fontWeight: 700, color: 'var(--text-heading)', marginLeft: 10 }}>minutes</span>
-            </div>
-            <p style={{ margin: '12px 0 0', fontSize: 18, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 440, textWrap: 'balance' }}>Average response time across all tickets — a named account manager, not a ticket queue.</p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginTop: 48, width: '100%', maxWidth: 760 }}>
-              {slaTiers.map((t, i) => (
-                <div key={t.label} data-reveal data-reveal-delay={i * 80} style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '20px 16px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', textAlign: 'left' }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>{t.label}</span>
-                  <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-heading)' }}>{t.response}</span>
-                  <span style={{ fontSize: 12.5, lineHeight: 1.4, color: 'var(--text-muted)' }}>{t.example}</span>
-                </div>
-              ))}
-            </div>
-            <p style={{ margin: '16px 0 0', fontSize: 12.5, color: 'var(--at-faint)' }}>Target response times by priority — published per client in the SOW.</p>
           </div>
         </div>
       </section>
@@ -336,18 +360,42 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 7. WHAT'S INCLUDED */}
+      {/* 7. WHAT'S INCLUDED + PRICING (merged — one source of truth) */}
       <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1040, margin: '0 auto', padding: '104px 32px 40px' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 640, marginBottom: 44 }}>
+          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 680, marginBottom: 44 }}>
             <span className={eyebrow}>What&rsquo;s Included</span>
             <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>Exactly What&rsquo;s in the Package</h2>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Everything below is in the base price — no per-ticket charges, no surprise line items. Delivered identically whether you run Microsoft 365 or Google Workspace.</p>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>One package, one price per team member — no tiers, no per-ticket surprises, no &ldquo;that&rsquo;s extra.&rdquo; Everything below is in the base price, delivered identically whether you run Microsoft 365 or Google Workspace.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 40px' }}>
             {baseIncludes.map((f, i) => (
               <span key={f} data-reveal data-reveal-delay={Math.min(i * 45, 360)} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.5, color: 'var(--text-body)' }}><Icon name="check" size={16} style={{ color: 'var(--at-turquoise)', flex: 'none', marginTop: 2 }} />{f}</span>
             ))}
+          </div>
+
+          {/* Pricing — folded into the same section so the inclusions appear once. */}
+          <div data-reveal style={{ marginTop: 44, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 28, padding: '28px 34px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)' }}>
+            <div style={{ display: 'flex', gap: 40, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <span style={{ fontSize: 48, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£60</span>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
+                </div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per full-time user</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <span style={{ fontSize: 48, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£50</span>
+                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
+                </div>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per freelancer</span>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-start' }}>
+              <a href="#contact" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 50, padding: '0 28px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book an Intro Call <BrandArrow variant="light" size={15} /></a>
+              <span style={{ fontSize: 13, color: 'var(--at-faint)' }}>Billed monthly. No long lock-ins.</span>
+            </div>
           </div>
         </div>
 
@@ -376,43 +424,7 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 9. PRICING */}
-      <section style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
-        <div style={{ maxWidth: 1040, margin: '0 auto', padding: '104px 32px 96px', display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 64, alignItems: 'center' }}>
-          <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <span className={eyebrow}>Pricing</span>
-            <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: 'var(--text-heading)' }}>One Package. Everything Included.</h2>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>No tiers, no per-ticket surprises, no &ldquo;that&rsquo;s extra.&rdquo; One price per team member, covering everything an agency needs from its IT partner.</p>
-            <p style={{ margin: 0, fontSize: 13, color: 'var(--at-faint)' }}>Billed monthly. No long lock-ins.</p>
-          </div>
-          <div data-reveal data-reveal-delay={100} style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '40px 38px', display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                  <span style={{ fontSize: 56, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£60</span>
-                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
-                </div>
-                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per full-time user</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                  <span style={{ fontSize: 56, lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-heading)' }}>£50</span>
-                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-muted)' }}>/ mo</span>
-                </div>
-                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>per freelancer</span>
-              </div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 20px' }}>
-              {pricingFeatures.map((f) => (
-                <span key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, fontSize: 13.5, lineHeight: 1.45, color: 'var(--text-body)' }}><Icon name="check" size={15} style={{ color: 'var(--at-turquoise)', flex: 'none', marginTop: 2 }} />{f}</span>
-              ))}
-            </div>
-            <a href="#contact" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 50, background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: 'background 200ms ease, transform 200ms ease' }}>Book an Intro Call</a>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. FROM IT CLIENTS */}
+      {/* 8. FROM IT CLIENTS */}
       <section style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', padding: '92px 32px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
@@ -424,7 +436,7 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 10. GO DEEPER */}
+      {/* 9. GO DEEPER */}
       <section style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
@@ -454,7 +466,7 @@ export default function ITServicesPage() {
         </div>
       </section>
 
-      {/* 11. FINAL CTA */}
+      {/* 10. FINAL CTA */}
       <section id="contact" style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '100px 32px 108px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
