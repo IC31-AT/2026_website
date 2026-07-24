@@ -32,11 +32,23 @@ body { margin: 0; background: var(--at-white); }
 [data-cat-visual] { opacity: 0; }
 [data-cat-visual]:first-child { opacity: 1; }
 
+/* Review → implementation → training scene (<ReviewToTrainingReveal>): the
+   pinned stage plays out one beat per swipe. Only pages that contain the scene
+   opt the document scroller into snapping; the .at-r2t-stop markers inside it
+   are mandatory stops (scroll-snap-stop: always), so no single swipe — however
+   large — can skip a segment. 'proximity' keeps the rest of the page scrolling
+   freely, since nothing else on it carries a snap alignment. */
+html:has(.at-r2t) { scroll-snap-type: y proximity; }
+.at-r2t-stop { scroll-snap-align: start; scroll-snap-stop: always; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
   .at-bookbar { animation: none !important; }
   .at-load-fade { animation: none !important; }
+  /* Don't force-snap the scroll for readers who asked for reduced motion. */
+  html:has(.at-r2t) { scroll-snap-type: none; }
+  .at-r2t-stop { scroll-snap-align: none; scroll-snap-stop: normal; }
 }
 
 /* ============================================================

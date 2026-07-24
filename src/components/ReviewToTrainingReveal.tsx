@@ -26,6 +26,12 @@ const CARDS: { left: number; top: number; w: number; h: number; rot: number; img
 ];
 const GROUP_STARTS = [0.0, 0.2, 0.5];
 
+/* Scroll-snap beats, as progress values (0–1) through the pinned scene. Each
+   becomes a mandatory stop (scroll-snap-stop: always) so a single swipe — however
+   large — advances at most one beat and the scene plays out section by section:
+   review → implementation → training. Tune these to reposition the resting frames. */
+const SNAP_STOPS = [0.2, 0.5, 0.85];
+
 const ease = (t: number) => 1 - (1 - t) * (1 - t);
 const winT = (p: number, a: number, b: number) => (b <= a ? (p >= b ? 1 : 0) : Math.max(0, Math.min(1, (p - a) / (b - a))));
 
@@ -145,7 +151,14 @@ export default function ReviewToTrainingReveal() {
   const phrase: CSSProperties = { fontSize: 'clamp(40px,7vw,88px)', fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.02em' };
 
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', height: '300vh', fontFamily: 'var(--font-sans)' }}>
+    <div ref={wrapperRef} className="at-r2t" style={{ position: 'relative', height: '300vh', fontFamily: 'var(--font-sans)' }}>
+      {/* Section-by-section snap stops. The stage is pinned across 200vh
+          (300vh wrapper − 100vh viewport), so a beat at progress s sits s×200vh
+          down the wrapper. scroll-snap-stop:always (set in globals.css) makes
+          each one un-skippable, even on a big swipe. */}
+      {SNAP_STOPS.map((s, i) => (
+        <div key={`snap-${i}`} aria-hidden className="at-r2t-stop" style={{ position: 'absolute', left: 0, top: `${s * 200}vh`, width: 1, height: 1, pointerEvents: 'none' }} />
+      ))}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', background: 'var(--at-cyprus)' }}>
         {CARDS.map((c, i) => (
           <div key={i} ref={(el) => { cardRefs.current[i] = el; }} style={cardStyle(i)}>
