@@ -98,7 +98,7 @@ export default function HomePage() {
       <section style={{ borderTop: '1px solid var(--border-default)', borderBottom: '1px solid var(--border-default)', background: '#fff', padding: '26px 0', overflow: 'hidden' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', gap: 40 }}>
           <span style={{ flex: 'none', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Trusted By & Partnered With</span>
-          <div style={{ flex: 1, overflow: 'hidden', position: 'relative', maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)' }}>
+          <div style={{ flex: 1, minWidth: 0, overflow: 'hidden', position: 'relative', maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)' }}>
             <div data-hover="animation-play-state: paused" style={{ display: 'flex', gap: 56, width: 'max-content', animation: 'at-marquee 45s linear infinite' }}>
               {marqueeLogos.map((logo, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -164,7 +164,7 @@ export default function HomePage() {
                   {group.items.map((r, i) => (
                     <div key={i} data-reveal data-reveal-delay={i * 90} style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '32px 30px', background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', minHeight: 168 }}>
                       {'from' in r ? (
-                        <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 12, fontSize: 'clamp(40px, 5.6vw, 60px)', lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'baseline', flexWrap: 'wrap', gap: 12, fontSize: 'clamp(40px, 5.6vw, 60px)', lineHeight: 1, fontWeight: 800, letterSpacing: '-0.03em' }}>
                           <span style={{ color: 'var(--at-faint)', textDecoration: 'line-through', textDecorationThickness: 3 }}><span data-countup={r.from}>{r.from}</span>{r.unit}</span>
                           <Icon name="arrow-right" size={22} style={{ flex: 'none', color: 'var(--text-muted)', alignSelf: 'center' }} />
                           <span style={{ color: 'var(--at-turquoise)' }}><span data-countup={r.to}>{r.to}</span>{r.unit}</span>

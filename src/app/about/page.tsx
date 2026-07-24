@@ -224,7 +224,7 @@ export default function AboutPage() {
             <h2 style={{ margin: 0, fontSize: 36, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>Why Choose AgencyTech?</h2>
           </div>
           <div data-reveal data-reveal-delay={90} style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-default)' }}>
-            <table style={{ width: '100%', minWidth: 760, borderCollapse: 'collapse', fontSize: 13.5 }}>
+            <table className="at-stack-table" style={{ width: '100%', minWidth: 760, borderCollapse: 'collapse', fontSize: 13.5 }}>
               <thead>
                 <tr>
                   <th style={{ position: 'sticky', left: 0, zIndex: 2, textAlign: 'left', padding: '16px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text-muted)', background: 'var(--surface-subtle)', borderBottom: '1px solid var(--border-default)', width: 200 }}>Provider</th>
@@ -238,7 +238,7 @@ export default function AboutPage() {
                   <tr key={row.provider} style={row.highlight ? { background: 'rgba(43,188,186,0.08)' } : undefined}>
                     <th scope="row" style={{ position: 'sticky', left: 0, zIndex: 1, background: row.highlight ? 'var(--status-info-soft)' : 'var(--at-white)', textAlign: 'left', padding: '18px 20px', fontWeight: 700, color: row.highlight ? 'var(--at-turquoise)' : 'var(--text-heading)', borderBottom: '1px solid var(--border-default)', borderLeft: row.highlight ? '3px solid var(--at-turquoise)' : '3px solid transparent', verticalAlign: 'top', whiteSpace: 'nowrap' }}>{row.provider}</th>
                     {row.cells.map((cell, i) => (
-                      <td key={i} style={{ padding: '18px 20px', lineHeight: 1.5, color: row.highlight ? 'var(--text-heading)' : 'var(--text-muted)', fontWeight: row.highlight ? 600 : 400, borderBottom: '1px solid var(--border-default)', verticalAlign: 'top' }}>
+                      <td key={i} data-label={compareCols[i]} style={{ padding: '18px 20px', lineHeight: 1.5, color: row.highlight ? 'var(--text-heading)' : 'var(--text-muted)', fontWeight: row.highlight ? 600 : 400, borderBottom: '1px solid var(--border-default)', verticalAlign: 'top' }}>
                         {row.highlight ? (
                           <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 8 }}>
                             <Icon name="check" size={15} style={{ flex: 'none', marginTop: 2, color: 'var(--at-turquoise)' }} />

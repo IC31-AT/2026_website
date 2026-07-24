@@ -153,7 +153,7 @@ export default function FpOngoingWork() {
           </div>
           <div data-reveal style={{ background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', overflow: 'hidden' }}>
             <div style={{ overflowX: 'auto' }}>
-              <table className="at-keep-grid" style={{ width: '100%', minWidth: 640, borderCollapse: 'collapse', fontFamily: 'var(--font-sans)' }}>
+              <table className="at-keep-grid at-stack-table" style={{ width: '100%', minWidth: 640, borderCollapse: 'collapse', fontFamily: 'var(--font-sans)' }}>
                 <thead>
                   <tr style={{ background: 'var(--surface-subtle)', borderBottom: '2px solid var(--border-default)' }}>
                     <th style={{ textAlign: 'left', padding: '16px 24px', fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-faint)' }}>Stage</th>
