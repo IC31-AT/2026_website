@@ -70,6 +70,41 @@ img, video { max-width: 100%; }
 }
 
 @media (max-width: 640px) {
+  /* Mobile type and spacing rhythm.
+     Most page templates deliberately carry their desktop values inline. Those
+     values are useful on large screens, but a 38–56px heading and 96–176px
+     section gutters make every route feel like it is zoomed in on a phone.
+     Apply the compact scale at the document level so new pages inherit a
+     sensible mobile layout without requiring one-off overrides. */
+  main h1 { font-size: clamp(2.15rem, 10vw, 2.65rem) !important; line-height: 1.08 !important; }
+  main h2 { font-size: clamp(1.7rem, 7.5vw, 2rem) !important; line-height: 1.14 !important; }
+  main h3 { font-size: clamp(1.2rem, 5.6vw, 1.4rem) !important; line-height: 1.2 !important; }
+  main h4 { font-size: 1.05rem !important; }
+
+  /* Keep the reading measure comfortable, but stop individual long-form
+     callouts from inheriting desktop display-copy sizes. */
+  main p { font-size: 0.9375rem !important; line-height: 1.58 !important; }
+
+  /* The direct child of a section is the page-width container in the route
+     templates. Horizontal gutters are consistently 20px; vertical section
+     space is reduced from the desktop 96–176px range to 56–72px. */
+  main > section > div {
+    padding-inline: 20px !important;
+    padding-block: clamp(56px, 15vw, 72px) !important;
+  }
+
+  /* First sections need enough room for the fixed navigation, but should not
+     carry the 168–176px desktop hero offset. */
+  main > section:first-of-type > div {
+    padding-top: 124px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Cards and large interactive elements retain their hierarchy with a more
+     compact phone footprint. */
+  main [style*="border-radius"] { border-radius: var(--radius-md) !important; }
+  main a[style*="height"] { min-height: 48px; }
+
   /* Collapse inline multi-column grids to a single column.
      Opt a grid out with class "at-keep-grid". */
   [style*="grid-template-columns"]:not(.at-footer-grid):not(.at-keep-grid) {
