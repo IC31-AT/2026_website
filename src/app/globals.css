@@ -69,10 +69,11 @@ img, video { max-width: 100%; }
   .at-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px 24px !important; }
 }
 
-@media (max-width: 640px) {
-  /* On phones navigation is an unobtrusive floating control, not a full
-     branded header. The drawer retains the complete logo and navigation once
-     opened, while the page gets its vertical space back. */
+@media (max-width: 900px) {
+  /* On tablets and phones navigation is an unobtrusive floating control, not a
+     full branded header — the only difference between the two is scale. The
+     drawer retains the complete logo and navigation once opened, while the page
+     gets its vertical space back. */
   .at-site-nav {
     left: auto !important;
     width: auto !important;
@@ -147,11 +148,11 @@ img, video { max-width: 100%; }
   .at-footer-logo-icon { display: block !important; }
 }
 
-/* Home hero — bespoke mobile layout: the whole stack (text + buttons +
+/* Home hero — bespoke mobile/tablet layout: the whole stack (text + buttons +
    media + floating badges) fits within ONE screen. The section is a
    100svh flex column; text/buttons take their natural height and the
    media block flex-grows to fill the remaining space to the fold. */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .at-hero-grid {
     grid-template-columns: 1fr !important;
     display: flex !important;
@@ -175,14 +176,30 @@ img, video { max-width: 100%; }
   .at-hero-badge-r { right: 12px !important; top: 12px !important; min-width: 0 !important; }
 }
 
-/* The homepage is designed as a sequence of phone-sized scenes. Snap only
-   this page: longer service and case-study routes remain free-scrolling. */
-@media (max-width: 640px) {
-  html:has(.at-home-page) { scroll-snap-type: y mandatory; }
-  .at-home-page > section {
+/* The homepage is designed as a sequence of viewport-sized scenes. Snap only
+   this page: longer service and case-study routes remain free-scrolling.
+   Only the tagged .at-snap-scene sections snap — the long-form FAQ and footer
+   at the foot of the page are left out, and 'proximity' (not 'mandatory')
+   keeps them freely scrollable rather than trapping the reader mid-section. */
+@media (max-width: 900px) {
+  html:has(.at-home-page) { scroll-snap-type: y proximity; }
+  .at-home-page .at-snap-scene {
     min-height: 100svh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+  }
+  /* Content scenes (everything but the bespoke hero) centre their content in
+     the viewport and shed the desktop section padding, so each scene fills one
+     screen without the tall dead-space above and below that used to push the
+     section past the fold. */
+  .at-home-page .at-snap-scene:not(.at-hero) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .at-home-page .at-snap-scene:not(.at-hero) > div {
+    padding-block: clamp(28px, 7vw, 48px) !important;
+    width: 100%;
   }
 }
 
@@ -209,14 +226,11 @@ img, video { max-width: 100%; }
 .at-tstc-track::-webkit-scrollbar { display: none; }
 .at-tstc-card { scroll-snap-align: start; }
 
-/* Tablet: one full-width card column in view (two stacked), swipe for more. */
+/* Tablet & phone: drop to a single row — one card per view — so nothing stacks
+   tall. Inside each card the person/quote split stacks (person on top, quote
+   below). Same treatment either size, just scaled. */
 @media (max-width: 900px) {
-  .at-tstc-track { grid-auto-columns: min(90vw, 560px); }
-}
-/* Phone: drop to a single row — one card per view — so nothing stacks tall.
-   Inside each card the person/quote split stacks (person on top, quote below). */
-@media (max-width: 640px) {
-  .at-tstc-track { grid-template-rows: auto; grid-auto-columns: 84vw; }
+  .at-tstc-track { grid-template-rows: auto; grid-auto-columns: min(84vw, 560px); }
   .at-tstc-main { flex-direction: column !important; gap: 16px !important; }
   .at-tstc-person {
     flex-basis: auto !important;

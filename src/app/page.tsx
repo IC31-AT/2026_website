@@ -60,7 +60,7 @@ export default function HomePage() {
       <SiteNav active="home" theme="light" />
 
       {/* 1. HERO */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%)' }}>
+      <section className="at-snap-scene at-hero" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, var(--at-grey) 0%, #ffffff 100%)' }}>
         <div className="at-hero-grid" style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(128px, 22vw, 168px) clamp(20px, 5vw, 32px) clamp(56px, 10vw, 96px)', display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 72, alignItems: 'stretch' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             <span className={eyebrow}>The Strategic Tech Partner for Creative Agencies</span>
@@ -110,7 +110,7 @@ export default function HomePage() {
 
       {/* 3. SERVICE — two standalone services, one partner. Replaces the old
           separate Futureproofing Services + IT Services outcome blocks. */}
-      <section id="services" style={{ background: '#fff' }}>
+      <section id="services" className="at-snap-scene" style={{ background: '#fff' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '112px 32px 112px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, maxWidth: 680, margin: '0 auto 52px' }}>
             <span className={eyebrow}>What We Do</span>
@@ -140,7 +140,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. TESTIMONIALS — one carousel of client cards */}
-      <section className="at-home-testimonials" style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
+      <section className="at-home-testimonials at-snap-scene" style={{ position: 'relative', background: 'var(--at-cyprus)', overflow: 'hidden' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/blob-scene-1.svg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, pointerEvents: 'none' }} />
         <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto', padding: '96px 32px 104px' }}>
@@ -150,7 +150,7 @@ export default function HomePage() {
 
       {/* 5. RESULTS — count-up stats. Reuses the existing data-countup pattern
           (reduced-motion + formatting handled in siteMotion.ts). */}
-      <section className="at-results-section" style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
+      <section className="at-results-section at-snap-scene" style={{ background: '#fff', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '104px 32px 96px' }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 14, maxWidth: 640, margin: '0 auto 52px' }}>
             <h2 style={{ margin: 0, fontSize: 38, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>The Numbers Behind It</h2>
@@ -194,7 +194,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. FINAL CTA */}
-      <section id="contact" style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
+      <section id="contact" className="at-snap-scene" style={{ background: 'var(--surface-subtle)', borderTop: '1px solid var(--border-default)' }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '108px 32px 116px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 42, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Not Sure Which You Need?</h2>
