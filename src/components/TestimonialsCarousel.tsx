@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
+import BrandArrow from './BrandArrow';
 import type { Testimonial } from '@/lib/testimonials';
 
 /* Testimonials as a 2-row grid that scrolls left/right: a 2×2 block of cards
@@ -108,7 +109,7 @@ export default function TestimonialsCarousel({
               <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)', background: 'rgba(6,154,152,0.08)', borderRadius: 'var(--radius-pill)', padding: '5px 12px' }}>{t.tag}</span>
               {t.caseStudyHref && (
                 <Link href={t.caseStudyHref} data-hover="gap: 9px" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12.5, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>
-                  Read the case study <Icon name="arrow-right" size={14} />
+                  Read the case study <BrandArrow variant="dark" size={13} />
                 </Link>
               )}
             </div>

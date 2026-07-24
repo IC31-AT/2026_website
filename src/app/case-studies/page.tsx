@@ -4,6 +4,7 @@ import SiteFooter from '@/components/SiteFooter';
 import CaseStudiesExplorer, { type CaseCategory, type CaseDef } from '@/components/CaseStudiesExplorer';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { testimonials } from '@/lib/testimonials';
 
 export const metadata: Metadata = {
@@ -59,7 +60,7 @@ export default async function CaseStudiesPage({
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Want Results Like These?</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>Every one of these started with a short call and an honest look at what wasn't working.</p>
-            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <Icon name="arrow-right" size={17} /></a>
+            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <BrandArrow variant="light" size={15} /></a>
           </div>
         </div>
       </section>

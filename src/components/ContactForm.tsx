@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Icon from './Icon';
+import BrandArrow from './BrandArrow';
 
 /* Get-in-touch form. The live site has no backend of its own — the brief is
    simply "a form that gets emailed to us" — so on submit we compose a mailto:
@@ -85,7 +86,7 @@ export default function ContactForm() {
       </div>
 
       <button type="submit" data-hover="background: var(--accent-hover); transform: scale(1.01)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 52, marginTop: 4, background: 'var(--accent)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, fontFamily: 'inherit', cursor: 'pointer', transition: 'background 200ms ease, transform 200ms ease' }}>
-        Send message <Icon name="arrow-right" size={17} />
+        Send message <BrandArrow variant="light" size={15} />
       </button>
     </form>
   );

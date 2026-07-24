@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -183,7 +184,7 @@ export default function TheReviewPage() {
           <span className="at-eyebrow" style={{ color: 'var(--at-turquoise-light)' }}>What a Completed Review Looks Like</span>
           <p style={{ margin: 0, fontSize: 24, lineHeight: 1.45, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', textWrap: 'pretty' }}>For PointZeroGroup — an employer communications group of three merged agencies — the Review scored the business across all seven dimensions, set its tier, and sequenced a prioritised 12-month roadmap. Delivered in two and a half weeks to meet a board deadline.</p>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.55)' }}><Icon name="check" size={13} />PointZeroGroup · Futureproofing · The Review</span>
-          <Link href={ROUTES.futureproofingCaseStudies} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <Icon name="arrow-right" size={17} /></Link>
+          <Link href={ROUTES.futureproofingCaseStudies} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <BrandArrow variant="light" size={15} /></Link>
         </div>
       </section>
 
@@ -193,7 +194,7 @@ export default function TheReviewPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Ready to Find Out Where You Stand?</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>Tell us a little about your business and we’ll book it in — usually within one working day.</p>
-            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <Icon name="arrow-right" size={17} /></Link>
+            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <BrandArrow variant="light" size={15} /></Link>
           </div>
         </div>
       </section>

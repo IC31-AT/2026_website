@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { ROUTES, dcHref } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -148,7 +149,7 @@ export default function OngoingWorkPage() {
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: 'var(--at-faint)' }}>
             <Icon name="check" size={13} style={{ color: 'var(--at-turquoise)' }} />Design &amp; marketing agency · 60+ staff · 2025
           </span>
-          <Link href={dcHref('Futureproofing Case Studies.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <Icon name="arrow-right" size={17} /></Link>
+          <Link href={dcHref('Futureproofing Case Studies.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <BrandArrow variant="dark" size={15} /></Link>
         </div>
       </section>
 
@@ -158,7 +159,7 @@ export default function OngoingWorkPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Not Sure Which Path Fits?</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>Most conversations start there. We’ll talk it through against your roadmap and point you at the one that actually suits how you work.</p>
-            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Talk through which path fits <Icon name="arrow-right" size={17} /></Link>
+            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Talk through which path fits <BrandArrow variant="light" size={15} /></Link>
           </div>
         </div>
       </section>

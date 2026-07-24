@@ -6,6 +6,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import TeamBios from '@/components/TeamBios';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -260,7 +261,7 @@ export default function AboutPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>Let&apos;s Build Something That Scales</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 480, textWrap: 'pretty' }}>Whether you need rock-solid IT or a partner to help you navigate what&apos;s next, we&apos;d love to hear from you.</p>
-            <Link href={ROUTES.contact} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Get in Touch <Icon name="arrow-right" size={17} /></Link>
+            <Link href={ROUTES.contact} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Get in Touch <BrandArrow variant="light" size={15} /></Link>
           </div>
         </div>
       </section>

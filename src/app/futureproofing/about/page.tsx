@@ -4,6 +4,7 @@ import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import ReviewToTrainingReveal from '@/components/ReviewToTrainingReveal';
 import HowItRunsWalkthrough from '@/components/HowItRunsWalkthrough';
 import TierScoreReveal from '@/components/TierScoreReveal';
@@ -97,7 +98,7 @@ export default function FutureproofingAboutPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--at-cyprus)', textWrap: 'balance' }}>See Where You Land</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--at-muted)', maxWidth: 460, textWrap: 'pretty' }}>The Review is where the model meets your business — a clear, honest picture of exactly which stage you’re at.</p>
-            <Link href={dcHref('Book The Review.dc.html')} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <Icon name="arrow-right" size={17} /></Link>
+            <Link href={dcHref('Book The Review.dc.html')} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <BrandArrow variant="light" size={15} /></Link>
           </div>
         </div>
       </section>

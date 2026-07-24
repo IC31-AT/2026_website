@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Icon from './Icon';
+import BrandArrow from './BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 type Active = 'home' | 'it' | 'fp' | 'case-studies' | 'about' | 'news' | '';
@@ -187,7 +188,7 @@ export default function SiteNav({ active = '', theme = 'light' }: { active?: Act
       <Link href={ROUTES.aiReadinessAudit} data-cursor data-hover="opacity: 0.92" className="at-audit-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, minHeight: 40, padding: '8px 16px', background: 'linear-gradient(90deg, var(--at-cyprus) 0%, var(--at-turquoise) 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', textAlign: 'center', lineHeight: 1.3, transition: 'opacity 150ms ease' }}>
         <Icon name="sparkles" size={14} />
         Free AI Readiness Mini-Audit — see exactly where you stand, in 5 minutes
-        <Icon name="arrow-right" size={14} />
+        <BrandArrow variant="light" size={13} />
       </Link>
 
       {/* ---- Mobile slide-in panel — portaled to <body> so no page-level

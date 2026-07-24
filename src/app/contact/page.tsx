@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default function ContactPage() {
               <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)', textWrap: 'pretty' }}>Please create a support ticket or contact us using the support email or client portal.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 4 }}>
                 <a href="mailto:support@agencytech.co.uk" data-hover="background: rgba(255,255,255,0.08)" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 16px', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-sm)', fontSize: 13.5, fontWeight: 600, color: '#fff', textDecoration: 'none', transition: 'background 200ms ease' }}><Icon name="mails" size={15} /> support@agencytech.co.uk</a>
-                <a href="#" data-hover="background: var(--accent-hover)" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 16px', background: 'var(--accent)', borderRadius: 'var(--radius-sm)', fontSize: 13.5, fontWeight: 700, color: '#fff', textDecoration: 'none', transition: 'background 200ms ease' }}><Icon name="arrow-right" size={15} /> Client portal</a>
+                <a href="#" data-hover="background: var(--accent-hover)" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 16px', background: 'var(--accent)', borderRadius: 'var(--radius-sm)', fontSize: 13.5, fontWeight: 700, color: '#fff', textDecoration: 'none', transition: 'background 200ms ease' }}><BrandArrow variant="light" size={14} /> Client portal</a>
               </div>
             </div>
           </div>

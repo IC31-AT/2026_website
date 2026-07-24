@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -85,7 +86,7 @@ export default function AutomationsPage() {
             </div>
             <p style={{ margin: 0, fontSize: 15, color: 'var(--text-muted)' }}>Half-day session, plus a follow-up report.</p>
             <h2 style={{ margin: '8px 0 0', fontSize: 34, lineHeight: 1.14, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Get the Room Aligned</h2>
-            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 4, transition: 'background 200ms ease, transform 200ms ease' }}>Enquire About a Workshop <Icon name="arrow-right" size={17} /></Link>
+            <Link href={ROUTES.bookTheReview} data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 4, transition: 'background 200ms ease, transform 200ms ease' }}>Enquire About a Workshop <BrandArrow variant="light" size={15} /></Link>
             <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 8, marginTop: 8, fontSize: 12, lineHeight: 1.5, color: 'var(--at-faint)', maxWidth: 460, textAlign: 'left' }}><Icon name="info" size={13} style={{ flex: 'none', marginTop: 2 }} />Working draft: this page describes the Activation Workshop format. If Automations should cover a broader menu of one-off projects, this scope is still to be confirmed.</span>
           </div>
         </div>

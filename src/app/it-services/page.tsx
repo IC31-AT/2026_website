@@ -5,6 +5,7 @@ import SiteFooter from '@/components/SiteFooter';
 import FaqAccordion from '@/components/FaqAccordion';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { dcHref } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -418,7 +419,7 @@ export default function ITServicesPage() {
             <span className={eyebrow}>From IT Clients</span>
             <blockquote style={{ margin: 0, fontSize: 24, lineHeight: 1.45, fontWeight: 600, color: 'var(--text-heading)', letterSpacing: '-0.01em', textWrap: 'balance' }}>&ldquo;We passed Cyber Essentials first time. Our biggest client noticed before we&rsquo;d even told them.&rdquo;</blockquote>
             <p style={{ margin: 0, fontSize: 14, color: 'var(--text-muted)' }}><strong style={{ color: 'var(--text-heading)', fontWeight: 700 }}>Managing Director</strong> · PR agency, Bath <span style={{ opacity: 0.6 }}>(placeholder quote)</span></p>
-            <Link href={dcHref('IT Case Studies.dc.html')} data-hover="gap: 10px" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginTop: 4, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Read more case studies <Icon name="arrow-right" size={16} /></Link>
+            <Link href={dcHref('IT Case Studies.dc.html')} data-hover="gap: 10px" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginTop: 4, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Read more case studies <BrandArrow variant="dark" size={14} /></Link>
           </div>
         </div>
       </section>
@@ -435,19 +436,19 @@ export default function ITServicesPage() {
               <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="fish" size={22} /></span>
               <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>Phishing Simulations</span>
               <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>The service with our strongest case-study results. See how a simulated attack changes a team.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <BrandArrow variant="dark" size={14} /></span>
             </Link>
             <Link href={dcHref('ITAD.dc.html')} data-reveal data-reveal-delay={90} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
               <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="recycle" size={22} /></span>
               <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>IT Recycling</span>
               <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>IT asset disposal done properly — secure collection, certified data destruction, resale and recycling.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <BrandArrow variant="dark" size={14} /></span>
             </Link>
             <Link href={dcHref('IT Case Studies.dc.html')} data-reveal data-reveal-delay={180} data-hover="box-shadow: var(--shadow-md); transform: translateY(-3px)" style={{ display: 'flex', flexDirection: 'column', gap: 14, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '32px 28px', textDecoration: 'none', transition: 'box-shadow 250ms ease, transform 250ms ease' }}>
               <span style={{ width: 44, height: 44, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="file-text" size={22} /></span>
               <span style={{ fontSize: 19, fontWeight: 700, color: 'var(--text-heading)' }}>IT Case Studies</span>
               <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>Real problems, measured outcomes — what working with us actually looks like for agencies.</span>
-              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <Icon name="arrow-right" size={16} /></span>
+              <span style={{ marginTop: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>Read more <BrandArrow variant="dark" size={14} /></span>
             </Link>
           </div>
         </div>
@@ -459,7 +460,7 @@ export default function ITServicesPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Ready to Stop Firefighting?</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>A 30-minute call is enough to tell you whether we&rsquo;re the right fit — and you&rsquo;ll leave with something useful either way.</p>
-            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <Icon name="arrow-right" size={17} /></a>
+            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <BrandArrow variant="light" size={15} /></a>
           </div>
         </div>
       </section>

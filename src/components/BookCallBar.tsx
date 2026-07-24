@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from './Icon';
+import BrandArrow from './BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 /* Persistent floating "Book a call" bar, pinned bottom-right on every page.
@@ -57,7 +58,7 @@ export default function BookCallBar() {
           Ready to talk?
         </span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 15, fontWeight: 700, color: '#fff' }}>
-          Book a call <Icon name="arrow-right" size={15} color="#fff" />
+          Book a call <BrandArrow variant="light" size={14} />
         </span>
       </span>
 

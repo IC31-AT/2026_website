@@ -4,6 +4,7 @@ import SiteFooter from '@/components/SiteFooter';
 import FaqAccordion from '@/components/FaqAccordion';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import IntroOverlay from '@/components/IntroOverlay';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import { testimonials } from '@/lib/testimonials';
@@ -123,14 +124,14 @@ export default function HomePage() {
               <span style={{ width: 48, height: 48, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="server" size={24} /></span>
               <h3 style={{ margin: 0, fontSize: 23, lineHeight: 1.2, fontWeight: 700, color: 'var(--text-heading)' }}>IT Managed Services</h3>
               <p style={{ margin: 0, flex: 1, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>Proactive, reliable and secure IT management — helpdesk, cybersecurity, cloud, devices and everything between — so your team stays focused on client work, not firefighting.</p>
-              <Link href={dcHref('IT Services.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore IT Services <Icon name="arrow-right" size={17} /></Link>
+              <Link href={dcHref('IT Services.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore IT Services <BrandArrow variant="dark" size={15} /></Link>
             </div>
             {/* Card 2 — The Futureproofing Program */}
             <div data-reveal data-reveal-delay={100} style={{ display: 'flex', flexDirection: 'column', gap: 18, background: 'var(--surface-subtle)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', padding: '40px 36px' }}>
               <span style={{ width: 48, height: 48, borderRadius: 'var(--radius-sm)', background: 'rgba(6,154,152,0.10)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--at-turquoise)' }}><Icon name="brain-circuit" size={24} /></span>
               <h3 style={{ margin: 0, fontSize: 23, lineHeight: 1.2, fontWeight: 700, color: 'var(--text-heading)' }}>The Futureproofing Program</h3>
               <p style={{ margin: 0, flex: 1, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' }}>A structured, research-backed way to find your footing on AI — starting with a scored Review of where you stand, and a costed plan to get there.</p>
-              <Link href={dcHref('Futureproofing.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore Futureproofing <Icon name="arrow-right" size={17} /></Link>
+              <Link href={dcHref('Futureproofing.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Explore Futureproofing <BrandArrow variant="dark" size={15} /></Link>
             </div>
           </div>
           <p data-reveal data-reveal-delay={200} style={{ margin: '48px auto 0', maxWidth: 760, textAlign: 'center', fontSize: 17, lineHeight: 1.7, color: 'var(--text-muted)', textWrap: 'pretty' }}>
@@ -184,7 +185,7 @@ export default function HomePage() {
                     </div>
                   ))}
                   <Link href={group.href} data-hover="border-color: var(--at-turquoise); background: rgba(6,154,152,0.06)" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '32px 24px', minHeight: 168, background: '#fff', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', color: 'var(--at-turquoise)', fontSize: 16, fontWeight: 700, textAlign: 'center', textDecoration: 'none', transition: 'border-color 200ms ease, background 200ms ease' }}>
-                    Find Out More <Icon name="arrow-right" size={19} />
+                    Find Out More <BrandArrow variant="dark" size={15} />
                   </Link>
                 </div>
               </div>
@@ -199,7 +200,7 @@ export default function HomePage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 42, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Not Sure Which You Need?</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>Most conversations start exactly there. Thirty minutes, no pitch — just a clear steer on what would actually help.</p>
-            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Let&apos;s Talk <Icon name="arrow-right" size={17} /></a>
+            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Let&apos;s Talk <BrandArrow variant="light" size={15} /></a>
           </div>
         </div>
       </section>

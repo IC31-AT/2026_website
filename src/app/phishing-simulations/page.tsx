@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/SiteNav';
 import SiteFooter from '@/components/SiteFooter';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { dcHref } from '@/lib/routes';
 
 export const metadata: Metadata = {
@@ -137,7 +138,7 @@ export default function PhishingSimulationsPage() {
             <div style={{ padding: '48px 44px', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--at-turquoise)' }}>Creative agency · 40 people · Bristol</span>
               <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--text-body)', textWrap: 'pretty' }}>The baseline campaign landed on a Tuesday morning. Nearly a quarter of the team clicked. Six months of targeted simulations and in-the-moment training later, clicks had all but disappeared — and reports to IT had tripled.</p>
-              <Link href={dcHref('IT Case Studies.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14.5, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Read the full case study <Icon name="arrow-right" size={16} /></Link>
+              <Link href={dcHref('IT Case Studies.dc.html')} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14.5, fontWeight: 700, color: 'var(--at-turquoise)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Read the full case study <BrandArrow variant="dark" size={14} /></Link>
             </div>
           </div>
         </div>
@@ -149,7 +150,7 @@ export default function PhishingSimulationsPage() {
           <div data-reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
             <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: 'var(--text-heading)', textWrap: 'balance' }}>Find Out Before an Attacker Does</h2>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'var(--text-muted)', maxWidth: 460, textWrap: 'pretty' }}>A baseline simulation takes days to set up and tells you exactly where you stand. Most teams are surprised by the result.</p>
-            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <Icon name="arrow-right" size={17} /></a>
+            <a href="mailto:hello@agencytech.co.uk" data-hover="background: var(--accent-hover); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--accent)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book a Call <BrandArrow variant="light" size={15} /></a>
           </div>
         </div>
       </section>

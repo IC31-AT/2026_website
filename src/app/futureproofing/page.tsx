@@ -6,6 +6,7 @@ import SiteFooter from '@/components/SiteFooter';
 import CaseStudyCard from '@/components/CaseStudyCard';
 import ImageSlot from '@/components/ImageSlot';
 import Icon from '@/components/Icon';
+import BrandArrow from '@/components/BrandArrow';
 import { dataUri } from '@/lib/blobscene';
 import { ROUTES } from '@/lib/routes';
 
@@ -244,7 +245,7 @@ export default function FutureproofingPage() {
                 <span style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-heading)' }}>{step.title}</span>
                 <span style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-muted)' }}>{step.desc}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-heading)', marginTop: 4 }}>{step.meta}</span>
-                <span style={{ marginTop: 'auto', paddingTop: 8, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>{step.cta} <Icon name="arrow-right" size={16} /></span>
+                <span style={{ marginTop: 'auto', paddingTop: 8, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--at-turquoise)' }}>{step.cta} <BrandArrow variant="dark" size={14} /></span>
               </Link>
             ))}
           </div>
@@ -260,7 +261,7 @@ export default function FutureproofingPage() {
             <div style={{ position: 'relative', padding: '84px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22 }}>
               <h2 style={{ margin: 0, fontSize: 40, lineHeight: 1.12, letterSpacing: '-0.02em', fontWeight: 800, color: '#fff', maxWidth: 620, textWrap: 'balance' }}>Find Out Exactly Where You Stand</h2>
               <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.75)', maxWidth: 480, textWrap: 'pretty' }}>The Review is a complete purchase on its own — no obligation into anything else. In writing, in five weeks.</p>
-              <Link href={ROUTES.bookTheReview} data-hover="background: var(--at-turquoise-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--at-turquoise)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <Icon name="arrow-right" size={17} /></Link>
+              <Link href={ROUTES.bookTheReview} data-hover="background: var(--at-turquoise-light); transform: scale(1.02)" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 54, padding: '0 32px', background: 'var(--at-turquoise)', color: '#fff', borderRadius: 'var(--radius-sm)', fontSize: 15.5, fontWeight: 700, textDecoration: 'none', marginTop: 6, transition: 'background 200ms ease, transform 200ms ease' }}>Book The Review <BrandArrow variant="light" size={15} /></Link>
             </div>
           </div>
         </div>

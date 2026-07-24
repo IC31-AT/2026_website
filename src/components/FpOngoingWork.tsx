@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Icon from './Icon';
+import BrandArrow from './BrandArrow';
 import { ROUTES } from '@/lib/routes';
 
 /* P2 for the Futureproofing hub page — "Two Ways to Actually Build What the
@@ -130,7 +131,7 @@ export default function FpOngoingWork() {
           <span data-reveal style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.6)' }}>
             <Icon name="check" size={13} style={{ color: 'var(--at-turquoise-light)' }} />Design &amp; marketing agency · 60+ staff · 2025
           </span>
-          <Link data-reveal href={ROUTES.futureproofingCaseStudies} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <Icon name="arrow-right" size={17} /></Link>
+          <Link data-reveal href={ROUTES.futureproofingCaseStudies} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>See the case studies <BrandArrow variant="light" size={15} /></Link>
         </div>
       </section>
 
@@ -139,7 +140,7 @@ export default function FpOngoingWork() {
         <div data-reveal style={{ position: 'relative', maxWidth: 720, margin: '0 auto', padding: '0 32px 96px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16 }}>
           <h3 style={{ margin: 0, fontSize: 26, lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 700, color: '#fff' }}>Not Sure Which Path Fits?</h3>
           <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 480, textWrap: 'pretty' }}>Most conversations start there. We’ll talk it through against your roadmap and point you at the one that actually suits how you work.</p>
-          <Link href={ROUTES.contact} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Talk it through <Icon name="arrow-right" size={17} /></Link>
+          <Link href={ROUTES.contact} data-hover="gap: 12px" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, fontWeight: 700, color: 'var(--at-turquoise-light)', textDecoration: 'none', transition: 'gap 200ms ease' }}>Talk it through <BrandArrow variant="light" size={15} /></Link>
         </div>
       </section>
 
