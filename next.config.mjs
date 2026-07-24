@@ -6,8 +6,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    // Brand PNG/SVG assets are served straight from /public; no remote loaders needed.
-    unoptimized: true,
+    // Photography goes through Next's optimiser (resize + WebP/AVIF) on Vercel.
+    // Brand logos/blobs stay as raw <img> and bypass this regardless.
+    formats: ['image/avif', 'image/webp'],
   },
 };
 
